@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.slwh.emr.mapper.PermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.slwh.emr.model.Permission" >
+    <id column="pe_id" property="peId" jdbcType="INTEGER" />
+    <result column="pe_name" property="peName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pe_id, pe_name
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from emr_permission
+    where pe_id = #{peId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from emr_permission
+    where pe_id = #{peId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.slwh.emr.model.Permission" >
+    insert into emr_permission (pe_id, pe_name)
+    values (#{peId,jdbcType=INTEGER}, #{peName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.slwh.emr.model.Permission" >
+    insert into emr_permission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="peId != null" >
+        pe_id,
+      </if>
+      <if test="peName != null" >
+        pe_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="peId != null" >
+        #{peId,jdbcType=INTEGER},
+      </if>
+      <if test="peName != null" >
+        #{peName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByIdSelective" parameterType="com.slwh.emr.model.Permission" >
+    update emr_permission
+    <set >
+      <if test="peName != null" >
+        pe_name = #{peName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pe_id = #{peId,jdbcType=INTEGER}
+  </update>
+  <update id="updateById" parameterType="com.slwh.emr.model.Permission" >
+    update emr_permission
+    set pe_name = #{peName,jdbcType=VARCHAR}
+    where pe_id = #{peId,jdbcType=INTEGER}
+  </update>
+
+  <!--查询所有权限信息  -->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_permission
+  </select>
+</mapper>

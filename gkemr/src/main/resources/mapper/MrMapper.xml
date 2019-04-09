@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.slwh.emr.mapper.MrMapper" >
+  <resultMap id="BaseResultMap" type="com.slwh.emr.model.Mr" >
+    <id column="bl_id" property="blId" jdbcType="INTEGER" />
+    <result column="bl_num" property="blNum" jdbcType="VARCHAR" />
+    <result column="bl_style" property="blStyle" jdbcType="VARCHAR" />
+    <result column="bl_msg" property="blMsg" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="bl_history" property="blHistory" jdbcType="VARCHAR" />
+    <result column="bl_patient" property="blPatient" jdbcType="INTEGER" />
+    <result column="bl_user" property="blUser" jdbcType="INTEGER" />
+    <result column="bl_drug" property="blDrug" jdbcType="INTEGER" />
+    <result column="bl_zldj" property="blZldj" jdbcType="INTEGER" />
+    <result column="bl_huli" property="blHuli" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bl_id, bl_num, bl_style, bl_msg, status, bl_history, bl_patient, bl_user, bl_drug, 
+    bl_zldj, bl_huli
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from emr_mr
+    where bl_id = #{blId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from emr_mr
+    where bl_id = #{blId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.slwh.emr.model.Mr" >
+    insert into emr_mr (bl_id, bl_num, bl_style, 
+      bl_msg, status, bl_history, 
+      bl_patient, bl_user, bl_drug, 
+      bl_zldj, bl_huli)
+    values (#{blId,jdbcType=INTEGER}, #{blNum,jdbcType=VARCHAR}, #{blStyle,jdbcType=VARCHAR}, 
+      #{blMsg,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{blHistory,jdbcType=VARCHAR}, 
+      #{blPatient,jdbcType=INTEGER}, #{blUser,jdbcType=INTEGER}, #{blDrug,jdbcType=INTEGER}, 
+      #{blZldj,jdbcType=INTEGER}, #{blHuli,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.slwh.emr.model.Mr" >
+    insert into emr_mr
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="blId != null" >
+        bl_id,
+      </if>
+      <if test="blNum != null" >
+        bl_num,
+      </if>
+      <if test="blStyle != null" >
+        bl_style,
+      </if>
+      <if test="blMsg != null" >
+        bl_msg,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="blHistory != null" >
+        bl_history,
+      </if>
+      <if test="blPatient != null" >
+        bl_patient,
+      </if>
+      <if test="blUser != null" >
+        bl_user,
+      </if>
+      <if test="blDrug != null" >
+        bl_drug,
+      </if>
+      <if test="blZldj != null" >
+        bl_zldj,
+      </if>
+      <if test="blHuli != null" >
+        bl_huli,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="blId != null" >
+        #{blId,jdbcType=INTEGER},
+      </if>
+      <if test="blNum != null" >
+        #{blNum,jdbcType=VARCHAR},
+      </if>
+      <if test="blStyle != null" >
+        #{blStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="blMsg != null" >
+        #{blMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="blHistory != null" >
+        #{blHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="blPatient != null" >
+        #{blPatient,jdbcType=INTEGER},
+      </if>
+      <if test="blUser != null" >
+        #{blUser,jdbcType=INTEGER},
+      </if>
+      <if test="blDrug != null" >
+        #{blDrug,jdbcType=INTEGER},
+      </if>
+      <if test="blZldj != null" >
+        #{blZldj,jdbcType=INTEGER},
+      </if>
+      <if test="blHuli != null" >
+        #{blHuli,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByIdSelective" parameterType="com.slwh.emr.model.Mr" >
+    update emr_mr
+    <set >
+      <if test="blNum != null" >
+        bl_num = #{blNum,jdbcType=VARCHAR},
+      </if>
+      <if test="blStyle != null" >
+        bl_style = #{blStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="blMsg != null" >
+        bl_msg = #{blMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="blHistory != null" >
+        bl_history = #{blHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="blPatient != null" >
+        bl_patient = #{blPatient,jdbcType=INTEGER},
+      </if>
+      <if test="blUser != null" >
+        bl_user = #{blUser,jdbcType=INTEGER},
+      </if>
+      <if test="blDrug != null" >
+        bl_drug = #{blDrug,jdbcType=INTEGER},
+      </if>
+      <if test="blZldj != null" >
+        bl_zldj = #{blZldj,jdbcType=INTEGER},
+      </if>
+      <if test="blHuli != null" >
+        bl_huli = #{blHuli,jdbcType=INTEGER},
+      </if>
+    </set>
+    where bl_id = #{blId,jdbcType=INTEGER}
+  </update>
+  <update id="updateById" parameterType="com.slwh.emr.model.Mr" >
+    update emr_mr
+    set bl_num = #{blNum,jdbcType=VARCHAR},
+      bl_style = #{blStyle,jdbcType=VARCHAR},
+      bl_msg = #{blMsg,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      bl_history = #{blHistory,jdbcType=VARCHAR},
+      bl_patient = #{blPatient,jdbcType=INTEGER},
+      bl_user = #{blUser,jdbcType=INTEGER},
+      bl_drug = #{blDrug,jdbcType=INTEGER},
+      bl_zldj = #{blZldj,jdbcType=INTEGER},
+      bl_huli = #{blHuli,jdbcType=INTEGER}
+    where bl_id = #{blId,jdbcType=INTEGER}
+  </update>
+
+  <!--查询所有病历信息  -->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_mr
+  </select>
+</mapper>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.slwh.emr.mapper.IthMapper" >
+  <resultMap id="BaseResultMap" type="com.slwh.emr.model.Ith" >
+    <id column="ith_id" property="ithId" jdbcType="INTEGER" />
+    <result column="ith_no" property="ithNo" jdbcType="VARCHAR" />
+    <result column="ith_patient" property="ithPatient" jdbcType="INTEGER" />
+    <result column="ith_nurse" property="ithNurse" jdbcType="INTEGER" />
+    <result column="ith_bed" property="ithBed" jdbcType="VARCHAR" />
+    <result column="ith_msg" property="ithMsg" jdbcType="VARCHAR" />
+    <result column="ith_status" property="ithStatus" jdbcType="VARCHAR" />
+    <result column="ith_user" property="ithUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ith_id, ith_no, ith_patient, ith_nurse, ith_bed, ith_msg, ith_status, ith_user
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from emr_ith
+    where ith_id = #{ithId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from emr_ith
+    where ith_id = #{ithId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.slwh.emr.model.Ith" >
+    insert into emr_ith (ith_id, ith_no, ith_patient, 
+      ith_nurse, ith_bed, ith_msg, 
+      ith_status, ith_user)
+    values (#{ithId,jdbcType=INTEGER}, #{ithNo,jdbcType=VARCHAR}, #{ithPatient,jdbcType=INTEGER}, 
+      #{ithNurse,jdbcType=INTEGER}, #{ithBed,jdbcType=VARCHAR}, #{ithMsg,jdbcType=VARCHAR}, 
+      #{ithStatus,jdbcType=VARCHAR}, #{ithUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.slwh.emr.model.Ith" >
+    insert into emr_ith
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ithId != null" >
+        ith_id,
+      </if>
+      <if test="ithNo != null" >
+        ith_no,
+      </if>
+      <if test="ithPatient != null" >
+        ith_patient,
+      </if>
+      <if test="ithNurse != null" >
+        ith_nurse,
+      </if>
+      <if test="ithBed != null" >
+        ith_bed,
+      </if>
+      <if test="ithMsg != null" >
+        ith_msg,
+      </if>
+      <if test="ithStatus != null" >
+        ith_status,
+      </if>
+      <if test="ithUser != null" >
+        ith_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ithId != null" >
+        #{ithId,jdbcType=INTEGER},
+      </if>
+      <if test="ithNo != null" >
+        #{ithNo,jdbcType=VARCHAR},
+      </if>
+      <if test="ithPatient != null" >
+        #{ithPatient,jdbcType=INTEGER},
+      </if>
+      <if test="ithNurse != null" >
+        #{ithNurse,jdbcType=INTEGER},
+      </if>
+      <if test="ithBed != null" >
+        #{ithBed,jdbcType=VARCHAR},
+      </if>
+      <if test="ithMsg != null" >
+        #{ithMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="ithStatus != null" >
+        #{ithStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ithUser != null" >
+        #{ithUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByIdSelective" parameterType="com.slwh.emr.model.Ith" >
+    update emr_ith
+    <set >
+      <if test="ithNo != null" >
+        ith_no = #{ithNo,jdbcType=VARCHAR},
+      </if>
+      <if test="ithPatient != null" >
+        ith_patient = #{ithPatient,jdbcType=INTEGER},
+      </if>
+      <if test="ithNurse != null" >
+        ith_nurse = #{ithNurse,jdbcType=INTEGER},
+      </if>
+      <if test="ithBed != null" >
+        ith_bed = #{ithBed,jdbcType=VARCHAR},
+      </if>
+      <if test="ithMsg != null" >
+        ith_msg = #{ithMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="ithStatus != null" >
+        ith_status = #{ithStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ithUser != null" >
+        ith_user = #{ithUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ith_id = #{ithId,jdbcType=INTEGER}
+  </update>
+  <update id="updateById" parameterType="com.slwh.emr.model.Ith" >
+    update emr_ith
+    set ith_no = #{ithNo,jdbcType=VARCHAR},
+      ith_patient = #{ithPatient,jdbcType=INTEGER},
+      ith_nurse = #{ithNurse,jdbcType=INTEGER},
+      ith_bed = #{ithBed,jdbcType=VARCHAR},
+      ith_msg = #{ithMsg,jdbcType=VARCHAR},
+      ith_status = #{ithStatus,jdbcType=VARCHAR},
+      ith_user = #{ithUser,jdbcType=VARCHAR}
+    where ith_id = #{ithId,jdbcType=INTEGER}
+  </update>
+
+  <!--查询所有住院信息  -->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_ith
+  </select>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.slwh.emr.mapper.Role_UserMapper" >
+  <resultMap id="BaseResultMap" type="com.slwh.emr.model.Role_UserKey" >
+    <id column="r_id" property="rId" jdbcType="INTEGER" />
+    <id column="u_id" property="uId" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteById" parameterType="com.slwh.emr.model.Role_UserKey" >
+    delete from emr_role_user
+    where r_id = #{rId,jdbcType=INTEGER}
+      and u_id = #{uId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.slwh.emr.model.Role_UserKey" >
+    insert into emr_role_user (r_id, u_id)
+    values (#{rId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.slwh.emr.model.Role_UserKey" >
+    insert into emr_role_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rId != null" >
+        r_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rId != null" >
+        #{rId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.slwh.emr.mapper.NurseMapper" >
+  <resultMap id="BaseResultMap" type="com.slwh.emr.model.Nurse" >
+    <id column="n_id" property="nId" jdbcType="INTEGER" />
+    <result column="n_level" property="nLevel" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, n_level
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from emr_nurse
+    where n_id = #{nId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from emr_nurse
+    where n_id = #{nId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.slwh.emr.model.Nurse" >
+    insert into emr_nurse (n_id, n_level)
+    values (#{nId,jdbcType=INTEGER}, #{nLevel,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.slwh.emr.model.Nurse" >
+    insert into emr_nurse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="nLevel != null" >
+        n_level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="nLevel != null" >
+        #{nLevel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByIdSelective" parameterType="com.slwh.emr.model.Nurse" >
+    update emr_nurse
+    <set >
+      <if test="nLevel != null" >
+        n_level = #{nLevel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+  <update id="updateById" parameterType="com.slwh.emr.model.Nurse" >
+    update emr_nurse
+    set n_level = #{nLevel,jdbcType=VARCHAR}
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+
+  <!--查询所有护理信息  -->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_nurse
+  </select>
+</mapper>
