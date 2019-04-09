@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 import java.util.Map;
 
 /**
- * @author muzixi ceshiyiai
+ * @author muzixi 难受
  */
 @Controller
 @RequestMapping("user")
@@ -22,19 +22,22 @@ public class UserController {
 
 
     @RequestMapping("/hello")
-    public String StringhelloJsp(){//主界面
-
+    public String index(){
+        return "login";
+    }
+    @RequestMapping("/index")
+    public String StringhelloJsp(){
         return "index";
     }
 
-
     @RequestMapping("/login")
-    public Result login(String username, String password){//登录
+    @ResponseBody
+    public Result login(String username, String password){
         return Result.success(UserService.login(username,password));
 
     }
     @RequestMapping("/sign")
-    public int sign(User user){//注册
+    public int sign(User user){
         return UserService.insert(user);
 
     }
@@ -75,10 +78,5 @@ public class UserController {
     @RequestMapping("/middle")
     public String middle(){
         return "middle";
-    }
-
-    @RequestMapping("/dept")
-    public String department(){
-        return "media/lists";
     }
 }
