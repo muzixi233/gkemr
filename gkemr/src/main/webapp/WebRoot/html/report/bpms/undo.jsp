@@ -6,7 +6,7 @@
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
  <title>接待室界面</title>
- <link href="../../css/style.css" rel="stylesheet" type="text/css">
+ <link href="../../css/sty.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
 .style2 {

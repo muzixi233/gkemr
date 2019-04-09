@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>手续监控</title>
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
+<link href="../../css/sty.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="../../js/clientSideApp.js"></script>
 <script language="javascript" src="../../js/check.js"></script>
 <script language="javascript" src="../../js/checkAll.js"></script>

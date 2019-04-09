@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 import java.util.Map;
 
 /**
- * @author muzixi ceshiyiainnnnnnn
+ * @author muzixi
  */
 @Controller
 @RequestMapping("user")
@@ -22,13 +22,16 @@ public class UserController {
 
 
     @RequestMapping("/hello")
+    public String index(){
+        return "login";
+    }
+    @RequestMapping("/index")
     public String StringhelloJsp(){
-
         return "index";
     }
 
-
     @RequestMapping("/login")
+    @ResponseBody
     public Result login(String username, String password){
         return Result.success(UserService.login(username,password));
 
