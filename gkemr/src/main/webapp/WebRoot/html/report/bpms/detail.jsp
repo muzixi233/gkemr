@@ -8,7 +8,7 @@
 <html>
 <head>
 <title>手续所有环节办理情况</title>
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
+<link href="../../css/sty.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="../../js/clientSideApp.js"></script>
 <script language="javascript" >
 var flag = 'null';
