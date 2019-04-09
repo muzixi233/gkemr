@@ -9,12 +9,9 @@
 <script language="JavaScript" src="./js/jquery2.js"></script>
 <script src="./js/cloud.js" type="text/javascript"></script>
 <script language="javascript" src="./js/js.js"></script>
-  <script language="javascript" src="js/Vue.js"></script>
-  <script src="../node_modules/vue-resource/dist/vue-resource.js"></script>
-
 </head>
 
-<body style="background-color:#1c77ac; background-image: url(images/light.png) background-repeat:no-repeat; background-position:center top; overflow:hidden;">
+<body style="background-color:#1c77ac; background-image: url(images/light.png); background-repeat:no-repeat; background-position:center top; overflow:hidden;">
 <div id="mainBody">
   <div id="cloud1" class="cloud"></div>
   <div id="cloud2" class="cloud"></div>
@@ -39,38 +36,29 @@
         <input name="loginy" type="text" class="loginy" placeholder="输入验证码"/><label><img src="images/images.jpg" /></label>
       </li>
       <li>
-        <input name="button" type="button" class="loginbtn" value="登录" onclick="submitForm('ruleForm')"  />
+        <input name="button" type="button" class="loginbtn" value="登录" id="btn" />
       </li>
     </ul>
     </form>
   </div>
 </div>
 <div class="loginbm">版权所有： 666小组 © Copyright 2014 - 2015.</div>
+<script type="text/javascript">
+  $("#btn").click(function(){
+    var username=
+  $.ajax({
+    type: "post",
+    url: "/user/login",
+    data: {
+username:this.username;
+password:this.password;
+    },
+    async: true,
+    success: function (data) {
 
-
-<script  type="text/javascript">
-  new Vue ({
-            el:'#app',
-            data: {
-              message:'hello vue.js.'
-            },
-      method:{
-        submitForm(ruleForm)
-        {
-          alert("ffff");
-          axios.get('/admin/login', {
-            params: {
-              aName: this.ruleForm.username,
-              aPassword: this.ruleForm.password
-            }
-          }).then((response) => {
-            localStorage.setItem('ms_username', response.data.data.aName);
-            this.$router.push('/');
-          });
-        }
-      }
-
+    }
   });
+}
 </script>
 </body>
 </html>
