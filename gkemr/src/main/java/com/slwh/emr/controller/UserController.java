@@ -29,6 +29,13 @@ public class UserController {
     public String StringhelloJsp(){
         return "index";
     }
+/*
+门诊医师
+ */
+    @RequestMapping("/results/chooseresult")
+    public String chooseresult(){
+        return "/results/chooseresult";
+    }
 
     @RequestMapping("/login")
     @ResponseBody
@@ -78,5 +85,11 @@ public class UserController {
     @RequestMapping("/middle")
     public String middle(){
         return "middle";
+    }
+
+    @RequestMapping("/selectAllDoctor")
+    @ResponseBody
+    public Result selectAllDoctor(){
+        return Result.success(UserService.selectAll());
     }
 }

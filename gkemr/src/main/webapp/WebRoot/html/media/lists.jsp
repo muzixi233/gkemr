@@ -35,7 +35,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 
   <tr> 
 
-    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="guahao.jsp" target="mainFrame" class="a14">门诊挂号</a></td>
+    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="/treat/guahao" target="mainFrame" class="a14">门诊挂号</a></td>
   </tr>
   <tr> 
 
