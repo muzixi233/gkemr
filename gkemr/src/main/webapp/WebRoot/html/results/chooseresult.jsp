@@ -7,6 +7,9 @@
 <title>我的成果</title>
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" type="text/javascript" src="../../js/win_center.js"></script>
+  <script language="JavaScript" src="../../js/jquery2.js"></script>
+  <script src="../../js/cloud.js" type="text/javascript"></script>
+  <script language="javascript" src="../../js/js.js"></script>
 <SCRIPT language=JavaScript type=text/JavaScript>
 function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 {
@@ -42,18 +45,12 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
 </table>
 <br>
-<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" id="tb">
   <tr>
     <td width="18%" nowrap class="td_top">编号</td>
     <td width="25%" nowrap class="td_top">姓名</td>
-    <td width="39%" nowrap class="td_top">所属科室</td>
+    <td width="39%" nowrap class="td_top">年龄</td>
     <td width="18%" nowrap class="td_top">详细信息</td>
-  </tr>
-  <tr>
-    <td class="td_01">15341521</td>
-    <td class="td_01">高佳欣</td>
-    <td class="td_01">骨科</td>
-    <td class="td_01"><a href="#" onClick="javascript:openwindow('moreleavelist_1.jsp','',500,500)">&nbsp;&nbsp;>>></a></td>
   </tr>
 </table>
 <table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
@@ -64,21 +61,19 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 
 <script type="text/javascript">
   window.onload =function GetDoctor() {
-    var tabledata;
     $.ajax({
       type: "get",
       url: "/user/selectAllDoctor",
       data: {},
-      async: false,
+      async: true,
       dataType: 'json',
       success: function (data) {
-        alert(data.data.uName);
         var json = data.data;
         if (data.data!=null) {
           $('#tb tr:gt(0)').remove();//删除之前的数据
           var s = '';
-          for (var i = 0; i < json.length; i++) s += '<tr><td>' + json[i].uNum + '</td><td>' + json[i].uName + '</td><td>' + json[i].uAge + '</td>'
-                  + '<td>----</td></tr>';
+          for (var i = 0; i < json.length; i++) s += '<tr><td class="td_01">' + json[i].uNum + '</td><td class="td_01">' + json[i].uName + '</td><td class="td_01">' + json[i].uAge + '</td>'
+                  + '<td class="td_01"><a href="/user/results/moreleavelist_1?uId='+json[i].uId+'" target="mainFrame" >&nbsp;&nbsp;>>></a></td></tr>';
           $('#tb').append(s);
         }
         else {
