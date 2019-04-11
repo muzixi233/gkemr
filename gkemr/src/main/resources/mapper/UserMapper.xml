@@ -160,4 +160,11 @@
     where u_name like CONCAT('%',#{username},'%')
   </select>
 
+  <!--  根据编号模糊查询-->
+  <select id="selectByuNum" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_user
+    where u_num like CONCAT('%',#{uNum},'%')
+  </select>
 </mapper>
