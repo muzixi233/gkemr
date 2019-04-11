@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>我的成果</title>
+<title>门诊医生</title>
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" type="text/javascript" src="../../js/win_center.js"></script>
   <script language="JavaScript" src="../../js/jquery2.js"></script>
@@ -36,11 +36,11 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td class="td_page">医生编号：
-      <input name="PARA_YM_NOW" size="20" type="text" class="input"   id="PARA_YM_NOW" next="A001014" alt="查询年月|0|d|||" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" readonly>
-      <input name="Submit2" type="submit" class="buttonface" value="  查询  ">
+      <input name="PARA_YM_NOW" id="uNum" size="20" type="text" class="input"   id="PARA_YM_NOW" next="A001014" alt="查询年月|0|d|||" value="" >
+      <input name="Submit2" type="submit" class="buttonface" value="  查询  " onclick="SelectByuNum()">
 姓名
-<input name="PARA_YM_NOW1" size="20" type="text" class="input"   id="PARA_YM_NOW" next="A001014" alt="查询年月|0|d|||" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" readonly>
-<input name="Submit" type="submit" class="buttonface" value="  查询  ">
+<input name="PARA_YM_NOW1" id="uName" size="20" type="text" class="input"   id="PARA_YM_NOW" next="A001014" alt="查询年月|0|d|||" value="" >
+<input name="Submit" type="submit" class="buttonface" value="  查询  " onclick="SelectByuName()">
 （支持模糊查询）</td>
   </tr>
 </table>
@@ -74,6 +74,55 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
           var s = '';
           for (var i = 0; i < json.length; i++) s += '<tr><td class="td_01">' + json[i].uNum + '</td><td class="td_01">' + json[i].uName + '</td><td class="td_01">' + json[i].uAge + '</td>'
                   + '<td class="td_01"><a href="/user/results/moreleavelist_1?uId='+json[i].uId+'" target="mainFrame" >&nbsp;&nbsp;>>></a></td></tr>';
+          $('#tb').append(s);
+        }
+        else {
+          alert("没有数据")
+        }
+
+      }
+    });
+  },
+
+  function SelectByuNum() {
+    alert("tttt")
+    $.ajax({
+      type: "get",
+      url: "/user/selectByuNum",
+      data: {},
+      async: true,
+      dataType: 'json',
+      success: function (data) {
+        var json = data.data;
+        if (data.data!=null) {
+          $('#tb tr:gt(0)').remove();//删除之前的数据
+          var s = '';
+          for (var i = 0; i < json.length; i++) s += '<tr><td class="td_01">' + json[i].uNum + '</td><td class="td_01">' + json[i].uName + '</td><td class="td_01">' + json[i].uAge + '</td>'
+                  + '<td class="td_01"><a href="/user/results/moreleavelist_1?uId='+json[i].uId+'" target="mainFrame" >&nbsp;&nbsp;>>></a></td></tr>';
+          $('#tb').append(s);
+        }
+        else {
+          alert("没有数据")
+        }
+
+      }
+    });
+  }
+
+  function SelectByuName() {
+    $.ajax({
+      type: "get",
+      url: "/user/selectByName",
+      data: {username:$('#uName').val()},
+      async: true,
+      dataType: 'json',
+      success: function (data) {
+        var json = data.data;
+        if (data.data!=null) {
+          $('#tb tr:gt(0)').remove();//删除之前的数据
+          var s = '';
+         s += '<tr><td class="td_01">' + json.uNum + '</td><td class="td_01">' + json.uName + '</td><td class="td_01">' + json.uAge + '</td>'
+                  + '<td class="td_01"><a href="/user/results/moreleavelist_1?uId='+json.uId+'" target="mainFrame" >&nbsp;&nbsp;>>></a></td></tr>';
           $('#tb').append(s);
         }
         else {
