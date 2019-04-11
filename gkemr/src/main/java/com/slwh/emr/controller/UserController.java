@@ -46,7 +46,7 @@ public class UserController {
     @RequestMapping("/results/moreleavelist_1")
     public String moreleavelist_1(HttpServletRequest request, HttpServletResponse response,String uId) throws IOException {
         request.setAttribute("uId",uId);
-        return "/worktime/moreleavelist_1";
+        return "/results/moreleavelist_1";
     }
 
     @RequestMapping("/login")
@@ -67,8 +67,16 @@ public class UserController {
     }
 
     @RequestMapping("/selectByName")
+    @ResponseBody
     public Result selectByName(String username){
+        System.out.println(username);
         return Result.success(UserService.selectByName(username));
+    }
+    //根据id查询
+    @RequestMapping("/selectById")
+    @ResponseBody
+    public Result selectById(Integer uId){
+        return Result.success(UserService.selectById(uId));
     }
     @RequestMapping("/update")
     public  int update(User user){
