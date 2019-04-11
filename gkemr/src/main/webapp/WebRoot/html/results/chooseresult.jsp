@@ -55,35 +55,39 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td_01">骨科</td>
     <td class="td_01"><a href="#" onClick="javascript:openwindow('moreleavelist_1.jsp','',500,500)">&nbsp;&nbsp;>>></a></td>
   </tr>
-  <tr>
-    <td class="td_02">&nbsp;</td>
-    <td class="td_02">&nbsp;</td>
-    <td class="td_02">&nbsp;</td>
-    <td class="td_02">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td_01">&nbsp;</td>
-    <td class="td_01">&nbsp;</td>
-    <td class="td_01">&nbsp;</td>
-    <td class="td_01">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td_02">&nbsp;</td>
-    <td class="td_02">&nbsp;</td>
-    <td class="td_02">&nbsp;</td>
-    <td class="td_02">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td_02">&nbsp;</td>
-    <td class="td_02">&nbsp;</td>
-    <td class="td_02">&nbsp;</td>
-    <td class="td_02">&nbsp;</td>
-  </tr>
 </table>
 <table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
   <tr>
     <td height="30" align="right"><img src="../../images/1.gif" alt="" width="4" height="5" align="absmiddle"> 首页　 <img src="../../images/2.gif" alt="" width="3" height="5" align="absmiddle"> 上一页　 <img src="../../images/2-2.gif" alt="" width="3" height="5" align="absmiddle"> 下一页　 <img src="../../images/3.gif" alt="" width="4" height="5" align="absmiddle"> 末页　　共 1 页 1 条记录</td>
   </tr>
 </table>
+
+<script type="text/javascript">
+  window.onload =function GetDoctor() {
+    var tabledata;
+    $.ajax({
+      type: "get",
+      url: "/user/selectAllDoctor",
+      data: {},
+      async: false,
+      dataType: 'json',
+      success: function (data) {
+        alert(data.data.uName);
+        var json = data.data;
+        if (data.data!=null) {
+          $('#tb tr:gt(0)').remove();//删除之前的数据
+          var s = '';
+          for (var i = 0; i < json.length; i++) s += '<tr><td>' + json[i].uNum + '</td><td>' + json[i].uName + '</td><td>' + json[i].uAge + '</td>'
+                  + '<td>----</td></tr>';
+          $('#tb').append(s);
+        }
+        else {
+          alert("没有数据")
+        }
+
+      }
+    });
+  }
+</script>
 </body>
 </html>
