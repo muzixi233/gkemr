@@ -3,12 +3,16 @@ package com.slwh.emr.controller;
 import com.slwh.emr.cogfiger.Result;
 import com.slwh.emr.model.User;
 import com.slwh.emr.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -35,6 +39,14 @@ public class UserController {
     @RequestMapping("/results/chooseresult")
     public String chooseresult(){
         return "/results/chooseresult";
+    }
+/*
+医生详情
+ */
+    @RequestMapping("/results/moreleavelist_1")
+    public String moreleavelist_1(HttpServletRequest request, HttpServletResponse response,String uId) throws IOException {
+        request.setAttribute("uId",uId);
+        return "/worktime/moreleavelist_1";
     }
 
     @RequestMapping("/login")
