@@ -58,7 +58,6 @@ public class UserController {
     @RequestMapping("/sign")
     public int sign(User user){
         return UserService.insert(user);
-
     }
     @RequestMapping("/selectAll")
     @ResponseBody
