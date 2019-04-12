@@ -19,6 +19,11 @@ public class UserServiceimpl implements UserService {
     }
 
     @Override
+    public User selectByuNum(String uNum) {
+        return userMapper.selectByuNum(uNum);
+    }
+
+    @Override
     public List<User> selectAll() {
         return userMapper.selectAll();
     }

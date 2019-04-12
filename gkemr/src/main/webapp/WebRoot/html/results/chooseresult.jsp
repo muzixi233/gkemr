@@ -82,14 +82,14 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 
       }
     });
-  },
+  }
 
   function SelectByuNum() {
-    alert("tttt")
+      var uNum = $('#uNum').val();
     $.ajax({
       type: "get",
       url: "/user/selectByuNum",
-      data: {},
+      data: {uNum:uNum},
       async: true,
       dataType: 'json',
       success: function (data) {
@@ -97,8 +97,8 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
         if (data.data!=null) {
           $('#tb tr:gt(0)').remove();//删除之前的数据
           var s = '';
-          for (var i = 0; i < json.length; i++) s += '<tr><td class="td_01">' + json[i].uNum + '</td><td class="td_01">' + json[i].uName + '</td><td class="td_01">' + json[i].uAge + '</td>'
-                  + '<td class="td_01"><a href="/user/results/moreleavelist_1?uId='+json[i].uId+'" target="mainFrame" >&nbsp;&nbsp;>>></a></td></tr>';
+         s += '<tr><td class="td_01">' + json.uNum + '</td><td class="td_01">' + json.uName + '</td><td class="td_01">' + json.uAge + '</td>'
+                  + '<td class="td_01"><a href="/user/results/moreleavelist_1?uId='+json.uId+'" target="mainFrame" >&nbsp;&nbsp;>>></a></td></tr>';
           $('#tb').append(s);
         }
         else {

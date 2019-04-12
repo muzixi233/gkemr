@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>成果管理</title>
+<title>挂号管理</title>
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="../../js/clientSideApp.js"></script>
 <SCRIPT language=JavaScript type=text/JavaScript>
@@ -35,7 +35,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 
   <tr> 
 
-    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="/treat/guahao" target="mainFrame" class="a14">门诊挂号</a></td>
+    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="/patient/guahao" target="mainFrame" class="a14">门诊挂号</a></td>
   </tr>
   <tr> 
 

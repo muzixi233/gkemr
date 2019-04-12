@@ -7,6 +7,8 @@ import java.util.List;
 public interface UserService {
     User selectById(Integer uId);
 
+    User selectByuNum(String uNum);
+
     List<User> selectAll();
 
     int insert(User user);

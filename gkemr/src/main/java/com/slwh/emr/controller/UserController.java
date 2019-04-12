@@ -58,19 +58,23 @@ public class UserController {
     @RequestMapping("/sign")
     public int sign(User user){
         return UserService.insert(user);
-
     }
     @RequestMapping("/selectAll")
     @ResponseBody
     public Result selectAll(){
         return Result.success(UserService.selectAll());
     }
-
+//根据名称查询
     @RequestMapping("/selectByName")
     @ResponseBody
     public Result selectByName(String username){
-        System.out.println(username);
         return Result.success(UserService.selectByName(username));
+    }
+    //根据名称查询
+    @RequestMapping("/selectByuNum")
+    @ResponseBody
+    public Result selectByuNum(String uNum){
+        return Result.success(UserService.selectByuNum(uNum));
     }
     //根据id查询
     @RequestMapping("/selectById")

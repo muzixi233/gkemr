@@ -4,8 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>提交代申报</title>
+<title>病人挂号</title>
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
+  <script language="JavaScript" src="../../js/jquery2.js"></script>
+  <script src="../../js/cloud.js" type="text/javascript"></script>
+  <script language="javascript" src="../../js/js.js"></script>
 </head>
 
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -24,29 +27,29 @@
     <table width="95%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="90" height="24" class="td_form01">姓名</td>
-        <td class="td_form02"><input type="text" name="username" class="input" /></td>
+        <td class="td_form02"><input type="text" name="username" class="input"  id="pname"/></td>
         <td width="90" class="td_form01">性别</td>
-        <td class="td_form02">
+        <td class="td_form02" id="psex">
 		<input type="radio" name="sex"/>男
 		<input type="radio" name="sex"/>女
 	</td> 
       </tr>
       <tr>
         <td height="24" class="td_form01">证件类型</td>
-        <td class="td_form02"><input type="text"  class="input" /></td>
+        <td class="td_form02"><input type="text"  class="input"  id="pcardtype"/></td>
         <td class="td_form01">出生日期</td>
-        <td class="td_form02"><input type="text" class="input"  name="birthday"/></td>
+        <td class="td_form02"><input type="text" class="input"  name="birthday" id="pbirthday"/></td>
       </tr>
     </table>    
    
     <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
         <td width="90" class="td_form01">证件号</td>
-        <td class="td_form02"><input name="textfield262" type="text" class="input"></td>
+        <td class="td_form02"><input name="textfield262" type="text" class="input" id="pcard"></td>
       </tr>
       <tr>
         <td class="td_form01">职业</td>
-        <td class="td_form02"><input name="textfield222" type="text" class="input" size="30"></td>
+        <td class="td_form02"><input name="textfield222" type="text" class="input" size="30" id="pjob"></td>
       </tr>
       <tr>
         <td rowspan="2" class="td_form01">初复诊</td>
@@ -60,15 +63,16 @@
       </tr>
       <tr>
         <td class="td_form01">治疗类型</td>
-        <td class="td_form02"><select name="select3">
+        <td class="td_form02" id="ptreat"><select name="select3">
             <option>普通治疗</option>
             <option>住院治疗</option>
             <option>手术治疗</option>
-            
+        </select>
+        </td>
       </tr>
       <tr>
         <td class="td_form01">选医生挂号</td>
-        <td class="td_form02"><select name="select">
+        <td class="td_form02" id="pdoctor"><select name="select">
             <option>嘉宾主持</option>
             <option>专家采访</option>
             <option>撰写稿件</option>
@@ -83,7 +87,7 @@
       </tr>
       <tr>
         <td class="td_form01">联系地址</td>
-        <td class="td_form02"><input name="textfield26" type="text" class="input"></td>
+        <td class="td_form02"><input name="textfield26" type="text" class="input" id="paddress"></td>
       </tr>
     </table>
     <br>
@@ -95,5 +99,32 @@
     </table>
   </form>
 </center>
+<script type="text/javascript">
+  function addtreat() {
+    var uNum = $('#uNum').val();
+
+    $.ajax({
+      type: "get",
+      url: "/treat/addTreat",
+      data: {},
+      async: true,
+      dataType: 'json',
+      success: function (data) {
+        var json = data.data;
+        if (data.data!=null) {
+          $('#tb tr:gt(0)').remove();//删除之前的数据
+          var s = '';
+          s += '<tr><td class="td_01">' + json.uNum + '</td><td class="td_01">' + json.uName + '</td><td class="td_01">' + json.uAge + '</td>'
+                  + '<td class="td_01"><a href="/user/results/moreleavelist_1?uId='+json.uId+'" target="mainFrame" >&nbsp;&nbsp;>>></a></td></tr>';
+          $('#tb').append(s);
+        }
+        else {
+          alert("没有数据")
+        }
+
+      }
+    });
+  }
+</script>
 </body>
 </html>
