@@ -33,7 +33,10 @@
       </tr>
       <tr>
         <td height="24" class="td_form01">证件类型</td>
-        <td class="td_form02"><input type="text"  class="input" /></td>
+        <td class="td_form02">
+          <input type="radio" name="size"/>身份证
+          <input type="radio" name="size"/>医保卡
+        </td>
         <td class="td_form01">出生日期</td>
         <td class="td_form02"><input type="text" class="input"  name="birthday"/></td>
       </tr>
