@@ -36,4 +36,9 @@ public class PationServiceimpl implements PationService {
     public int delete(Integer pId) {
         return pationMapper.deleteById(pId);
     }
+
+    @Override
+   public Pation selectByNameAndmzNum(String pName,int mzNum) {
+        return pationMapper.selectByNameAndmzNum(pName,mzNum);
+    }
 }

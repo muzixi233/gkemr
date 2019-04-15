@@ -19,6 +19,7 @@ public interface PationMapper {
     int updateByIdSelective(Pation record);
 
     int updateById(Pation record);
+    Pation selectByNameAndmzNum(String pName,int mzNum) ;
 
     List<Pation> selectAll();
 }

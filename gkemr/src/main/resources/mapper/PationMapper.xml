@@ -9,9 +9,12 @@
     <result column="p_tel" property="pTel" jdbcType="INTEGER" />
     <result column="mr_num" property="mrNum" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="mz_num" property="mzNum" jdbcType="INTEGER" />
+    <result column="gh_time" property="date" jdbcType="DATE" />
+    <result column="p_doctor" property="doctor" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    p_id, p_name, p_sex, p_age, p_tel, mr_num, status
+    p_id, p_name, p_sex, p_age, p_tel, mr_num, status, mz_num, gh_time, p_doctor
   </sql>
   <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -26,10 +29,10 @@
   <insert id="insert" parameterType="com.slwh.emr.model.Pation" >
     insert into emr_patient (p_id, p_name, p_sex, 
       p_age, p_tel, mr_num, 
-      status)
+      status,  mz_num, gh_time, p_doctor)
     values (#{pId,jdbcType=INTEGER}, #{pName,jdbcType=VARCHAR}, #{pSex,jdbcType=VARCHAR}, 
       #{pAge,jdbcType=INTEGER}, #{pTel,jdbcType=INTEGER}, #{mrNum,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER})
+      #{status,jdbcType=INTEGER}, #{mzNum,jdbcType=INTEGER}, #{date,jdbcType=DATE}, #{doctor,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.slwh.emr.model.Pation" >
     insert into emr_patient
@@ -55,6 +58,15 @@
       <if test="status != null" >
         status,
       </if>
+      <if test="mz_num != null" >
+        mz_num,
+      </if>
+      <if test="gh_time != null" >
+        gh_time,
+      </if>
+      <if test="p_doctor != null" >
+        p_doctor,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="pId != null" >
@@ -77,6 +89,15 @@
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="mzNum != null" >
+        #{mzNum,jdbcType=INTEGER},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="doctor != null" >
+        #{doctor,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -120,5 +141,12 @@
     select
     <include refid="Base_Column_List" />
     from emr_patient
+  </select>
+  <!--根据病人姓名、门诊编号查询  -->
+  <select id="selectByNameAndmzNum" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_patient
+    where (p_name like CONCAT('%',#{pName},'%') and mz_num like CONCAT('%',#{mzNum},'%'))
   </select>
 </mapper>

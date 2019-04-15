@@ -13,8 +13,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
-
+import java.util.*;
+import javax.servlet.http.*;
 /**
  * @author muzixi 难受
  */
@@ -51,7 +51,14 @@ public class UserController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public Result login(String username, String password){
+    public Result login(String username, String password,HttpServletRequest request){
+       /* HttpSession session=request.getSession();
+        User user=null;
+         user.setuName(username);
+         user.setuPassword(password);
+         session.setAttribute("USER",user);
+       List<User> lists= UserService.selectAll();
+        session.setAttribute("doctors",lists);*/
         return Result.success(UserService.login(username,password));
 
     }

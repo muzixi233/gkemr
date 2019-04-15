@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="com.slwh.emr.model.*"
+         import="java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%  User user=(User)session.getAttribute("USER");
+  List<User> doctors=(List<User>)session.getAttribute("doctors");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -62,22 +68,20 @@
           复诊           病历号：
           <input name="mr_num1" type="text" class="input"></td>
       </tr>--%>
-      <%--<tr>
-        <td class="td_form01">治疗类型</td>
-        <td class="td_form02" id="ptreat"><select name="select3">
-            <option>普通治疗</option>
-            <option>住院治疗</option>
-            <option>手术治疗</option>
-        </select>
+     <tr>
+        <td class="td_form01">门诊编号</td>
+        <td class="td_form02">
+          <input name="mzNum" type="text" class="input" size="30" >
         </td>
-      </tr>--%>
+      </tr>
+
       <tr>
-        <td class="td_form01">选医生挂号</td><%--//从数据库选择--%>
         <td class="td_form02" id="pdoctor"><select name="doctor">
-            <option>嘉宾主持</option>
-            <option>专家采访</option>
-            <option>撰写稿件</option>
-            <option>其他 </option>
+        <td class="td_form01">选医生挂号</td><%--//从数据库选择--%>
+          <% if(doctors!=null)
+         for(User user1:doctors){  %>
+            <option><%=user1.getuName() %></option>
+            <% }%>
         </select></td>
       </tr>
       <%--<tr>

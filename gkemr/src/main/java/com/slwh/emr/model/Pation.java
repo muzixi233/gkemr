@@ -1,5 +1,5 @@
 package com.slwh.emr.model;
-
+import java.util.*;
 public class Pation {
     private Integer pId;
 
@@ -14,6 +14,12 @@ public class Pation {
     private String mrNum;
 
     private Integer status;
+
+    private Date date;
+
+    private int mzNum;
+
+    private String doctor;
 
     public Integer getpId() {
         return pId;
@@ -69,5 +75,29 @@ public class Pation {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public int getMzNum() {
+        return mzNum;
+    }
+
+    public void setMzNum(int mzNum) {
+        this.mzNum = mzNum;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(String doctor) {
+        this.doctor = doctor;
     }
 }

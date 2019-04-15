@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="com.slwh.emr.model.*"
+         import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,18 +36,20 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
 </table>
 <br>
-<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+<form name="form1" method="post" action="/patient/patientSelect">
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" >
   <tr>
     <td class="td_page">输入编号：
-    <input name="PARA_YM_NOW" size="10" type="text" class="input"   id="PARA_YM_NOW" next="A001014" alt="查询年月|0|d|||" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" readonly><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW')"> -->
-科室名称：<input name="PARA_YM_NOW2" size="10" type="text" class="input"   id="PARA_YM_NOW2" next="A001014" alt="查询年月|0|d|||" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" readonly><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW2')"> -->
-
-<input name="Submit" type="submit" class="buttonface" value=" 查询 "></td>
+    <input type="text" class="input"  name="Num" id="pbirthday"/><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW')"> -->
+   病人姓名：<input name="pName" size="10" type="text" class="input" ><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW2')"> -->
+    <input name="Submit" type="submit" class="buttonface" value=" 查询 "></td>
   </tr>
 </table>
+</form>
 <br>
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
   <tr>
+    <td class="td_top">病人姓名</td>
     <td class="td_top">门诊编号</td>
     <td class="td_top">主治医生</td>
     <td class="td_top">挂号时间</td>
@@ -52,43 +57,35 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td nowrap class="td_top">操作</td>
 
   </tr>
+  <%
+    List<Pation> pations= (List<Pation>)request.getAttribute("lists");
+    if(pations!=null) {
+      for(Pation p:pations){
+  %>
   <tr>
-    <td class="td07">1103</td>
-    <td class="td07">朱佳宝</td>
-    <td class="td07">2013-9-10</td>
-    <td class="td07">脑残科</td>
-    <td class="td07"><a href="moreapplicationlist_1.jsp" target="_blank">&nbsp;&nbsp;详情</a></td>
+    <td class="td07"><%=p.getpName()%></td>
+    <td class="td07"><%=p.getMzNum()%></td>
+    <td class="td07"><%=p.getDoctor()%></td>
+    <td class="td07"><%=p.getDate()%></td>
+    <td class="td07">骨科</td>
+    <td class="td07"><a href="/patient?xiangqing&id=<%=p.getpId() %>" target="_blank">&nbsp;&nbsp;详情</a></td>
+  </tr>
+  <%}}%>
 
-  </tr>
+  <%
+  Pation pation= (Pation)request.getAttribute("pation");
+  if(pation.getpId()!=null) {
+%>
   <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
+    <td class="td07"><%=pation.getpName()%></td>
+    <td class="td07"><%=pation.getMzNum()%></td>
+    <td class="td07"><%=pation.getDoctor()%></td>
+    <td class="td07"><%=pation.getDate()%></td>
+    <td class="td07">骨科</td>
+    <td class="td07"><a href="/patient?xiangqing&id=<%=pation.getpId() %>" target="_blank">&nbsp;&nbsp;详情</a></td>
+  </tr>
+  <%}%>
 
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
 </table>
 <table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
   <tr>
@@ -97,3 +94,4 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 </table>
 </body>
 </html>
+

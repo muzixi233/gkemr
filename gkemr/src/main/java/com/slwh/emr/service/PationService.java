@@ -15,4 +15,6 @@ public interface PationService {
     int update(Pation pation);
 
     int delete(Integer pId);
+
+    Pation selectByNameAndmzNum(String pName,int mzNum) ;
 }
