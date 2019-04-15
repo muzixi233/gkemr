@@ -23,45 +23,46 @@
       </table></td>
     </tr>
   </table>
-  <form name="form1" method="post" action="">
+  <form name="form1" method="post" action="/patient/addPatient">
     <table width="95%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="90" height="24" class="td_form01">姓名</td>
-        <td class="td_form02"><input type="text" name="username" class="input"  id="pname"/></td>
-        <td width="90" class="td_form01">性别</td>
-        <td class="td_form02" id="psex">
-		<input type="radio" name="sex"/>男
-		<input type="radio" name="sex"/>女
-	</td> 
+        <td class="td_form02"><input type="text" name="pName" class="input"  id="pname"/></td>
+
       </tr>
       <tr>
-        <td height="24" class="td_form01">证件类型</td>
-        <td class="td_form02"><input type="text"  class="input"  id="pcardtype"/></td>
-        <td class="td_form01">出生日期</td>
-        <td class="td_form02"><input type="text" class="input"  name="birthday" id="pbirthday"/></td>
+        <td width="90" class="td_form01">性别</td>
+        <td class="td_form02" id="psex">
+          <input type="radio" name="pSex"/>男
+          <input type="radio" name="pSex"/>女
+        </td>
+      </tr>
+      <tr>
+        <td class="td_form01">年龄</td>
+        <td class="td_form02"><input type="text" class="input"  name="pAge" id="pbirthday"/></td>
       </tr>
     </table>    
    
     <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="90" class="td_form01">证件号</td>
-        <td class="td_form02"><input name="textfield262" type="text" class="input" id="pcard"></td>
+        <td width="90" class="td_form01">证件号</td><%--//作病历编号--%>
+        <td class="td_form02"><input name="mrNum" type="text" class="input" id="pcard"></td>
       </tr>
       <tr>
-        <td class="td_form01">职业</td>
-        <td class="td_form02"><input name="textfield222" type="text" class="input" size="30" id="pjob"></td>
+        <td class="td_form01">联系电话</td>
+        <td class="td_form02"><input name="pTel" type="text" class="input" size="30" id="pjob"></td>
       </tr>
-      <tr>
-        <td rowspan="2" class="td_form01">初复诊</td>
-        <td class="td_form02"><input type="radio" name="radiobutton" value="radiobutton">
+      <%--<tr>
+        <td rowspan="2" class="td_form01">初复诊</td>&lt;%&ndash;//状态  初诊/复诊&ndash;%&gt;
+        <td class="td_form02"><input type="radio" name="status" value="radiobutton">
           初诊</td>
       </tr>
       <tr>
-        <td class="td_form02"><input type="radio" name="radiobutton" value="radiobutton">
+        <td class="td_form02"><input type="radio" name="status" value="radiobutton">
           复诊           病历号：
-          <input name="textfield242" type="text" class="input"></td>
-      </tr>
-      <tr>
+          <input name="mr_num1" type="text" class="input"></td>
+      </tr>--%>
+      <%--<tr>
         <td class="td_form01">治疗类型</td>
         <td class="td_form02" id="ptreat"><select name="select3">
             <option>普通治疗</option>
@@ -69,37 +70,37 @@
             <option>手术治疗</option>
         </select>
         </td>
-      </tr>
+      </tr>--%>
       <tr>
-        <td class="td_form01">选医生挂号</td>
-        <td class="td_form02" id="pdoctor"><select name="select">
+        <td class="td_form01">选医生挂号</td><%--//从数据库选择--%>
+        <td class="td_form02" id="pdoctor"><select name="doctor">
             <option>嘉宾主持</option>
             <option>专家采访</option>
             <option>撰写稿件</option>
             <option>其他 </option>
         </select></td>
       </tr>
-      <tr>
+      <%--<tr>
         <td class="td_form01">发表时间</td>
         <td class="td_form02">
           <input name="PARA_YM_NOW" type="text" class="input"   id="PARA_YM_NOW" next="A001014" alt="查询年月|0|d|||" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" readonly>
           <input name="button" type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW')">        </td>
-      </tr>
+      </tr>--%>
       <tr>
-        <td class="td_form01">联系地址</td>
-        <td class="td_form02"><input name="textfield26" type="text" class="input" id="paddress"></td>
-      </tr>
+      <td class="td_form01">联系地址</td>
+      <td class="td_form02"><input name="address" type="text" class="input" id="paddress"></td>
+    </tr>
     </table>
     <br>
     <table width=95% border=0 align=center cellpadding=0 cellspacing=0 whdth='100%'>
       <tr>
-        <td align="center"><input name=save  type=button class=buttonface value= '  提交  '  >
+        <td align="center"><input name=save type="submit" class=buttonface value= '  提交  '  >
             <input name=cancel  type=button class=buttonface value= '  返回  '  onClick="history.back(-1)"></td>
       </tr>
     </table>
   </form>
 </center>
-<script type="text/javascript">
+<%--<script type="text/javascript">
   function addtreat() {
     var uNum = $('#uNum').val();
 
@@ -125,6 +126,6 @@
       }
     });
   }
-</script>
+</script>--%>
 </body>
 </html>
