@@ -63,4 +63,13 @@ public class PatientController {
         request.setAttribute("pation", p);
         return "/media/moreapplicationlist_1";
     }
+    //查询所有挂号信息
+    @RequestMapping("/info")
+    public String infoSelect(HttpServletRequest request)
+    {
+        List<Pation> lists = pationService.selectAll()  ;
+        System.out.println("********************"+lists.get(0).getpName());
+        request.setAttribute("lists", lists);
+        return "/media/info";
+    }
 }

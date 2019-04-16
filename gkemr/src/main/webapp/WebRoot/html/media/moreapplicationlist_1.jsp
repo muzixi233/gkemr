@@ -6,20 +6,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>挂号详细信息</title>
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
-<SCRIPT language=JavaScript type=text/JavaScript>
-function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left) 
-{
-  var parameter="top="+top+",left="+left+",width="+width+",height="+hight;
-  if(scrollbars=="no")
- {parameter+=",scrollbars=no";}
-  else
- {parameter+=",scrollbars=yes";}
-  window.open(theURL,winName,parameter);
-}
-</SCRIPT>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>挂号详细信息</title>
+    <link href="../../css/style.css" rel="stylesheet" type="text/css">
+    <script language="JavaScript" src="../../js/jquery2.js"></script>
+    <script src="../../js/cloud.js" type="text/javascript"></script>
+    <script language="javascript" src="../../js/js.js"></script>
+    <SCRIPT language=JavaScript type=text/JavaScript>
+        function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
+        {
+            var parameter="top="+top+",left="+left+",width="+width+",height="+hight;
+            if(scrollbars=="no")
+            {parameter+=",scrollbars=no";}
+            else
+            {parameter+=",scrollbars=yes";}
+            window.open(theURL,winName,parameter);
+        }
+    </SCRIPT>
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -33,7 +36,6 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
 </table>
 <br>
-
 
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
     <%
@@ -72,8 +74,9 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
            <td height="24" class="td_form01">看诊医生</td>
            <td class="td_form02"><%=pation.getDoctor()%></td>
    </tr>
+    <tr>
     <td align="center">
-        <input name=cancel  type=button class=buttonface value= '  返回  '  onClick="history.back(-1)"></td>
+        <input name=cancel  type=button class=buttonface value= '  返回  '  onClick="history.back(-1)"></td></tr>
         <%}%>
 </table>
 </body>

@@ -68,13 +68,13 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td07"><%=p.getDoctor()%></td>
     <td class="td07"><%=p.getDate()%></td>
     <td class="td07">骨科</td>
-    <td class="td07"><a href="/patient?xiangqing&id=<%=p.getpId() %>" target="_blank">&nbsp;&nbsp;详情</a></td>
+    <td class="td07"><a href="/patient?xiangqing&id=<%=p.getpId() %>" target="_blank" target="mainFrame">&nbsp;&nbsp;详情</a></td>
   </tr>
   <%}}%>
 
   <%
   Pation pation= (Pation)request.getAttribute("pation");
-  if(pation.getpId()!=null) {
+  if(pation!=null&&pation.getpId()!=null) {
 %>
   <tr>
     <td class="td07"><%=pation.getpName()%></td>
