@@ -1,11 +1,10 @@
 package com.slwh.emr.controller;
 
 import com.slwh.emr.cogfiger.Result;
-import com.slwh.emr.model.Ith;
-import com.slwh.emr.model.Pation;
+import com.slwh.emr.model.*;
+
 import javax.servlet.http.*;
-import com.slwh.emr.model.Treat;
-import com.slwh.emr.model.User;
+
 import com.slwh.emr.service.*;
 import java.util.*;
 import java.lang.Integer.*;
@@ -23,8 +22,11 @@ import javax.annotation.Resource;
 public class PatientController {
     @Resource
     private PationService pationService;
+    @Resource
     private UserService UserService;
+    @Resource
     private MrService mrService;
+    @Resource
     private IthService ithService;
 
     @RequestMapping("/media/lists")
@@ -105,17 +107,16 @@ public class PatientController {
 
             if(status1.equals("1")){ //判断住院
                 Ith ith = new Ith();
-                ith.setIthId(1);
                 ith.setIthNo(ith_no);
-                ith.setIthBed("1");
-                ith.setIthMsg("1");
-                ith.setIthNurse(1);
-                ith.setIthStatus("1");
-                ith.setIthUser("1");
                 ith.setIthPatient(p.getpId());
-                ithService.insert(ith);//空指针异常？？
-
+                ithService.insert(ith);// 住院
             }
+
+            Mr m = new Mr();  //新增病历
+            m.setBlPatient(p.getpId());
+            m.setBlStyle(bl_style);
+            mrService.insert(m);
+
         }
 
         List<Pation> lists = pationService.selectByStatic()  ;
