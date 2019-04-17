@@ -41,4 +41,9 @@ public class PationServiceimpl implements PationService {
    public Pation selectByNameAndmzNum(String pName,int mzNum) {
         return pationMapper.selectByNameAndmzNum(pName,mzNum);
     }
+
+    @Override
+    public List<Pation> selectByStatic() {
+        return pationMapper.selectByStatic();
+    }
 }

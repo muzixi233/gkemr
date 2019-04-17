@@ -22,4 +22,6 @@ public interface PationMapper {
     Pation selectByNameAndmzNum(String pName,int mzNum) ;
 
     List<Pation> selectAll();
+
+    List<Pation> selectByStatic();
 }

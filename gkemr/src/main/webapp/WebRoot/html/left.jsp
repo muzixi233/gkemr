@@ -61,6 +61,14 @@
 							<td nowrap><a href="/user/results/chooseresult" target="mainFrame" class="a03">门诊医生</a></td>
 						  </tr>
 					</table>
+                                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                              <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
+                                              <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
+                                              <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
+                                              <td nowrap><a href="/patient/zhenduan" target="mainFrame" class="a03">门诊诊断</a></td>
+                                          </tr>
+                                      </table>
 				  </div>
 
 
@@ -143,7 +151,7 @@
                                 <td width="19">&nbsp;</td>
                                 <td width="19"><img id="top_15" onClick="menu('menu_15','top_15');" src="../images/tree_11.gif" width="19" height="20"></td>
                                 <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-                                <td nowrap>日志管理</td>
+                                <td nowrap>门诊病人</td>
                             </tr>
                         </table>
                         <div id="menu_15" style="DISPLAY: none">
@@ -180,7 +188,7 @@
                                 <td width="19">&nbsp;</td>
                                 <td width="19"><img id="top_16" onClick="bottom('menu_16','top_16');" src="../images/tree_29.gif" width="19" height="20"></td>
                                 <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-                                <td nowrap>流程定义</td>
+                                <td nowrap>住院病人</td>
                             </tr>
                         </table>
                         <div id="menu_16" style="DISPLAY: none">

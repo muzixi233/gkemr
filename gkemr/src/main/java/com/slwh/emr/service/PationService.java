@@ -17,4 +17,6 @@ public interface PationService {
     int delete(Integer pId);
 
     Pation selectByNameAndmzNum(String pName,int mzNum) ;
+
+    List<Pation> selectByStatic();
 }

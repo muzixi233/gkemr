@@ -149,4 +149,11 @@
     from emr_patient
     where (p_name like CONCAT('%',#{pName},'%') and mz_num like CONCAT('%',#{mzNum},'%'))
   </select>
+  <!--根据病人状态查询 -->
+  <select id="selectByStatic" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_patient
+    where status=0
+  </select>
 </mapper>
