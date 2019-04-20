@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="com.slwh.emr.model.*"
+         import="java.util.*"
+         import="com.slwh.emr.service.*"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>录入病人信息</title>
+<title>住院办理</title>
 <link href="../../../css/style.css" rel="stylesheet" type="text/css">
 
 <script language="javascript">
@@ -56,84 +61,111 @@ document.getElementById("droplist3").style.display="none";
       <td height="25" align="center" valign="bottom" class="td06"><table width="98%" border="0" cellspacing="3" cellpadding="0">
           <tr>
             <td width="15"><img src="../../../images/index_32.gif" width="9" height="9"></td>
-            <td valign="bottom">录入病人信息</td>
+            <td valign="bottom">住院办理</td>
           </tr>
       </table></td>
     </tr>
   </table>
-  <form name="form1" method="post" action="">
+  <form name="form1" method="post" action="/ith/addIth">
+    <%
+      Pation pation= (Pation)request.getAttribute("pation");
+      Mr mr= (Mr) request.getAttribute("mr");
+      if(pation!=null&&mr!=null) {
+
+    %>
     <table width=95% border=0 align=center cellpadding=0 cellspacing=0>
       <tr align="left" nowrap>
         <td width="78" height="24" align="center"  class=td_form01>病历号：</td>
-        <td colspan="3" align="left"  class=td_form02><input name="textfield22" type="text" class="input" size="45"></td>
-        <td width="146" align="center"  class=td_form01>姓名：</td>
-        <td width="268" align="left"  class=td_form02><input name="textfield" type="text" class="input" size="50"></td>
+        <td colspan="3" align="left"  class=td_form02><%=mr.getBlNum()%></td>
       </tr>
+      <tr>
+        <td width="146" align="center"  class=td_form01>姓名：</td>
+        <td width="268" align="left"  class=td_form02><%=pation.getpName()%></td></tr>
       <tr align="left" nowrap>
         <td height="24" align="center"  class=td_form01>性别：</td>
         <td width="79" height="24" align="center"  class=td_form01><span class="td_form02">
-          <input name="textfield2" type="text" class="input" size="15">
+          <%=pation.getpSex()%>
         </span></td>
-        <td width="72" align="center"  class=td_form01>年龄：</td>
+      </tr>
+      <tr><td width="72" align="center"  class=td_form01>年龄：</td>
         <td width="95" align="center"  class=td_form01><span class="td_form02">
-          <input name="textfield5" type="text" class="input" size="15">
-        </span></td>
-        <td height="24" align="center"  class=td_form01>出生日期：</td>
-        <td height="24" align="center"  class=td_form01><span class="td_form02">
-          <input name="textfield4" type="text" class="input" size="50">
-        </span></td>
+            <%=pation.getpAge()%>
+        </span></td></tr>
       <tr align="left" nowrap>
         <td height="24" align="center"  class=td_form01>身份证号：</td>
         <td height="24" colspan="3" align="center"  class=td_form01><span class="td_form02">
-          <input name="textfield3" type="text" class="input" size="45">
+          <%=pation.getMrNum()%>
         </span></td>
-        <td height="24" align="center"  class=td_form01>家属联系电话：</td>
+
+      </tr>
+      <tr> <td height="24" align="center"  class=td_form01>联系电话：</td>
         <td height="24" align="center"  class=td_form01><span class="td_form02">
-          <input name="textfield6" type="text" class="input" size="50">
-        </span></td>
+           <%=pation.getpTel()%>
+        </span></td></tr>
       <tr align="left" nowrap>
         <td height="24" align="center"  class=td_form01>主治医师：</td>
-        <td height="24" colspan="3" align="left" valign="middle"  class=td_form01><select name="select" id="select">
-          <option>习小平</option>
+        <td height="24" colspan="3" align="left" valign="middle"  class=td_form01><select name="ithUser" id="select">
+         <%
+           List<User> users= (List<User>)request.getAttribute("users");
+          if(users!=null){
+            for(User user:users){
+
+         %>
+          <option><%=user.getuName()%></option>
+          <%}}%>
         </select></td>
+      </tr>
+      <tr>
         <td height="24" align="center"  class=td_form01>护理：</td>
-        <td height="24" align="center"  class=td_form01><select name="select2" id="select2">
-          <option>奥巴巴</option>
+        <td height="24" align="center"  class=td_form01><select name="level" id="select2">
+          <%
+            List<Nurse> nurses= (List<Nurse>)request.getAttribute("nurses");
+            if(nurses!=null){
+              for(Nurse nurse:nurses){
+          %>
+          <option><%=nurse.getnLevel()%></option>
+          <%}}%>
         </select></td>
+      </tr>
       <tr align="left" nowrap>
         <td height="24" align="center"  class=td_form01>床位分配：</td>
-        <td height="24" colspan="3" align="left" valign="middle"  class=td_form01><select name="select3" id="select3">
-          <option>468</option>
-          <option>456</option>
-          <option>454</option>
-          <option>354</option>
+        <td height="24" colspan="3" align="left" valign="middle"  class=td_form01><select name="ithBed" id="select3">
+          <%
+            List<Bed> beds= (List<Bed>)request.getAttribute("beds");
+            if(beds!=null){
+              for(Bed bed:beds){
+
+          %>
+          <option><%=bed.getBedId()%></option>
+          <%}}%>
         </select></td>
-        <td height="24" align="center"  class=td_form01>支付押金：</td>
+      </tr>
+      <%--  <td height="24" align="center"  class=td_form01>支付押金：</td>
         <td height="24" align="center"  class=td_form01><span class="td_form02">
           <input name="textfield7" type="text" class="input" size="50">
-        </span></td>
-      <tr align="left" nowrap>
-        <td height="24" align="center"  class=td_form01>xx:</td>
-        <td height="24" colspan="3" align="left" valign="middle"  class=td_form01><span class="td_form02">
-          <input name="textfield8" type="text" class="input" size="45">
-        </span></td>
-        <td height="24" align="center"  class=td_form01>xx:</td>
+        </span></td>--%>
+      <%--  <td height="24" align="center"  class=td_form01>xx:</td>
         <td height="24" align="center"  class=td_form01><span class="td_form02">
           <input name="textfield9" type="text" class="input" size="45">
-        </span></td>
+        </span></td>--%>
       <tr align="left" nowrap>
         <td height="24" align="center"  class=td_form01>病人病况：</td>
         <td height="24" colspan="5" align="left" valign="middle"  class=td_form01><label>
-          <textarea name="textarea" id="textarea" cols="100" rows="5"></textarea>
+          <textarea name="ithMsg" id="textarea" cols="100" rows="5"></textarea>
         </label></td>
     </table>
     <br>
     <table width=95% border=0 align=center cellpadding=0 cellspacing=0 whdth='100%'>
       <tr>
         <td align="center"><input name=save  type=submit class=buttonface value= '  提交  '  onclick="self.close()">
-            <input name=cancel  type=button class=buttonface value= '  返回  '  onClick="history.back(-1)"></td>
+            <input name=cancel  type=button class=buttonface value= '  返回  '  onClick="history.back(-1)">
+          <td><input type="hidden" name="ithPatient" value="<%=pation.getpId()%>"/></td>
+          <td><input type="hidden" name="pName" value="<%=pation.getpName()%>"/></td>
+        </td>
+
       </tr>
     </table>
+    <%}%>
   </form>
 </center>
 </body>

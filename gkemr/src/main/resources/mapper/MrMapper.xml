@@ -24,6 +24,13 @@
     from emr_mr
     where bl_id = #{blId,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByPId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from emr_mr
+    where bl_patient = #{blPatient,jdbcType=INTEGER}
+  </select>
   <delete id="deleteById" parameterType="java.lang.Integer" >
     delete from emr_mr
     where bl_id = #{blId,jdbcType=INTEGER}

@@ -14,4 +14,5 @@ public interface BedService {
     int update(Bed bed);
 
     int delete(Integer bedId);
+    List<Bed> selectByStatus();
 }

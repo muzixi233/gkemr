@@ -3,9 +3,6 @@
 <%@ page import="com.slwh.emr.model.*"
          import="java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%  User user=(User)session.getAttribute("USER");
-  List<User> doctors=(List<User>)session.getAttribute("doctors");
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,8 +36,8 @@
       <tr>
         <td width="90" class="td_form01">性别</td>
         <td class="td_form02" id="psex">
-          <input type="radio" name="pSex"/>男
-          <input type="radio" name="pSex"/>女
+          <input type="radio" name="pSex" value="男"/>男
+          <input type="radio" name="pSex" value="女"/>女
         </td>
       </tr>
       <tr>
@@ -56,7 +53,7 @@
       </tr>
       <tr>
         <td class="td_form01">联系电话</td>
-        <td class="td_form02"><input name="pTel" type="text" class="input" size="30" id="pjob"></td>
+        <td class="td_form02"><input name="pTel" type="text" class="input"  id="pjob"></td>
       </tr>
       <%--<tr>
         <td rowspan="2" class="td_form01">初复诊</td>&lt;%&ndash;//状态  初诊/复诊&ndash;%&gt;
@@ -76,9 +73,11 @@
       </tr>
 
       <tr>
+          <td class="td_form01">选医生挂号</td>
         <td class="td_form02" id="pdoctor"><select name="doctor">
-        <td class="td_form01">选医生挂号</td><%--//从数据库选择--%>
-          <% if(doctors!=null)
+          <%
+              List<User> doctors=(List<User>)request.getAttribute("users");
+              if(doctors!=null)
          for(User user1:doctors){  %>
             <option><%=user1.getuName() %></option>
             <% }%>

@@ -38,4 +38,8 @@ private BedMapper bedMapper;
     public int delete(Integer bedId) {
         return bedMapper.deleteByID(bedId);
     }
+    @Override
+    public List<Bed> selectByStatus() {
+        return bedMapper.selectByStatus();
+    }
 }

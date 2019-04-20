@@ -4,9 +4,10 @@
   <resultMap id="BaseResultMap" type="com.slwh.emr.model.Bed" >
     <id column="bed_id" property="bedId" jdbcType="INTEGER" />
     <result column="bed_no" property="bedNo" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    bed_id, bed_no
+    bed_id, bed_no, status
   </sql>
   <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -19,8 +20,8 @@
     where bed_id = #{bedId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.slwh.emr.model.Bed" >
-    insert into emr_bed (bed_id, bed_no)
-    values (#{bedId,jdbcType=INTEGER}, #{bedNo,jdbcType=VARCHAR})
+    insert into emr_bed (bed_id, bed_no, status)
+    values (#{bedId,jdbcType=INTEGER}, #{bedNo,jdbcType=VARCHAR}), #{status,jdbcType=INTEGER}
   </insert>
   <insert id="insertSelective" parameterType="com.slwh.emr.model.Bed" >
     insert into emr_bed
@@ -31,6 +32,9 @@
       <if test="bedNo != null" >
         bed_no,
       </if>
+      <if test="status != null" >
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="bedId != null" >
@@ -38,6 +42,9 @@
       </if>
       <if test="bedNo != null" >
         #{bedNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -61,5 +68,11 @@
     <include refid="Base_Column_List" />
     from emr_bed
   </select>
-
+  <!--查询未用床位信息  -->
+  <select id="selectByStatus" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_bed
+    where (status =0)
+  </select>
 </mapper>

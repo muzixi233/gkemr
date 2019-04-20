@@ -12,9 +12,11 @@
     <result column="mz_num" property="mzNum" jdbcType="INTEGER" />
     <result column="gh_time" property="date" jdbcType="DATE" />
     <result column="p_doctor" property="doctor" jdbcType="VARCHAR" />
+    <result column="ith_status" property="ithStatus" jdbcType="INTEGER" />
+    <result column="ith_banli" property="ithBanLi" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    p_id, p_name, p_sex, p_age, p_tel, mr_num, status, mz_num, gh_time, p_doctor
+    p_id, p_name, p_sex, p_age, p_tel, mr_num, status, mz_num, gh_time, p_doctor, ith_status, ith_banli
   </sql>
   <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -29,10 +31,10 @@
   <insert id="insert" parameterType="com.slwh.emr.model.Pation" >
     insert into emr_patient (p_id, p_name, p_sex, 
       p_age, p_tel, mr_num, 
-      status,  mz_num, gh_time, p_doctor)
+      status, mz_num, gh_time, p_doctor, ith_status, ith_banli)
     values (#{pId,jdbcType=INTEGER}, #{pName,jdbcType=VARCHAR}, #{pSex,jdbcType=VARCHAR}, 
       #{pAge,jdbcType=INTEGER}, #{pTel,jdbcType=INTEGER}, #{mrNum,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{mzNum,jdbcType=INTEGER}, #{date,jdbcType=DATE}, #{doctor,jdbcType=VARCHAR})
+      #{status,jdbcType=INTEGER}, #{mzNum,jdbcType=INTEGER}, #{date,jdbcType=DATE}, #{doctor,jdbcType=VARCHAR}, #{ithStatus,jdbcType=INTEGER}, #{ithBanLi,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.slwh.emr.model.Pation" >
     insert into emr_patient
@@ -58,14 +60,20 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="mz_num != null" >
+      <if test="mzNum != null" >
         mz_num,
       </if>
-      <if test="gh_time != null" >
+      <if test="date != null" >
         gh_time,
       </if>
-      <if test="p_doctor != null" >
+      <if test="doctor != null" >
         p_doctor,
+      </if>
+      <if test="ithStatus != null" >
+        ith_status,
+      </if>
+      <if test="ithBanLi != null" >
+        ith_banli,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -99,6 +107,12 @@
       <if test="doctor != null" >
         #{doctor,jdbcType=VARCHAR},
       </if>
+      <if test="ithStatus != null" >
+        #{ithStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ithBanLi != null" >
+        #{ithBanLi,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <update id="updateByIdSelective" parameterType="com.slwh.emr.model.Pation" >
@@ -122,6 +136,12 @@
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
+      <if test="ithStatus != null" >
+        status = #{ithStatus,jdbcType=INTEGER},
+      </if>
+      <if test="ithBanLi != null" >
+        status = #{ithBanLi,jdbcType=INTEGER},
+      </if>
     </set>
     where p_id = #{pId,jdbcType=INTEGER}
   </update>
@@ -132,7 +152,9 @@
       p_age = #{pAge,jdbcType=INTEGER},
       p_tel = #{pTel,jdbcType=INTEGER},
       mr_num = #{mrNum,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER}
+      status = #{status,jdbcType=INTEGER},
+      ith_status = #{ithStatus,jdbcType=INTEGER},
+      ith_banli = #{ithBanLi,jdbcType=INTEGER}
     where p_id = #{pId,jdbcType=INTEGER}
   </update>
 

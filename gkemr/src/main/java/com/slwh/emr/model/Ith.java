@@ -3,7 +3,7 @@ package com.slwh.emr.model;
 public class Ith {
     private Integer ithId;
 
-    private String ithNo;
+    private String ithNo;//身份证号
 
     private Integer ithPatient;
 
@@ -16,6 +16,7 @@ public class Ith {
     private String ithStatus;
 
     private String ithUser;
+
 
     public Integer getIthId() {
         return ithId;

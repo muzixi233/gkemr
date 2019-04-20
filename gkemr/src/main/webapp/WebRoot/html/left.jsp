@@ -86,7 +86,7 @@
                            <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-                           <td nowrap><a href="../html/medical/createmedical" target="mainFrame" class="a03">入院办理</a></td>
+                           <td nowrap><a href="/ith/medical" target="mainFrame" class="a03">入院办理</a></td>
                          </tr>
                        </table>
                        <table width="100%" border="0" cellspacing="0" cellpadding="0">

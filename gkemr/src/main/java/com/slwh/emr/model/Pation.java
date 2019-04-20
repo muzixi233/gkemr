@@ -20,6 +20,9 @@ public class Pation {
     private int mzNum;
 
     private String doctor;
+    private int ithStatus;//是否住院
+    private int ithBanLi;//是否办理入住
+
 
     public Integer getpId() {
         return pId;
@@ -99,5 +102,21 @@ public class Pation {
 
     public void setDoctor(String doctor) {
         this.doctor = doctor;
+    }
+
+    public int getIthStatus() {
+        return ithStatus;
+    }
+
+    public void setIthStatus(int ithStatus) {
+        this.ithStatus = ithStatus;
+    }
+
+    public int getIthBanLi() {
+        return ithBanLi;
+    }
+
+    public void setIthBanLi(int ithBanLi) {
+        this.ithBanLi = ithBanLi;
     }
 }

@@ -37,7 +37,10 @@ public class PatientController {
     门诊挂号
      */
     @RequestMapping("/guahao")
-    public String guahao(){
+    public String guahao(HttpServletRequest request){
+
+        List<User> users=UserService.selectAll();//医生信息
+        request.setAttribute("users", users);
         return "/media/guahao";
     }
     //新增病人
@@ -47,6 +50,7 @@ public class PatientController {
         Date d=new Date();
         pation.setDate(d);
         pation.setStatus(0);
+        //int tel=Integer.parseInt();
         pationService.insert(pation);
         List<Pation> lists = pationService.selectAll()  ;
         request.setAttribute("lists", lists);
@@ -83,7 +87,7 @@ public class PatientController {
     @RequestMapping("/zhenduan")
     public String zhenduanSelect(HttpServletRequest request)
     {
-        List<Pation> lists = pationService.selectByStatic()  ;
+        List<Pation> lists = pationService.selectAll() ;
         System.out.println("********************"+lists.get(0).getpName());
         request.setAttribute("lists", lists);
         return "/media/zhenduan";
@@ -102,14 +106,17 @@ public class PatientController {
     {
         Pation p=pationService.selectById(pId);
         if (status1!=null){
-            p.setStatus(1);
+            p.setStatus(1);//已看诊
             pationService.update(p);//更改病人状态
 
             if(status1.equals("1")){ //判断住院
-                Ith ith = new Ith();
+                p.setIthStatus(1);
+                pationService.update(p);
+             /*   Ith ith = new Ith();
                 ith.setIthNo(ith_no);
                 ith.setIthPatient(p.getpId());
-                ithService.insert(ith);// 住院
+                ithService.insert(ith);// 住院*/
+
             }
 
             Mr m = new Mr();  //新增病历
@@ -119,9 +126,10 @@ public class PatientController {
 
         }
 
-        List<Pation> lists = pationService.selectByStatic()  ;
+        List<Pation> lists = pationService.selectAll()  ;
         System.out.println("********************"+lists.get(0).getpName());
         request.setAttribute("lists", lists);
         return "/media/zhenduan";
     }
+
 }

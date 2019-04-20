@@ -21,4 +21,5 @@ public interface MrMapper {
     int updateById(Mr record);
 
     List<Mr> selectAll();
+    Mr selectByPId(Integer blPatient);
 }

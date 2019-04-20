@@ -20,4 +20,5 @@ public interface BedMapper {
     int updateById(Bed record);
 
     List<Bed> selectAll();
+    List<Bed> selectByStatus();
 }

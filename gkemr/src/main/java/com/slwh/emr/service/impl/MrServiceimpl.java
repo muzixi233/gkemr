@@ -36,4 +36,8 @@ public class MrServiceimpl implements MrService {
     public int delete(Integer mId) {
         return mrMapper.deleteById(mId);
     }
+    @Override
+    public Mr selectByPId(Integer pId) {
+        return mrMapper.selectByPId(pId);
+    }
 }

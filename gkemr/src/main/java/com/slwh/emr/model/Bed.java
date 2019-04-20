@@ -5,6 +5,7 @@ public class Bed {
 
     private String bedNo;
 
+    private int status;
     public Integer getBedId() {
         return bedId;
     }
@@ -19,5 +20,13 @@ public class Bed {
 
     public void setBedNo(String bedNo) {
         this.bedNo = bedNo == null ? null : bedNo.trim();
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

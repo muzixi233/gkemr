@@ -62,8 +62,10 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
   <%
     List<Pation> pations= (List<Pation>)request.getAttribute("lists");
-    if(pations!=null) {
-      for(Pation p:pations){
+        if(pations!=null) {
+          for(Pation p:pations){
+            if(p.getStatus()==0){
+
   %>
   <tr>
     <td class="td07"><%=p.getpName()%></td>
@@ -87,7 +89,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td07">骨科</td>
     <td class="td07"><a href="/patient/treat?id=<%=pation.getpId() %>" target="mainFrame" >&nbsp;&nbsp;看诊</a></td>
   </tr>
-  <%}%>
+  <%}}%>
 
 </table>
 <table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
