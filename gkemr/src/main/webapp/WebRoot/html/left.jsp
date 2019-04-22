@@ -94,7 +94,7 @@
                            <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-                           <td nowrap><a href="../html/medical/baoxiao/applist_1-1" target="mainFrame" class="a03">住院处方管理</a></td>
+                           <td nowrap><a href="/ith/chufang" target="mainFrame" class="a03">住院处方管理</a></td>
                          </tr>
                        </table>
                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -105,28 +105,20 @@
                            <td nowrap><a href="../html/medical/baoxiao/applist_2" target="mainFrame" class="a03">住院发药</a></td>
                          </tr>
                        </table>
-                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <%-- <table width="100%" border="0" cellspacing="0" cellpadding="0">
                          <tr>
                            <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
                            <td nowrap><a href="../html/medical/baoxiao/applist_1-3" target="mainFrame" class="a03">住院结算</a></td>
                          </tr>
-                       </table>
+                       </table>--%>
                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                          <tr>
                            <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
                            <td nowrap><a href="../html/medical/baoxiao/applist_1-2" target="mainFrame" class="a03">床位管理</a></td>
-                         </tr>
-                       </table>
-                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                         <tr>
-                           <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
-                           <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
-                           <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-                           <td nowrap><a href="../html/medical/loan/applist_1" target="mainFrame" class="a03">xxxxx</a></td>
                          </tr>
                        </table>
                        <table width="100%" border="0" cellspacing="0" cellpadding="0">

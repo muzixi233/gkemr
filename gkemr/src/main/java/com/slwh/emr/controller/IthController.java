@@ -67,16 +67,33 @@ public class IthController {
           ith.setIthNurse(2);
       else if(level.endsWith("普通护理"))
           ith.setIthNurse(3);
-       if(ithService.insert(ith)==1)
+       if(ithService.insert(ith)==1)//住院信息
        {
            Pation p=pationService.selectById(ith.getIthPatient());
            p.setIthBanLi(1);
            pationService.update(p);//已办理成功
        }
+       //修改病历没写
+
       request.setAttribute("ith",ith);
       request.setAttribute("pName",pName);
         request.setAttribute("level",level);
         return "/medical/loan/app2";
     }
+    @RequestMapping("/chufang")
+    public String chufang(HttpServletRequest request){
 
+        List<Pation> lists = pationService.selectAll() ;
+        System.out.println("********************"+lists.get(0).getpName());
+        request.setAttribute("lists", lists);
+        return "/medical/baoxiao/applist_1-1";
+    }
+    @RequestMapping("/cfxq")
+    public String chuFXQ(HttpServletRequest request){
+
+      /*  List<Pation> lists = pationService.selectAll() ;
+        System.out.println("********************"+lists.get(0).getpName());
+        request.setAttribute("lists", lists);*/
+        return "/medical/baoxiao/moreapplist_1-4";
+    }
 }
