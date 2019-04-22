@@ -3,6 +3,7 @@ package com.slwh.emr.service;
 import com.slwh.emr.model.Bed;
 import com.slwh.emr.model.Pation;
 
+import java.util.Date;
 import java.util.List;
 
 public interface PationService {
@@ -19,4 +20,10 @@ public interface PationService {
     Pation selectByNameAndmzNum(String pName,int mzNum) ;
 
     List<Pation> selectByStatic();
+
+    List<Pation> selectByTime(Date d,int i);
+
+    List<Pation> selectByNotTime(Date d,int i);
+
+    List<Pation> selectByIthStatus(int ith);
 }

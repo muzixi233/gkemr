@@ -102,7 +102,7 @@ public class PatientController {
         return "/media/treat";
     }
     @RequestMapping("/treatp")//诊断
-    public String treatp(int pId,HttpServletRequest request,String bl_style,String status1,String pName,String ith_no)
+    public String treatp(int pId,HttpServletRequest request,String bl_style,String status1,String pName,String mr_num)
     {
         Pation p=pationService.selectById(pId);
         if (status1!=null){
@@ -121,6 +121,7 @@ public class PatientController {
 
             Mr m = new Mr();  //新增病历
             m.setBlPatient(p.getpId());
+            m.setBlNum(mr_num);
             m.setBlStyle(bl_style);
             mrService.insert(m);
 
@@ -130,6 +131,98 @@ public class PatientController {
         System.out.println("********************"+lists.get(0).getpName());
         request.setAttribute("lists", lists);
         return "/media/zhenduan";
+    }
+
+    //查询所有当日门诊,住院病人信息
+    @RequestMapping("/tpatient")
+    public String tpatient(HttpServletRequest request,String statu)
+    {
+        int ith_status;
+        if ("m".equals(statu)) {
+            ith_status=0;
+            Date d = new Date();
+            List<Pation> lists = pationService.selectByTime(d,ith_status);
+            request.setAttribute("lists", lists);
+            return "/sys/patient/tpatient";
+        }
+        else {
+            ith_status=1;
+            Date d = new Date();
+            List<Pation> lists = pationService.selectByTime(d,ith_status);
+            request.setAttribute("lists", lists);
+            return "/sys/patient/tipatient";
+        }
+
+    }
+    //修改当日门诊，住院病人信息跳转页
+    @RequestMapping("/updatepatient")
+    public String updatepatient(HttpServletRequest request,int id)
+    {
+        Pation p=pationService.selectById(id);
+        Mr m = mrService.selectByPId(id);
+        request.setAttribute("mr",m);
+        request.setAttribute("pation", p);
+        return "/sys/patient/updatepatient";
+    }
+
+    @RequestMapping("/updatetreat")//修改诊断
+    public String updatetreat(int pId,HttpServletRequest request,String bl_style,String status1,String pName,String ith_no)
+    {
+        Pation p=pationService.selectById(pId);
+        Date d = new Date();
+        int i;
+            if("1".equals(status1)){ //判断住院
+                i=1;
+                p.setIthStatus(1);
+                pationService.update(p);
+                Mr m = mrService.selectByPId(pId); //修改病历
+                m.setBlStyle(bl_style);
+                mrService.update(m);
+                List<Pation> lists = pationService.selectByTime(d,i) ;
+                request.setAttribute("lists", lists);
+                return "/sys/patient/tipatient";
+            }
+            else {
+                i=0;
+                Mr m = mrService.selectByPId(pId); //修改病历
+                m.setBlStyle(bl_style);
+                mrService.update(m);
+                List<Pation> lists = pationService.selectByTime(d,i) ;
+                request.setAttribute("lists", lists);
+                return "/sys/patient/tpatient";
+            }
+
+    }
+
+    //查询所有历史门诊,住院病人信息
+    @RequestMapping("/hpatient")
+    public String hpatient(HttpServletRequest request ,String statu,int i)
+    {
+        if ("m".equals(statu)) {
+            Date d = new Date();
+            List<Pation> lists = pationService.selectByNotTime(d,i);
+            System.out.println("********************" + lists.get(0).getpName());
+            request.setAttribute("lists", lists);
+            return "/sys/patient/hpatient";
+        }
+        else {
+            Date d = new Date();
+            List<Pation> lists = pationService.selectByNotTime(d,i);
+            System.out.println("********************" + lists.get(0).getpName());
+            request.setAttribute("lists", lists);
+            return "/sys/patient/hipatient";
+        }
+    }
+
+    //查询历史门诊,住院病人信息跳转页
+    @RequestMapping("/xiangqing")
+    public String xiangqing(HttpServletRequest request,int id)
+    {
+        Pation p=pationService.selectById(id);
+        Mr m = mrService.selectByPId(id);
+        request.setAttribute("mr",m);
+        request.setAttribute("pation", p);
+        return "/sys/patient/xiangqing";
     }
 
 }

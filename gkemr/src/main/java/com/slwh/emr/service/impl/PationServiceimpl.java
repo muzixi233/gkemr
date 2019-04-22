@@ -7,6 +7,7 @@ import com.slwh.emr.service.PationService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 @Service
 public class PationServiceimpl implements PationService {
@@ -45,5 +46,20 @@ public class PationServiceimpl implements PationService {
     @Override
     public List<Pation> selectByStatic() {
         return pationMapper.selectByStatic();
+    }
+
+    @Override
+    public List<Pation> selectByTime(Date d,int i) {
+        return pationMapper.selectByTime(d,i);
+    }
+
+    @Override
+    public List<Pation> selectByNotTime(Date d,int i) {
+        return pationMapper.selectByNotTime(d,i);
+    }
+
+    @Override
+    public List<Pation> selectByIthStatus(int ith) {
+        return pationMapper.selectByIthStatus(ith);
     }
 }

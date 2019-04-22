@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-    <title>病人诊断</title>
+    <title>病历修改</title>
     <link href="../../css/style.css" rel="stylesheet" type="text/css">
     <script language="JavaScript" src="../../js/jquery2.js"></script>
     <script src="../../js/cloud.js" type="text/javascript"></script>
@@ -30,7 +30,7 @@
     <td height="25" align="center" valign="bottom" class="td06"><table width="98%" border="0" cellspacing="3" cellpadding="0">
       <tr>
         <td width="15"><img src="../../images/index_32.gif" width="9" height="9"></td>
-        <td valign="bottom" class="title">病人诊断</td>
+        <td valign="bottom" class="title">病历修改</td>
       </tr>
     </table></td>
   </tr>
@@ -38,9 +38,10 @@
 <br>
 <%
     Pation pation= (Pation)request.getAttribute("pation");
+    Mr mr = (Mr) request.getAttribute("mr");
     if(pation!=null) {
 %>
-<form name="form1" method="post" action="/patient/treatp?pId=<%=pation.getpId() %>">
+<form name="form1" method="post" action="/patient/updatetreat?pId=<%=pation.getpId() %>">
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 
    <tr>
@@ -78,18 +79,18 @@
     </tr>ll
     <tr>
         <td height="24" class="td_form01">诊断病因</td>
-        <td class="td_form02"><input type="text" name="bl_style" class="input" /></td>
+        <td class="td_form02"><input type="text" name="bl_style" class="input" value="<%=mr.getBlStyle()%>" /></td>
     </tr>
     <tr>
         <td height="24" class="td_form01">是否住院</td>
         <td class="td_form02" name="status1"><select name="status1">
-            <option value="1">是</option>
             <option value="0">否</option>
+            <option value="1">是</option>
         </select></td>
     </tr>
     <tr>
         <td height="24" class="td_form01">病历编号</td>
-        <td class="td_form02"><input type="text" name="mr_num" class="input" /></td>
+        <td class="td_form02"><input type="text" name="ith_no" class="input" value="<%=mr.getBlNum()%>"/></td>
     </tr>
     <tr>
     <td align="center">

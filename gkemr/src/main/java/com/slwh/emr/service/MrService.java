@@ -15,5 +15,6 @@ public interface MrService {
     int update(Mr mr);
 
     int delete(Integer mId);
+
     Mr selectByPId(Integer pId);
 }

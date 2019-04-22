@@ -4,6 +4,7 @@ import com.slwh.emr.model.Menu;
 import com.slwh.emr.model.Pation;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.Date;
 import java.util.List;
 
 @Mapper
@@ -24,4 +25,10 @@ public interface PationMapper {
     List<Pation> selectAll();
 
     List<Pation> selectByStatic();
+
+    List<Pation> selectByTime(Date d,int i);
+
+    List<Pation> selectByNotTime(Date d,int i);
+
+    List<Pation> selectByIthStatus(int ith);
 }

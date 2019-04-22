@@ -153,7 +153,7 @@
                                     <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
                                     <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
                                     <td width="19"><img src="../images/tree_14.gif" width="19" height="20"></td>
-                                    <td nowrap><a href="../html/sys/log/operate-index" target="mainFrame" class="a03">操作日志</a></td>
+                                    <td nowrap><a href="/patient/tpatient?statu=m" target="mainFrame" class="a03">当日病人</a></td>
                                 </tr>
                             </table>
                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -162,16 +162,7 @@
                                     <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
                                     <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
                                     <td width="19"><img src="../images/tree_14.gif" width="19" height="20"></td>
-                                    <td nowrap><a href="../html/sys/log/login-index" target="mainFrame" class="a03">登录日志</a></td>
-                                </tr>
-                            </table>
-                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td width="19">&nbsp;</td>
-                                    <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
-                                    <td width="19"><img src="../images/tree_23.gif" width="19" height="20"></td>
-                                    <td width="19"><img src="../images/tree_14.gif" width="19" height="20"></td>
-                                    <td nowrap><a href="../html/sys/log/exp-index" target="mainFrame" class="a03">日志导出</a></td>
+                                    <td nowrap><a href="/patient/hpatient?statu=m&i=0" target="mainFrame" class="a03">历史病人</a></td>
                                 </tr>
                             </table>
                         </div>
@@ -190,7 +181,7 @@
                                     <td width="19">&nbsp;</td>
                                     <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
                                     <td width="19"><img src="../images/tree_14.gif" width="19" height="20"></td>
-                                    <td nowrap><a href="../html/workflow/design/processTypeList" target="mainFrame" class="a03">流程类别列表</a></td>
+                                    <td nowrap><a href="/patient/tpatient" target="mainFrame" class="a03">当日病人</a></td>
                                 </tr>
                             </table>
                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -199,34 +190,7 @@
                                     <td width="19">&nbsp;</td>
                                     <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
                                     <td width="19"><img src="../images/tree_14.gif" width="19" height="20"></td>
-                                    <td nowrap><a href="../html/workflow/design/processList" target="mainFrame" class="a03">流程列表</a></td>
-                                </tr>
-                            </table>
-                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td width="19">&nbsp;</td>
-                                    <td width="19">&nbsp;</td>
-                                    <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
-                                    <td width="19"><img src="../images/tree_14.gif" width="19" height="20"></td>
-                                    <td nowrap><a href="../html/workflow/design/functionTypeList" target="mainFrame" class="a03">功能类别列表</a></td>
-                                </tr>
-                            </table>
-                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td width="19">&nbsp;</td>
-                                    <td width="19">&nbsp;</td>
-                                    <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
-                                    <td width="19"><img src="../images/tree_14.gif" width="19" height="20"></td>
-                                    <td nowrap><a href="../html/workflow/design/functionList" target="mainFrame" class="a03">功能列表</a></td>
-                                </tr>
-                            </table>
-                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td width="19">&nbsp;</td>
-                                    <td width="19">&nbsp;</td>
-                                    <td width="19"><img src="../images/tree_23.gif" width="19" height="20"></td>
-                                    <td width="19"><img src="../images/tree_14.gif" width="19" height="20"></td>
-                                    <td nowrap><a href="../html/workflow/design/attachmentTypeList" target="mainFrame" class="a03">附件类别列表</a></td>
+                                    <td nowrap><a href="/patient/hpatient?i=1" target="mainFrame" class="a03">历史病人</a></td>
                                 </tr>
                             </table>
                         </div>
@@ -260,7 +224,7 @@
 							<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
 							<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
 							<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-							<td nowrap><a href="../html/worktime/leavelist_2" target="mainFrame" class="a03">护理管理</a></td>
+							<td nowrap><a href="/nurse/nurselist" target="mainFrame" class="a03">护理管理</a></td>
 						  </tr>
 						</table>
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">

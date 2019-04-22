@@ -17,6 +17,9 @@ public class Ith {
 
     private String ithUser;
 
+    private Pation pation;
+
+    private Nurse nurse;
 
     public Integer getIthId() {
         return ithId;
@@ -80,5 +83,21 @@ public class Ith {
 
     public void setIthUser(String ithUser) {
         this.ithUser = ithUser == null ? null : ithUser.trim();
+    }
+
+    public Pation getPation() {
+        return pation;
+    }
+
+    public void setPation(Pation pation) {
+        this.pation = pation;
+    }
+
+    public Nurse getNurse() {
+        return nurse;
+    }
+
+    public void setNurse(Nurse nurse) {
+        this.nurse = nurse;
     }
 }

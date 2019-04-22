@@ -10,6 +10,26 @@
     <result column="ith_msg" property="ithMsg" jdbcType="VARCHAR" />
     <result column="ith_status" property="ithStatus" jdbcType="VARCHAR" />
     <result column="ith_user" property="ithUser" jdbcType="VARCHAR" />
+    <association property="pation" select="getPatient" column="ith_patient"/>
+    <association property="nurse" select="getNurse" column="ith_nurse"/>
+  </resultMap>
+  <resultMap id="patient" type="com.slwh.emr.model.Pation" >
+    <id column="p_id" property="pId" jdbcType="INTEGER" />
+    <result column="p_name" property="pName" jdbcType="VARCHAR" />
+    <result column="p_sex" property="pSex" jdbcType="VARCHAR" />
+    <result column="p_age" property="pAge" jdbcType="INTEGER" />
+    <result column="p_tel" property="pTel" jdbcType="INTEGER" />
+    <result column="mr_num" property="mrNum" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="mz_num" property="mzNum" jdbcType="INTEGER" />
+    <result column="gh_time" property="date" jdbcType="DATE" />
+    <result column="p_doctor" property="doctor" jdbcType="VARCHAR" />
+    <result column="ith_status" property="ithStatus" jdbcType="INTEGER" />
+    <result column="ith_banli" property="ithBanLi" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="nurse" type="com.slwh.emr.model.Nurse" >
+    <id column="n_id" property="nId" jdbcType="INTEGER" />
+    <result column="n_level" property="nLevel" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     ith_id, ith_no, ith_patient, ith_nurse, ith_bed, ith_msg, ith_status, ith_user
@@ -20,6 +40,23 @@
     from emr_ith
     where ith_id = #{ithId,jdbcType=INTEGER}
   </select>
+
+  <!--获取病人 -->
+  <select id="getPatient" resultMap="patient">
+    select
+    p_name,p_sex,p_tel,p_age,mr_num,status,mz_num,gh_time,p_doctor,ith_status,ith_banli
+    from emr_patient
+    where p_id=#{ithPatient,jdbcType=INTEGER}
+  </select>
+
+  <!--获取护理详情 -->
+  <select id="getNurse" resultMap="nurse">
+    select
+     n_level
+    from emr_nurse
+    where n_id=#{ithNurse,jdbcType=INTEGER}
+  </select>
+
   <delete id="deleteById" parameterType="java.lang.Integer" >
     delete from emr_ith
     where ith_id = #{ithId,jdbcType=INTEGER}
