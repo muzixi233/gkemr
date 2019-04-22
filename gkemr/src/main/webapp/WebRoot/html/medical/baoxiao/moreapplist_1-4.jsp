@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>录入报销信息</title>
+<title>住院处方详细信息</title>
 <link href="../../../css/style.css" rel="stylesheet" type="text/css">
 
 

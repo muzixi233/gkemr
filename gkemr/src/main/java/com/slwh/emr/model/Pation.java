@@ -1,5 +1,6 @@
 package com.slwh.emr.model;
 import java.util.*;
+
 public class Pation {
     private Integer pId;
 
