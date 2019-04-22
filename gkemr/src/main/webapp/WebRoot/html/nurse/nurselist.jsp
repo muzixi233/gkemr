@@ -93,7 +93,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
           $('#tb tr:gt(0)').remove();//删除之前的数据
           var s = '';
           for (var i = 0; i < json.length; i++) s += '<tr><td class="td07">' + json[i].pation.pName+ '</td><td class="td07">' + json[i].pation.mzNum + '</td><td class="td07">' + json[i].pation.doctor + '</td>'
-                  + '<td class="td07">' + json[i].nurse.nLevel+ '</td><td class="td07"> 骨科</td><td class="td07"><a href="/user/results/moreleavelist_1?uId='+json[i].uId+'" target="mainFrame" >&nbsp;&nbsp;护理操作</a></td></tr>';
+                  + '<td class="td07">' + json[i].nurse.nLevel+ '</td><td class="td07"> 骨科</td><td class="td07"><a href="/nurse/update?ithId='+json[i].ithId+'" target="mainFrame" >&nbsp;&nbsp;护理操作</a></td></tr>';
           $('#tb').append(s);
         }
         else {

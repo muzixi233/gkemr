@@ -44,7 +44,7 @@
   <!--获取病人 -->
   <select id="getPatient" resultMap="patient">
     select
-    p_name,p_sex,p_tel,p_age,mr_num,status,mz_num,gh_time,p_doctor,ith_status,ith_banli
+    p_id,p_name,p_sex,p_tel,p_age,mr_num,status,mz_num,gh_time,p_doctor,ith_status,ith_banli
     from emr_patient
     where p_id=#{ithPatient,jdbcType=INTEGER}
   </select>
