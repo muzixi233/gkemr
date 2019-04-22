@@ -178,4 +178,26 @@
     from emr_patient
     where status=0
   </select>
+  <!--查询住院病人 -->
+  <select id="selectByIthStatus" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_patient
+    where ith_status=#{ith,jdbcType=INTEGER}
+  </select>
+  <!--根据门诊病人时间查询 -->
+  <select id="selectByTime" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_patient
+    where gh_time=#{d,jdbcType=DATE} and ith_status=#{i,jdbcType=INTEGER}
+  </select>
+
+  <!--根据门诊,住院病人时间查询 -->
+  <select id="selectByNotTime" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_patient
+    where gh_time!=#{d,jdbcType=DATE} and ith_status=#{i,jdbcType=INTEGER}
+  </select>
 </mapper>
