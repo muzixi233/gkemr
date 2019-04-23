@@ -36,4 +36,8 @@ public class NurseServiceimpl implements NurseService {
     public int delete(Integer nId) {
         return nurseMapper.deleteById(nId);
     }
+    @Override
+    public Nurse selectByLevel(String  level) {
+        return nurseMapper.selectByLevel(level);
+    }
 }

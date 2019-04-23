@@ -37,4 +37,9 @@ public class IthServiceimpl implements IthService {
     public int delete(Integer ithId) {
         return ithMapper.deleteById(ithId);
     }
+
+    @Override
+    public Ith selectByPId(Integer pid) {
+        return ithMapper.selectByPId(pid);
+    }
 }

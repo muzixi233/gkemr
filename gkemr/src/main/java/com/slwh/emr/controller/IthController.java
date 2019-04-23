@@ -51,35 +51,52 @@ public class IthController {
         request.setAttribute("users", users);
         List<Bed> beds=bedService.selectByStatus();//床位信息
         request.setAttribute("beds", beds);
-       Mr mr=mrService.selectByPId(id);//病历信息
-        request.setAttribute("mr", mr);
         return "/medical/baoxiao/app2";
     }
     @RequestMapping("/addIth")//住院办理
-    public String addIth(Ith ith,String pName,String level,HttpServletRequest request)
+    public String addIth(Ith ith,String pName,String blNum,String level,HttpServletRequest request)
     {
 
         System.out.println("%%%%%%%%%%%%%%"+ith.getIthPatient());
-      ith.setIthStatus("已办理");
-      if(level.endsWith("一级护理"))
-          ith.setIthNurse(1);
-      else if(level.endsWith("二级护理"))
-          ith.setIthNurse(2);
-      else if(level.endsWith("普通护理"))
-          ith.setIthNurse(3);
+      ith.setIthStatus("已入院");
+      //护理信息
+        Nurse nurse=nurseService.selectByLevel(level);
+
+        ith.setIthNurse(nurse.getnId());
+        //医生信息
+        User user=UserService.selectByName(ith.getIthUser());
+
        if(ithService.insert(ith)==1)//住院信息
        {
+           System.out.println("%%%%%%%%%%%%%%"+ith.getIthPatient());
            Pation p=pationService.selectById(ith.getIthPatient());
            p.setIthBanLi(1);
            pationService.update(p);//已办理成功
+           //修改病历信息
+           Mr m = mrService.selectByPId(p.getpId());
+           m.setBlNum(blNum);
+           m.setBlMsg(ith.getIthMsg());
+           m.setBlHuli(ith.getIthNurse());
+           //m.setBlHuli(nurse.getnId());
+           m.setBlUser(user.getuId());//医生
+           m.setBlBed(ith.getIthBed());//床
+           System.out.println("%%%%%%%%%%%%%%"+ith.getIthPatient());
+           mrService.update(m);//修改病历
+
+           //修改病床状态
+           Bed bed=bedService.selectById(Integer.parseInt(ith.getIthBed()));
+           System.out.println("%%%%%%%%%%%%%%"+bed.getStatus());
+           bed.setStatus(1);
+           bedService.update(bed);
+          // System.out.println("%%%%%%%%%%%%%%修改成功");
        }
-       //修改病历没写
 
       request.setAttribute("ith",ith);
       request.setAttribute("pName",pName);
         request.setAttribute("level",level);
         return "/medical/loan/app2";
     }
+
     @RequestMapping("/chufang")
     public String chufang(HttpServletRequest request){
 
@@ -88,12 +105,48 @@ public class IthController {
         request.setAttribute("lists", lists);
         return "/medical/baoxiao/applist_1-1";
     }
-    @RequestMapping("/cfxq")
+    @RequestMapping("/cfxq")//处方详情没写
     public String chuFXQ(HttpServletRequest request){
 
-      /*  List<Pation> lists = pationService.selectAll() ;
-        System.out.println("********************"+lists.get(0).getpName());
-        request.setAttribute("lists", lists);*/
         return "/medical/baoxiao/moreapplist_1-4";
+    }
+    @RequestMapping("/chuYuan")//出院申请
+    public String chuYuan(HttpServletRequest request){
+
+        List<Pation> lists = pationService.selectAll() ;
+        System.out.println("********************"+lists.get(0).getpName());
+        request.setAttribute("lists", lists);
+        return "/medical/loan/applist_2";
+    }
+
+    @RequestMapping("/cyxq")//出院详情
+    public String chuYXQ(int id,HttpServletRequest request){
+       Pation pation=pationService.selectById(id);//病人信息
+        Mr mr=mrService.selectByPId(id);//病历信息
+        request.setAttribute("pation",pation);
+        request.setAttribute("mr",mr);
+        return "/medical/loan/chuYXQ";
+    }
+    @RequestMapping("/cyDeal")//出院办理
+    public String cyDeal(int id,HttpServletRequest request){
+        //住院信息
+        Ith ith=ithService.selectByPId(id);
+        ith.setIthStatus("已出院");
+        ithService.update(ith );
+        //病床信息
+        Bed bed=bedService.selectById(Integer.parseInt(ith.getIthBed()));
+        bed.setStatus(0);
+        bedService.update(bed);
+        Pation pation=pationService.selectById(id);//病人信息
+        pation.setIthBanLi(2);//病人出院
+        pationService.update(pation);
+      //病历信息修改没写
+       /* request.setAttribute("pation",pation);
+        Mr mr=mrService.selectByPId(id);
+        request.setAttribute("mr",mr);*/
+        List<Pation> lists = pationService.selectAll() ;
+        System.out.println("********************"+lists.get(0).getpName());
+        request.setAttribute("lists", lists);
+        return "/medical/loan/yChuYuan";
     }
 }

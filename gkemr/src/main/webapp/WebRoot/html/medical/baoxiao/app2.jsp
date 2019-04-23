@@ -69,14 +69,13 @@ document.getElementById("droplist3").style.display="none";
   <form name="form1" method="post" action="/ith/addIth">
     <%
       Pation pation= (Pation)request.getAttribute("pation");
-      Mr mr= (Mr) request.getAttribute("mr");
-      if(pation!=null&&mr!=null) {
+      if(pation!=null) {
 
     %>
     <table width=95% border=0 align=center cellpadding=0 cellspacing=0>
       <tr align="left" nowrap>
         <td width="78" height="24" align="center"  class=td_form01>病历号：</td>
-        <td colspan="3" align="left"  class=td_form02><%=mr.getBlNum()%></td>
+        <td colspan="3" align="left"  class=td_form02><%=pation.getMrNum()%></td>
       </tr>
       <tr>
         <td width="146" align="center"  class=td_form01>姓名：</td>
@@ -161,6 +160,7 @@ document.getElementById("droplist3").style.display="none";
             <input name=cancel  type=button class=buttonface value= '  返回  '  onClick="history.back(-1)">
           <td><input type="hidden" name="ithPatient" value="<%=pation.getpId()%>"/></td>
           <td><input type="hidden" name="pName" value="<%=pation.getpName()%>"/></td>
+        <td><input type="hidden" name="blNum" value="<%=pation.getMrNum()%>"/></td>
         </td>
 
       </tr>

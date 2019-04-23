@@ -52,14 +52,18 @@
     update emr_bed
     <set >
       <if test="bedNo != null" >
-        bed_no = #{bedNo,jdbcType=VARCHAR},
+      bed_no = #{bedNo,jdbcType=VARCHAR},
+    </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
       </if>
     </set>
     where bed_id = #{bedId,jdbcType=INTEGER}
   </update>
   <update id="updateById" parameterType="com.slwh.emr.model.Bed" >
     update emr_bed
-    set bed_no = #{bedNo,jdbcType=VARCHAR}
+    set bed_no = #{bedNo,jdbcType=VARCHAR},
+         status = #{status,jdbcType=INTEGER}
     where bed_id = #{bedId,jdbcType=INTEGER}
   </update>
   <!--查询所有床位信息  -->

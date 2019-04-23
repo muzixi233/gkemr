@@ -21,4 +21,6 @@ public interface NurseMapper {
     int updateById(Nurse record);
 
     List<Nurse> selectAll();
+
+    Nurse selectByLevel(String level);
 }

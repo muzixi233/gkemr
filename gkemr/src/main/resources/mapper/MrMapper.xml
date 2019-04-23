@@ -13,10 +13,11 @@
     <result column="bl_drug" property="blDrug" jdbcType="INTEGER" />
     <result column="bl_zldj" property="blZldj" jdbcType="INTEGER" />
     <result column="bl_huli" property="blHuli" jdbcType="INTEGER" />
+    <result column="bi_bed" property="blBed" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     bl_id, bl_num, bl_style, bl_msg, status, bl_history, bl_patient, bl_user, bl_drug, 
-    bl_zldj, bl_huli
+    bl_zldj, bl_huli, bi_bed
   </sql>
   <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -39,11 +40,11 @@
     insert into emr_mr (bl_id, bl_num, bl_style, 
       bl_msg, status, bl_history, 
       bl_patient, bl_user, bl_drug, 
-      bl_zldj, bl_huli)
+      bl_zldj, bl_huli, bi_bed)
     values (#{blId,jdbcType=INTEGER}, #{blNum,jdbcType=VARCHAR}, #{blStyle,jdbcType=VARCHAR}, 
       #{blMsg,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{blHistory,jdbcType=VARCHAR}, 
       #{blPatient,jdbcType=INTEGER}, #{blUser,jdbcType=INTEGER}, #{blDrug,jdbcType=INTEGER}, 
-      #{blZldj,jdbcType=INTEGER}, #{blHuli,jdbcType=INTEGER})
+      #{blZldj,jdbcType=INTEGER}, #{blHuli,jdbcType=INTEGER}, #{blBed,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.slwh.emr.model.Mr" >
     insert into emr_mr
@@ -81,6 +82,9 @@
       <if test="blHuli != null" >
         bl_huli,
       </if>
+      <if test="blBed != null" >
+        bi_bed,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="blId != null" >
@@ -115,6 +119,9 @@
       </if>
       <if test="blHuli != null" >
         #{blHuli,jdbcType=INTEGER},
+      </if>
+      <if test="blBed != null" >
+        #{blBed,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -151,6 +158,9 @@
       <if test="blHuli != null" >
         bl_huli = #{blHuli,jdbcType=INTEGER},
       </if>
+      <if test="blBed != null" >
+        bi_bed = #{blBed,jdbcType=VARCHAR},
+      </if>
     </set>
     where bl_id = #{blId,jdbcType=INTEGER}
   </update>
@@ -165,7 +175,8 @@
       bl_user = #{blUser,jdbcType=INTEGER},
       bl_drug = #{blDrug,jdbcType=INTEGER},
       bl_zldj = #{blZldj,jdbcType=INTEGER},
-      bl_huli = #{blHuli,jdbcType=INTEGER}
+      bl_huli = #{blHuli,jdbcType=INTEGER},
+      bi_bed = #{blBed,jdbcType=VARCHAR}
     where bl_id = #{blId,jdbcType=INTEGER}
   </update>
 

@@ -126,7 +126,7 @@
                            <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-                           <td nowrap><a href="../html/medical/loan/applist_2" target="mainFrame" class="a03">出院申请</a></td>
+                           <td nowrap><a href="/ith/chuYuan" target="mainFrame" class="a03">出院申请</a></td>
                          </tr>
                        </table>
                 </div>

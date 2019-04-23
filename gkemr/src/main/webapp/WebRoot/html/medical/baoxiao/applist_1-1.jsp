@@ -51,6 +51,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     List<Pation> pations= (List<Pation>)request.getAttribute("lists");
     if(pations!=null) {
    for(Pation p:pations){
+     if(p.getIthStatus()==1){
   %>
 
   <tr>
@@ -60,7 +61,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td07"><%=new Date()%></td>
     <td class="td07"><a href="#" onClick="javascript:openwindow('/ith/cfxq','',500,500)">详情</a></td>
   </tr>
-  <%}}%>
+  <%}}}%>
 </table>
 <table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
   <tr>

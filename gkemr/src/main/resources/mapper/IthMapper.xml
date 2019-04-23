@@ -41,6 +41,12 @@
     where ith_id = #{ithId,jdbcType=INTEGER}
   </select>
 
+  <select id="selectByPId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from emr_ith
+    where ith_patient = #{pid,jdbcType=INTEGER}
+  </select>
   <!--获取病人 -->
   <select id="getPatient" resultMap="patient">
     select

@@ -15,4 +15,5 @@ public interface NurseService {
     int update(Nurse nurse);
 
     int delete(Integer nId);
+   Nurse selectByLevel(String level);
 }

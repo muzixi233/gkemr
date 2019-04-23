@@ -62,4 +62,12 @@
     <include refid="Base_Column_List" />
     from emr_nurse
   </select>
+
+  <!--根据护理等级信息查询  -->
+  <select id="selectByLevel" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_nurse
+    where n_level=#{level,jdbcType=VARCHAR}
+  </select>
 </mapper>

@@ -23,6 +23,8 @@ public class Mr {
 
     private Integer blHuli;
 
+    private String blBed;
+
     public Integer getBlId() {
         return blId;
     }
@@ -109,5 +111,13 @@ public class Mr {
 
     public void setBlHuli(Integer blHuli) {
         this.blHuli = blHuli;
+    }
+
+    public String getBlBed() {
+        return blBed;
+    }
+
+    public void setBlBed(String blBed) {
+        this.blBed = blBed;
     }
 }

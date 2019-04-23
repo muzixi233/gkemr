@@ -20,4 +20,5 @@ public interface IthMapper {
     int updateById(Ith record);
 
     List<Ith> selectAll();
+    Ith selectByPId(Integer pid);
 }

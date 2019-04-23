@@ -3,7 +3,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/gkemr?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT
     username: root
     type: com.alibaba.druid.pool.DruidDataSource
-    password: root
+
   thymeleaf:
     cache: false
     enabled: false
