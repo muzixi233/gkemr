@@ -249,7 +249,7 @@
 							<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
 							<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
 							<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-							<td nowrap><a href="../html/media/createapplication" target="mainFrame" class="a03">管理药品</a></td>
+							<td nowrap><a href="/drug/createapplication" target="mainFrame" class="a03">管理药品</a></td>
 						  </tr>
 						</table>
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -257,7 +257,7 @@
 							<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
 							<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
 							<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-							<td nowrap><a href="../html/media/applicationlist_1" target="mainFrame" class="a03">查询药品</a></td>
+							<td nowrap><a href="/drug/applicationlist_1" target="mainFrame" class="a03">查询药品</a></td>
 						  </tr>
 						</table>
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -265,7 +265,7 @@
 							<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
 							<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
 							<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-							<td nowrap><a href="../html/media/applicationlist_2" target="mainFrame" class="a03">进药审批</a></td>
+							<td nowrap><a href="/drug/applicationlist_2" target="mainFrame" class="a03">进药审批</a></td>
 						  </tr>
 						</table>
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -273,7 +273,7 @@
 							<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
 							<td width="19"><img src="../images/tree_23.gif" width="19" height="20"></td>
 							<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-							<td nowrap><a href="../html/media/applicationlist_31" target="mainFrame" class="a03">申报统计</a></td>
+							<td nowrap><a href="/drug/applicationlist_3" target="mainFrame" class="a03">申报统计</a></td>
 						  </tr>
 						</table>
 					  </div>

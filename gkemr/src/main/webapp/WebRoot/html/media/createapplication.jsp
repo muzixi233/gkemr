@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>新闻审核</title>
+<title>药品管理</title>
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="../../js/clientSideApp.js"></script>
@@ -26,7 +26,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td height="25" align="center" valign="bottom" class="td06"><table width="98%" border="0" cellspacing="3" cellpadding="0">
       <tr>
         <td width="15"><img src="../../images/index_32.gif" width="9" height="9"></td>
-        <td valign="bottom" class="title">启动流程</td>
+        <td valign="bottom" class="title">药品管理</td>
       </tr>
     </table></td>
   </tr>

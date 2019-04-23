@@ -33,7 +33,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td height="25" align="center" valign="bottom" class="td06"><table width="98%" border="0" cellspacing="3" cellpadding="0">
       <tr>
         <td width="15"><img src="../../images/index_32.gif" width="9" height="9"></td>
-        <td valign="bottom" class="title">待诊断病人</td>
+        <td valign="bottom" class="title">护理情况</td>
       </tr>
     </table></td>
   </tr>
@@ -50,7 +50,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 </table>
 </form>
 <br>
-<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01" id="tb">
   <tr>
     <td class="td_top">病人姓名</td>
     <td class="td_top">门诊编号</td>
@@ -93,7 +93,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
           $('#tb tr:gt(0)').remove();//删除之前的数据
           var s = '';
           for (var i = 0; i < json.length; i++) s += '<tr><td class="td07">' + json[i].pation.pName+ '</td><td class="td07">' + json[i].pation.mzNum + '</td><td class="td07">' + json[i].pation.doctor + '</td>'
-                  + '<td class="td07">' + json[i].nurse.nLevel+ '</td><td class="td07">' +骨科+ '</td><td class="td07"><a href="/user/results/moreleavelist_1?uId='+json[i].uId+'" target="mainFrame" >&nbsp;&nbsp;>>></a></td></tr>';
+                  + '<td class="td07">' + json[i].nurse.nLevel+ '</td><td class="td07"> 骨科</td><td class="td07"><a href="/nurse/update?ithId='+json[i].ithId+'" target="mainFrame" >&nbsp;&nbsp;护理操作</a></td></tr>';
           $('#tb').append(s);
         }
         else {
