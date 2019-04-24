@@ -1,5 +1,7 @@
 package com.slwh.emr.model;
 
+import java.util.Date;
+
 public class Drug {
     private Integer drId;
 
@@ -8,6 +10,12 @@ public class Drug {
     private String drName;
 
     private Integer drLevel;
+
+    private String drPrice;
+
+    private String drAccount;
+
+    private Date drDate;
 
     public Integer getDrId() {
         return drId;
@@ -39,5 +47,29 @@ public class Drug {
 
     public void setDrLevel(Integer drLevel) {
         this.drLevel = drLevel;
+    }
+
+    public String getDrPrice() {
+        return drPrice;
+    }
+
+    public void setDrPrice(String drPrice) {
+        this.drPrice = drPrice == null ? null : drPrice.trim();
+    }
+
+    public String getDrAccount() {
+        return drAccount;
+    }
+
+    public void setDrAccount(String drAccount) {
+        this.drAccount = drAccount == null ? null : drAccount.trim();
+    }
+
+    public Date getDrDate() {
+        return drDate;
+    }
+
+    public void setDrDate(Date drDate) {
+        this.drDate = drDate;
     }
 }

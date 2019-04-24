@@ -35,16 +35,16 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 
   <tr> 
-     <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="step1.jsp" target="mainFrame" class="a14">药品出售</a></td>
+     <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="/drug/deletedrug" target="mainFrame" class="a14">药品清除</a></td>
   </tr>
   <tr> 
-    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="step5.jsp" target="mainFrame" class="a14">药品进货</a></td>
+    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="/drug/adddrug" target="mainFrame" class="a14">新增药品</a></td>
   </tr>
     <tr> 
-    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="step-5.jsp" target="mainFrame" class="a14">药品出售统计</a></td>
+    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="/drug/deleteacount" target="mainFrame" class="a14">药品清除统计</a></td>
   </tr>
     <tr> 
-    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="step-5.jsp" target="mainFrame" class="a14">药品进货统计</a></td>
+    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="/drug/addacount" target="mainFrame" class="a14">新增药品统计</a></td>
   </tr>
 </table>
 <br>

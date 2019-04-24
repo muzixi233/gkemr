@@ -59,75 +59,75 @@
         <!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample
             是否生成 example类 -->
 
-        <table schema="gkemr" tableName="emr_bed"
-               domainObjectName="Bed" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
+        <!--<table schema="gkemr" tableName="emr_bed"-->
+               <!--domainObjectName="Bed" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+        <!--</table>-->
         <table schema="gkemr" tableName="emr_drug"
                domainObjectName="Drug" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">
         </table>
-        <table schema="gkemr" tableName="emr_ith"
-               domainObjectName="Ith" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
-        <table schema="gkemr" tableName="emr_menu"
-               domainObjectName="Menu" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
-        <table schema="gkemr" tableName="emr_menu_permission"
-               domainObjectName="Menu_Permission" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
-        <table schema="gkemr" tableName="emr_mr"
-               domainObjectName="Mr" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
-        <table schema="gkemr" tableName="emr_nurse"
-               domainObjectName="Nurse" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
-        <table schema="gkemr" tableName="emr_patient"
-               domainObjectName="Pation" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
-        <table schema="gkemr" tableName="emr_permission"
-               domainObjectName="Permission" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
-        <table schema="gkemr" tableName="emr_role"
-               domainObjectName="Role" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
-        <table schema="gkemr" tableName="emr_role_permission"
-               domainObjectName="Role_Permission" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
-        <table schema="gkemr" tableName="emr_role_user"
-               domainObjectName="Role_User" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
-        <table schema="gkemr" tableName="emr_treat"
-               domainObjectName="Treat" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
-        <table schema="gkemr" tableName="emr_user"
-               domainObjectName="User" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
+        <!--<table schema="gkemr" tableName="emr_ith"-->
+               <!--domainObjectName="Ith" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+        <!--</table>-->
+        <!--<table schema="gkemr" tableName="emr_menu"-->
+               <!--domainObjectName="Menu" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+        <!--</table>-->
+        <!--<table schema="gkemr" tableName="emr_menu_permission"-->
+               <!--domainObjectName="Menu_Permission" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+        <!--</table>-->
+        <!--<table schema="gkemr" tableName="emr_mr"-->
+               <!--domainObjectName="Mr" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+        <!--</table>-->
+        <!--<table schema="gkemr" tableName="emr_nurse"-->
+               <!--domainObjectName="Nurse" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+        <!--</table>-->
+        <!--<table schema="gkemr" tableName="emr_patient"-->
+               <!--domainObjectName="Pation" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+        <!--</table>-->
+        <!--<table schema="gkemr" tableName="emr_permission"-->
+               <!--domainObjectName="Permission" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+        <!--</table>-->
+        <!--<table schema="gkemr" tableName="emr_role"-->
+               <!--domainObjectName="Role" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+        <!--</table>-->
+        <!--<table schema="gkemr" tableName="emr_role_permission"-->
+               <!--domainObjectName="Role_Permission" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+        <!--</table>-->
+        <!--<table schema="gkemr" tableName="emr_role_user"-->
+               <!--domainObjectName="Role_User" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+        <!--</table>-->
+        <!--<table schema="gkemr" tableName="emr_treat"-->
+               <!--domainObjectName="Treat" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+        <!--</table>-->
+        <!--<table schema="gkemr" tableName="emr_user"-->
+               <!--domainObjectName="User" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+        <!--</table>-->
     </context>
 </generatorConfiguration>

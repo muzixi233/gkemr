@@ -9,6 +9,9 @@
 <script language="javascript" src="../../js/check.js"></script>
 <script language="javascript" src="../../js/checkAll.js"></script>
 <script language="javascript" src="../../js/clientSideApp.js"></script>
+  <script language="JavaScript" src="../../js/jquery2.js"></script>
+  <script src="../../js/cloud.js" type="text/javascript"></script>
+  <script language="javascript" src="../../js/js.js"></script>
 <SCRIPT language=JavaScript type=text/JavaScript>
 function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left) 
 {
@@ -43,7 +46,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
 </table>
 <br>
-<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01" id="tb">
   <tr>
     <td class="td_top">药物编号</td>
     <td class="td_top">药物名称</td>
@@ -52,48 +55,38 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td nowrap class="td_top">药物余量</td>
 
   </tr>
-  <tr>
-    <td class="td07">1103</td>
-    <td class="td07">板蓝根</td>
-    <td class="td07">2013-9-10</td>
-    <td class="td07">10元</td>
-    <td class="td07"><a href="moreapplicationlist_1.jsp" target="_blank">&nbsp;&nbsp;20袋</a></td>
-
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
 </table>
 <table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
   <tr>
     <td height="30" align="right"><img src="../../images/1.gif" width="4" height="5" align="absmiddle"> 首页　 <img src="../../images/2.gif" width="3" height="5" align="absmiddle"> 上一页　 <img src="../../images/2-2.gif" width="3" height="5" align="absmiddle"> 下一页　 <img src="../../images/3.gif" width="4" height="5" align="absmiddle"> 末页　　共 1 页 1 条记录</td>
   </tr>
 </table>
+<script type="text/javascript">
+  window.onload=function GetDrug() {
+    $.ajax({
+      type: "get",
+      url: "/drug/selectAll",
+      data: {},
+      async: true,
+      dataType: 'json',
+      success: function (data) {
+        var json = data.data;
+        if (data.data!=null) {
+          $('#tb tr:gt(0)').remove();//删除之前的数据
+          var s = '';
+          for (var i = 0; i < json.length; i++) s += '<tr><td class="td07">' + json[i].drNum+ '</td><td class="td07">' + json[i].drName + '</td><td class="td07">' + json[i].drDate + '</td>'
+                  + '<td class="td07">' + json[i].drPrice+ '</td><td class="td07"><a href="/nurse/update?ithId='+json[i].ithId+'" target="mainFrame" >'+json[i].drAccount+'</a></td></tr>';
+          $('#tb').append(s);
+        }
+        else {
+          alert("没有数据")
+        }
+
+      }
+    });
+  }
+
+</script>
+
 </body>
 </html>

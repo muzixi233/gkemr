@@ -59,7 +59,7 @@ public class NurseController {
         return "nurse/updatenurse";
     }
 
-    @RequestMapping("/updatenurse")//住院办理
+    @RequestMapping("/updatenurse")//护理修改
     public String updatenurse(int ithId,String level,HttpServletRequest request)
     {
         Ith ith = ithService.selectById(ithId);

@@ -53,7 +53,7 @@
       </tr>
       <tr>
         <td class="td_form01">联系电话</td>
-        <td class="td_form02"><input name="pTel" type="text" class="input"  id="pjob"></td>
+        <td class="td_form02"><input name="pTel" type="text" class="input" ></td>
       </tr>
       <%--<tr>
         <td rowspan="2" class="td_form01">初复诊</td>&lt;%&ndash;//状态  初诊/复诊&ndash;%&gt;

@@ -4,7 +4,6 @@ import com.slwh.emr.model.Drug;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
-
 @Mapper
 public interface DrugMapper {
     int deleteById(Integer drId);
