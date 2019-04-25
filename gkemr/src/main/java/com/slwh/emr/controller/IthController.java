@@ -149,4 +149,11 @@ public class IthController {
         request.setAttribute("lists", lists);
         return "/medical/loan/yChuYuan";
     }
+
+    @RequestMapping("/fayao")//住院发药
+    public String fayao(HttpServletRequest request){
+
+
+        return "medical/baoxiao/fayao";
+    }
 }
