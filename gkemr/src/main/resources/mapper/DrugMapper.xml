@@ -9,9 +9,10 @@
     <result column="dr_price" jdbcType="VARCHAR" property="drPrice" />
     <result column="dr_account" jdbcType="VARCHAR" property="drAccount" />
     <result column="dr_date" jdbcType="DATE" property="drDate" />
+    <result column="dr_status" jdbcType="INTEGER" property="drStatus" />
   </resultMap>
   <sql id="Base_Column_List">
-    dr_id, dr_num, dr_name, dr_level, dr_price, dr_account, dr_date
+    dr_id, dr_num, dr_name, dr_level, dr_price, dr_account, dr_date,dr_status
   </sql>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 

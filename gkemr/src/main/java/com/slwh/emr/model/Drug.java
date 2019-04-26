@@ -17,6 +17,8 @@ public class Drug {
 
     private Date drDate;
 
+    private  Integer drStatus;
+
     public Integer getDrId() {
         return drId;
     }
@@ -71,5 +73,13 @@ public class Drug {
 
     public void setDrDate(Date drDate) {
         this.drDate = drDate;
+    }
+
+    public Integer getDrStatus() {
+        return drStatus;
+    }
+
+    public void setDrStatus(Integer drStatus) {
+        this.drStatus = drStatus;
     }
 }
