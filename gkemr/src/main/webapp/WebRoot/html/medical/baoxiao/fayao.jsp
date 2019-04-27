@@ -7,7 +7,11 @@
 <title>查询结果</title>
 <script language="javascript" src="../../../js/clientSideApp.js"></script>
 <script language="JavaScript" type="text/javascript" src="../../../js/win_center.js"></script>
+  <script language="JavaScript" src="../../js/jquery2.js"></script>
+  <script src="../../js/cloud.js" type="text/javascript"></script>
+  <script language="javascript" src="../../js/js.js"></script>
 <SCRIPT language=JavaScript type=text/JavaScript>
+
 function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left) 
 {
   var parameter="top="+top+",left="+left+",width="+width+",height="+hight;
@@ -46,19 +50,13 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
 </table>
 <br>
-<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01" id="tb">
   <tr>
-    <td width="18%" class="td_top">病历号</td>
+    <td width="18%" class="td_top">病历编号</td>
     <td width="15%" class="td_top">姓名</td>
-    <td width="19%" class="td_top">负责人</td>
+    <td width="19%" class="td_top">诊断人</td>
     <td width="25%" class="td_top">操作</td>
 
-  </tr>
-  <tr>
-    <td class="td07">1001011</td>
-    <td class="td07">张三</td>
-    <td class="td07">xxx</td>
-    <td class="td07"><a href="#" onClick="javascript:openwindow('moreapplist_1-5.jsp','',500,500)">详情>>></a></td>
   </tr>
 </table>
 <table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
@@ -66,5 +64,30 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td height="30" align="right"><img src="../../../images/1.gif" width="4" height="5" align="absmiddle"> 首页　 <img src="../../../images/2.gif" width="3" height="5" align="absmiddle"> 上一页　 <img src="../../../images/2-2.gif" width="3" height="5" align="absmiddle"> 下一页　 <img src="../../../images/3.gif" width="4" height="5" align="absmiddle"> 末页　　共 1 页 1 条记录</td>
   </tr>
 </table>
+<script type="text/javascript">
+  window.onload =function GetPatient() {
+            $.ajax({
+              type: "get",
+              url: "/drug/selectpatient",
+              data: {},
+              async: true,
+              dataType: 'json',
+              success: function (data) {
+                var json = data.data;
+                if (data.data!=null) {
+                  $('#tb tr:gt(0)').remove();//删除之前的数据
+                  var s = '';
+                  for (var i = 0; i < json.length; i++) s += '<tr><td class="td_01">' + json[i].mrNum + '</td><td class="td_01">' + json[i].pName + '</td><td class="td_01">' + json[i].doctor + '</td>'
+                          + '<td class="td_01"><a href="/drug/fayaoxq?pId='+json[i].pId+'" target="mainFrame" >&nbsp;&nbsp;>>></a></td></tr>';
+                  $('#tb').append(s);
+                }
+                else {
+                  alert("没有数据")
+                }
+
+              }
+            });
+          }
+</script>
 </body>
 </html>

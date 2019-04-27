@@ -200,4 +200,11 @@
     from emr_patient
     where gh_time!=#{d,jdbcType=DATE} and ith_status=#{i,jdbcType=INTEGER}
   </select>
+  <!--根据门诊,住院病人时间查询 -->
+  <select id="selectkaiyao" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_patient
+    where p_id not in (select patient_id from emr_prescription)
+  </select>
 </mapper>

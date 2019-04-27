@@ -26,4 +26,6 @@ public interface PationService {
     List<Pation> selectByNotTime(Date d,int i);
 
     List<Pation> selectByIthStatus(int ith);
+
+    List<Pation> selectkaiyao();
 }

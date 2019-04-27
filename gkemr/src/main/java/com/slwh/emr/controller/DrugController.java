@@ -2,7 +2,11 @@ package com.slwh.emr.controller;
 
 import com.slwh.emr.cogfiger.Result;
 import com.slwh.emr.model.Drug;
+import com.slwh.emr.model.Mr;
+import com.slwh.emr.model.Pation;
 import com.slwh.emr.service.DrugService;
+import com.slwh.emr.service.MrService;
+import com.slwh.emr.service.PationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,7 +25,10 @@ import java.util.List;
 public class DrugController {
     @Resource
     private DrugService drugService;
-
+    @Resource
+    private PationService pationService;
+    @Resource
+    private MrService mrService;
     @RequestMapping("/selectAll")
     @ResponseBody
     public Result select(HttpServletRequest request){
@@ -64,7 +71,16 @@ public class DrugController {
     @RequestMapping("/selectpatient")//待开药病人
     @ResponseBody
     public Result selectpatient(HttpServletRequest request){
-        return Result.success(drugService.selectAll());
+        return Result.success(pationService.selectkaiyao());
+    }
+
+    @RequestMapping("/fayaoxq")//待开药病人详情
+    public String fayaoxq(int pId,HttpServletRequest request){
+        Pation p = pationService.selectById(pId);
+        Mr m = mrService.selectByPId(pId);
+        request.setAttribute("mr",m);
+        request.setAttribute("p",p);
+        return "medical/baoxiao/fayaoxq";
     }
 
     @RequestMapping("/deletedrug")//移除药品跳转

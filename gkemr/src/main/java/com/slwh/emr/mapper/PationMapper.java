@@ -31,4 +31,6 @@ public interface PationMapper {
     List<Pation> selectByNotTime(Date d,int i);
 
     List<Pation> selectByIthStatus(int ith);
+
+    List<Pation> selectkaiyao();
 }

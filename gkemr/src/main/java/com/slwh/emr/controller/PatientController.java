@@ -127,10 +127,10 @@ public class PatientController {
 
         }
 
-        List<Pation> lists = pationService.selectAll()  ;
-        System.out.println("********************"+lists.get(0).getpName());
-        request.setAttribute("lists", lists);
-        return "/media/zhenduan";
+//        List<Pation> lists = pationService.selectAll()  ;
+//        System.out.println("********************"+lists.get(0).getpName());
+//        request.setAttribute("lists", lists);
+        return "medical/baoxiao/fayao";
     }
 
     //查询所有当日门诊,住院病人信息

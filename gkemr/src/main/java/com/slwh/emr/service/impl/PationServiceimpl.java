@@ -62,4 +62,9 @@ public class PationServiceimpl implements PationService {
     public List<Pation> selectByIthStatus(int ith) {
         return pationMapper.selectByIthStatus(ith);
     }
+
+    @Override
+    public List<Pation> selectkaiyao() {
+        return pationMapper.selectkaiyao();
+    }
 }
