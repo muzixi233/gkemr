@@ -61,6 +61,12 @@ public class DrugController {
         return "drug/applicationlist_1";
     }
 
+    @RequestMapping("/selectpatient")//待开药病人
+    @ResponseBody
+    public Result selectpatient(HttpServletRequest request){
+        return Result.success(drugService.selectAll());
+    }
+
     @RequestMapping("/deletedrug")//移除药品跳转
     public String deletedrug(){
         return "drug/deletedrug";

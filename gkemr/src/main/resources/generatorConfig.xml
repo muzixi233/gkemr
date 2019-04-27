@@ -64,8 +64,8 @@
                <!--enableDeleteByExample="false" enableSelectByExample="false"-->
                <!--enableUpdateByExample="false">-->
         <!--</table>-->
-        <table schema="gkemr" tableName="emr_drug"
-               domainObjectName="Drug" enableCountByExample="false"
+        <table schema="gkemr" tableName="emr_prescription"
+               domainObjectName="Prescription" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">
         </table>

@@ -26,7 +26,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td height="25" align="center" valign="bottom" class="td06"><table width="98%" border="0" cellspacing="3" cellpadding="0">
       <tr>
         <td width="15"><img src="../../../images/index_32.gif" width="9" height="9"></td>
-        <td valign="bottom"><span class="title">住院发药</span></td>
+        <td valign="bottom"><span class="title">待开药病人</span></td>
       </tr>
     </table></td>
   </tr>
@@ -57,34 +57,6 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   <tr>
     <td class="td07">1001011</td>
     <td class="td07">张三</td>
-    <td class="td07">xxx</td>
-    <td class="td07"><a href="#" onClick="javascript:openwindow('moreapplist_1-5.jsp','',500,500)">详情>>></a></td>
-  </tr>
-  <tr>
-  
-    <td class="td07">1001012</td>
-    <td class="td07">李四</td>
-    <td class="td07">xxx</td>
-    <td class="td07"><a href="#" onClick="javascript:openwindow('moreapplist_1-5.jsp','',500,500)">详情>>></a></td>
-  </tr>
-  <tr>
-
-    <td class="td07">1001015</td>
-    <td class="td07">王二</td>
-    <td class="td07">xxx</td>
-    <td class="td07"><a href="#" onClick="javascript:openwindow('moreapplist_1-5.jsp','',500,500)">详情>>></a></td>
-  </tr>
-  <tr>
-
-    <td class="td07">1001045</td>
-    <td class="td07">小明</td>
-    <td class="td07">xxx</td>
-    <td class="td07"><a href="#" onClick="javascript:openwindow('moreapplist_1-5.jsp','',500,500)">详情>>></a></td>
-  </tr>
-  <tr>
-
-    <td class="td07">1001056</td>
-    <td class="td07">小红</td>
     <td class="td07">xxx</td>
     <td class="td07"><a href="#" onClick="javascript:openwindow('moreapplist_1-5.jsp','',500,500)">详情>>></a></td>
   </tr>
