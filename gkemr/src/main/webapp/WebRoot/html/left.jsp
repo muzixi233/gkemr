@@ -203,22 +203,22 @@
                         </tr>
                       </table>
 					  <div id="menu_3" style="DISPLAY: none">
-					  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-						  <tr>
-							<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
-							<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
-							<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-							<td nowrap><a href="../html/worktime/createleavelist1" target="mainFrame" class="a03">我要请假</a></td>
-						  </tr>
-						</table>
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-						  <tr>
-							<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
-							<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
-							<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-							<td nowrap><a href="../html/worktime/leavelist_1" target="mainFrame" class="a03">我的请假</a></td>
-						  </tr>
-						</table>
+					  <%--<table width="100%" border="0" cellspacing="0" cellpadding="0">--%>
+						  <%--<tr>--%>
+							<%--<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>--%>
+							<%--<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>--%>
+							<%--<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>--%>
+							<%--<td nowrap><a href="../html/worktime/createleavelist1" target="mainFrame" class="a03">我要请假</a></td>--%>
+						  <%--</tr>--%>
+						<%--</table>--%>
+						<%--<table width="100%" border="0" cellspacing="0" cellpadding="0">--%>
+						  <%--<tr>--%>
+							<%--<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>--%>
+							<%--<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>--%>
+							<%--<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>--%>
+							<%--<td nowrap><a href="../html/worktime/leavelist_1" target="mainFrame" class="a03">我的请假</a></td>--%>
+						  <%--</tr>--%>
+						<%--</table>--%>
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						  <tr>
 							<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
@@ -227,14 +227,14 @@
 							<td nowrap><a href="/nurse/nurselist" target="mainFrame" class="a03">护理管理</a></td>
 						  </tr>
 						</table>
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-						  <tr>
-							<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
-							<td width="19"><img src="../images/tree_23.gif" width="19" height="20"></td>
-							<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-							<td nowrap><a href="../html/worktime/leavelist_31" target="mainFrame" class="a03">考勤统计</a></td>
-						  </tr>
-						</table>
+						<%--<table width="100%" border="0" cellspacing="0" cellpadding="0">--%>
+						  <%--<tr>--%>
+							<%--<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>--%>
+							<%--<td width="19"><img src="../images/tree_23.gif" width="19" height="20"></td>--%>
+							<%--<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>--%>
+							<%--<td nowrap><a href="../html/worktime/leavelist_31" target="mainFrame" class="a03">考勤统计</a></td>--%>
+						  <%--</tr>--%>
+						<%--</table>--%>
                       </div>
                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
@@ -268,14 +268,14 @@
 							<td nowrap><a href="/drug/applicationlist_2" target="mainFrame" class="a03">进药审批</a></td>
 						  </tr>
 						</table>
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-						  <tr>
-							<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
-							<td width="19"><img src="../images/tree_23.gif" width="19" height="20"></td>
-							<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-							<td nowrap><a href="/drug/applicationlist_3" target="mainFrame" class="a03">申报统计</a></td>
-						  </tr>
-						</table>
+						<%--<table width="100%" border="0" cellspacing="0" cellpadding="0">--%>
+						  <%--<tr>--%>
+							<%--<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>--%>
+							<%--<td width="19"><img src="../images/tree_23.gif" width="19" height="20"></td>--%>
+							<%--<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>--%>
+							<%--<td nowrap><a href="/drug/applicationlist_3" target="mainFrame" class="a03">申报统计</a></td>--%>
+						  <%--</tr>--%>
+						<%--</table>--%>
 					  </div>
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                        <tr>
@@ -290,26 +290,26 @@
                            <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-                           <td nowrap><a href="../html/bpms/startprocess" target="mainFrame" class="a03">启动流程</a></td>
+                           <td nowrap><a href="../html/bpms/startprocess" target="mainFrame" class="a03">开药审核</a></td>
                          </tr>
                        </table>
-         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                         <tr>
-                           <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
-                           <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
-                           <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-                           <td nowrap><a href="../html/bpms/undo" target="mainFrame" class="a03">待办事宜</a></td>
-                         </tr>
-                       </table>
+                        <%--<table width="100%" border="0" cellspacing="0" cellpadding="0">--%>
+                         <%--<tr>--%>
+                           <%--<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>--%>
+                           <%--<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>--%>
+                           <%--<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>--%>
+                           <%--<td nowrap><a href="../html/bpms/undo" target="mainFrame" class="a03">待办事宜</a></td>--%>
+                         <%--</tr>--%>
+                       <%--</table>--%>
 
-                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                         <tr>
-                           <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
-                           <td width="19"><img src="../images/tree_23.gif" width="19" height="20"></td>
-                           <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-                           <td nowrap><a href="../html/bpms/monitor" target="mainFrame" class="a03">流程监控</a></td>
-                         </tr>
-                       </table>
+                       <%--<table width="100%" border="0" cellspacing="0" cellpadding="0">--%>
+                         <%--<tr>--%>
+                           <%--<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>--%>
+                           <%--<td width="19"><img src="../images/tree_23.gif" width="19" height="20"></td>--%>
+                           <%--<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>--%>
+                           <%--<td nowrap><a href="../html/bpms/monitor" target="mainFrame" class="a03">流程监控</a></td>--%>
+                         <%--</tr>--%>
+                       <%--</table>--%>
                 </div>
    
 				  <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -326,18 +326,18 @@
                            <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-                           <td nowrap><a href="../html/subject/baoxiao/outpatientList" target="mainFrame" class="a03">门诊信息查询</a></td>
+                           <td nowrap><a href="/emr/outpatientList" target="mainFrame" class="a03">病历信息查询</a></td>
                          </tr>
 
                        </table>
-                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                         <tr>
-                           <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
-                           <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
-                           <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-                           <td nowrap><a href="../html/subject/baoxiao/pharmacyList" target="mainFrame" class="a03">药房信息查询</a></td>
-                         </tr>
-                       </table>
+                       <%--<table width="100%" border="0" cellspacing="0" cellpadding="0">--%>
+                         <%--<tr>--%>
+                           <%--<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>--%>
+                           <%--<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>--%>
+                           <%--<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>--%>
+                           <%--<td nowrap><a href="../html/subject/baoxiao/pharmacyList" target="mainFrame" class="a03">药房信息查询</a></td>--%>
+                         <%--</tr>--%>
+                       <%--</table>--%>
                      </div>
 
                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -353,7 +353,7 @@
                            <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-                           <td nowrap><a href="../html/pms/rolelist" target="mainFrame" class="a03">角色管理</a></td>
+                           <td nowrap><a href="/role/rolelist" target="mainFrame" class="a03">角色管理</a></td>
                          </tr>
                        </table>
                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -361,7 +361,7 @@
                            <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_23.gif" width="19" height="20"></td>
                            <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
-                           <td nowrap><a href="../html/pms/query" target="mainFrame" class="a03">用户管理</a></td>
+                           <td nowrap><a href="/role/query" target="mainFrame" class="a03">用户管理</a></td>
                          </tr>
                        </table>
                 </div></td>

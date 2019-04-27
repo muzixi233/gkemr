@@ -38,6 +38,12 @@ public class DrugController {
         return "drug/adddrug";
     }
 
+    @RequestMapping("/delete")//删除药品
+    public String delete(HttpServletRequest request,int dr_id){
+        drugService.delete(dr_id);
+        return "drug/deletedrug";
+    }
+
     @RequestMapping("/insert")//新增药品、
     public String insert(Drug drug,HttpServletRequest request,String dr_name,String dr_num,String dr_price,String dr_account
             ,int dr_level){
