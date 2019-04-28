@@ -14,4 +14,6 @@ public interface DrugService {
     int update(Drug drug);
 
     int delete(Integer drId);
+
+    List<Drug> selectBypId(int id);
 }

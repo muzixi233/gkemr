@@ -122,4 +122,18 @@
     <include refid="Base_Column_List" />
     from emr_drug
   </select>
+
+  <!--根据病人查询药品信息  -->
+  <select id="selectBypId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  select
+    emr_drug.dr_name
+from
+    emr_patient,
+    emr_drug,
+    emr_prescription
+where
+    emr_patient.p_id = emr_prescription.patient_id
+and emr_drug.dr_id = emr_prescription.d_id
+AND emr_patient.p_id=#{id,jdbcType=INTEGER}
+  </select>
 </mapper>

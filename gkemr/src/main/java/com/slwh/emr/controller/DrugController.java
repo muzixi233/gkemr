@@ -1,12 +1,8 @@
 package com.slwh.emr.controller;
 
 import com.slwh.emr.cogfiger.Result;
-import com.slwh.emr.model.Drug;
-import com.slwh.emr.model.Mr;
-import com.slwh.emr.model.Pation;
-import com.slwh.emr.service.DrugService;
-import com.slwh.emr.service.MrService;
-import com.slwh.emr.service.PationService;
+import com.slwh.emr.model.*;
+import com.slwh.emr.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,6 +25,11 @@ public class DrugController {
     private PationService pationService;
     @Resource
     private MrService mrService;
+    @Resource
+    private PrescriptionService prescriptionService;
+    @Resource
+   private IthService ithService;
+
     @RequestMapping("/selectAll")
     @ResponseBody
     public Result select(HttpServletRequest request){
@@ -78,9 +79,35 @@ public class DrugController {
     public String fayaoxq(int pId,HttpServletRequest request){
         Pation p = pationService.selectById(pId);
         Mr m = mrService.selectByPId(pId);
+       List<Drug>  drug = drugService.selectAll();
         request.setAttribute("mr",m);
         request.setAttribute("p",p);
+        request.setAttribute("drug",drug);
         return "medical/baoxiao/fayaoxq";
+    }
+
+    @RequestMapping("/kaiyao")//开药
+    public String kaiyao(int DrId[],int pId,HttpServletRequest request,Pation pation){
+        Prescription prescription = new Prescription();
+        Ith ith=ithService.selectByPId(pId);
+        Mr mr = mrService.selectByPId(pId);
+        System.out.println(pation.getpName());
+        for(int i = 0; i<DrId.length; i++){
+            prescription.setPatientId(pId);
+            prescription.setdId(DrId[i]);
+            prescription.setStatus("1");
+            prescription.setuId(mr.getBlUser());
+            prescriptionService.insert(prescription);
+        }
+
+//        Pation p = pationService.selectById(pId);
+//        Mr m = mrService.selectByPId(pId);
+//        List<Drug>  drug = drugService.selectAll();
+//        System.out.println(drug.get(1).getDrName());
+//        request.setAttribute("mr",m);
+//        request.setAttribute("p",p);
+//        request.setAttribute("drug",drug);
+        return "medical/baoxiao/fayao";
     }
 
     @RequestMapping("/deletedrug")//移除药品跳转

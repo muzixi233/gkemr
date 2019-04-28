@@ -19,4 +19,6 @@ public interface DrugMapper {
     int updateById(Drug record);
 
     List<Drug> selectAll();
+
+    List<Drug> selectBypId(int id);
 }

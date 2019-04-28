@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 
 /**
- * @author muzixi 难受
+ * @author slwh 谌伟 刘清平 王祖玲 何蓉芳
+ * 病人控制页
  */
 @Controller
 @RequestMapping("patient")
@@ -102,9 +103,11 @@ public class PatientController {
         return "/media/treat";
     }
     @RequestMapping("/treatp")//诊断
-    public String treatp(int pId,HttpServletRequest request,String bl_style,String status1,String pName,String mr_num)
+    public String treatp(int pId,HttpServletRequest request,String bl_style,String status1,String pName,String mr_num,String pDoctor)
     {
         Pation p=pationService.selectById(pId);
+        User user=UserService.selectByName(pDoctor);
+        System.out.println(user.getuId()+"sdasdasdasdasdasd");
         if (status1!=null){
             p.setStatus(1);//已看诊
             pationService.update(p);//更改病人状态
@@ -123,6 +126,7 @@ public class PatientController {
             m.setBlPatient(p.getpId());
             m.setBlNum(mr_num);
             m.setBlStyle(bl_style);
+            m.setBlUser(user.getuId());
             mrService.insert(m);
 
         }

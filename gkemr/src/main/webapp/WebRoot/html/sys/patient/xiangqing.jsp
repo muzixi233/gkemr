@@ -89,10 +89,6 @@
         </select></td>
     </tr>
     <tr>
-        <td height="24" class="td_form01">病历编号</td>
-        <td class="td_form02"><input type="text" name="ith_no" class="input" value="<%=mr.getBlNum()%>"/></td>
-    </tr>
-    <tr>
     <td align="center">
         <input name=cancel  type=button class=buttonface value= '  返回  '  onClick="history.back(-1)"></td></tr>
         <%}%>

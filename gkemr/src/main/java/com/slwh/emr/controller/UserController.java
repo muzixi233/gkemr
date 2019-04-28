@@ -16,7 +16,8 @@ import java.io.IOException;
 import java.util.*;
 import javax.servlet.http.*;
 /**
- * @author muzixi 难受
+ * @author slwh 谌伟 刘清平 王祖玲 何蓉芳
+ * 用户控制页
  */
 @Controller
 @RequestMapping("user")
@@ -28,6 +29,10 @@ public class UserController {
     @RequestMapping("/hello")
     public String index(){
         return "login";
+    }
+    @RequestMapping("/test")
+    public String test(){
+        return "test";
     }
     @RequestMapping("/index")
     public String StringhelloJsp(){

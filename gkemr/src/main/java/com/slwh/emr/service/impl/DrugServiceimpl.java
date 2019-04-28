@@ -35,4 +35,9 @@ public class DrugServiceimpl implements DrugService {
     public int delete(Integer drId) {
         return drugMapper.deleteById(drId);
     }
+
+    @Override
+    public List<Drug> selectBypId(int id) {
+        return drugMapper.selectBypId(id);
+    }
 }

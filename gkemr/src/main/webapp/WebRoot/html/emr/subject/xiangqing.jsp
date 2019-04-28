@@ -7,11 +7,13 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-    <title>病人诊断</title>
+    <title>病历详细信息</title>
     <link href="../../css/style.css" rel="stylesheet" type="text/css">
     <script language="JavaScript" src="../../js/jquery2.js"></script>
     <script src="../../js/cloud.js" type="text/javascript"></script>
     <script language="javascript" src="../../js/js.js"></script>
+    <script language="javascript" src="../../js/jquery-1.4.4.min.js"></script>
+    <script language="javascript" src="../../js/jquery.jqprint-0.3.js"></script>
     <SCRIPT language=JavaScript type=text/JavaScript>
         function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
         {
@@ -25,78 +27,85 @@
     </SCRIPT>
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div id="ddd">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td height="25" align="center" valign="bottom" class="td06"><table width="98%" border="0" cellspacing="3" cellpadding="0">
       <tr>
         <td width="15"><img src="../../images/index_32.gif" width="9" height="9"></td>
-        <td valign="bottom" class="title">病人诊断</td>
+        <td valign="bottom" class="title">病历详细信息</td>
       </tr>
     </table></td>
   </tr>
 </table>
 <br>
-<%
-    Pation pation= (Pation)request.getAttribute("pation");
-    if(pation!=null) {
-%>
-<form name="form1" method="post" action="/patient/treatp?pId=<%=pation.getpId() %>&pDoctor=<%=pation.getDoctor()%>">
-<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <%
+        Pation pation= (Pation)request.getAttribute("p");
+        Mr mr = (Mr) request.getAttribute("mr");
+        List<Drug> drugs = (List<Drug>) request.getAttribute("drug");
+        if(pation!=null) {
+    %>
    <tr>
      <td width="90" height="24" class="td_form01">姓名</td>
-     <td class="td_form02" name="pName"><%=pation.getpName()%></td>
+       <td class="td_form02"><%=pation.getpName()%></td>
    </tr>	
       <tr>
         <td height="24" class="td_form01">性别</td>
-        <td class="td_form02" name="pSex"><%=pation.getpSex()%></td>
+        <td class="td_form02"><%=pation.getpSex()%></td>
    </tr>	
       <tr>
         <td height="24" class="td_form01">年龄</td>
-        <td class="td_form02" name="pAge"><%=pation.getpAge()%></td>
+        <td class="td_form02"><%=pation.getpAge()%></td>
    </tr>	
       <tr>
         <td height="24" class="td_form01">电话</td>
-        <td class="td_form02" name="pTel"><%=pation.getpTel()%></td>
+        <td class="td_form02"><%=pation.getpTel()%></td>
    </tr>	
       <tr>
         <td height="24" class="td_form01">病历编号</td>
-        <td class="td_form02" name="mrNum"><%=pation.getMrNum()%></td>
+        <td class="td_form02"><%=pation.getMrNum()%></td>
    </tr>	
       <tr>
         <td height="24" class="td_form01">门诊编号</td>
-        <td class="td_form02" name="mzNum"><%=pation.getMzNum()%></td>
+        <td class="td_form02"><%=pation.getMzNum()%></td>
    </tr>	
       <tr>
         <td height="24" class="td_form01">挂号时间</td>
-        <td class="td_form02" name="date"><%=pation.getDate()%></td>
+        <td class="td_form02"><%=pation.getDate()%></td>
    </tr>	
-         <tr>
+    <tr>
            <td height="24" class="td_form01">看诊医生</td>
-           <td class="td_form02" name="pDoctor"><%=pation.getDoctor()%></td>
+           <td class="td_form02"><%=pation.getDoctor()%></td>
    </tr>
-    </tr>ll
     <tr>
-        <td height="24" class="td_form01">诊断病因</td>
-        <td class="td_form02"><input type="text" name="bl_style" class="input" /></td>
-    </tr>
+    <td height="24" class="td_form01">诊断病因</td>
+    <td class="td_form02"><%=mr.getBlStyle()%></td>
+</tr>
     <tr>
-        <td height="24" class="td_form01">是否住院</td>
-        <td class="td_form02" name="status1"><select name="status1">
-            <option value="1">是</option>
-            <option value="0">否</option>
-        </select></td>
+        <td height="24" class="td_form01">开药信息</td>
+        <%
+            if(drugs!=null)
+                for(Drug drus:drugs){  %>
+        <td class="td_form02"><%=drus.getDrName()%></td>
+        <% }%>
+
     </tr>
-    <tr>
-        <td height="24" class="td_form01">病历编号</td>
-        <td class="td_form02"><input type="text" name="mr_num" class="input" /></td>
-    </tr>
+</table>
+</div>
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
     <td align="center">
-        <td align="center"><input name=save type="submit" class=buttonface value= '  提交  '  >
+        <input name=cancel  type=button  value= '  打印  '  onClick="aa()">
         <input name=cancel  type=button class=buttonface value= '  返回  '  onClick="history.back(-1)"></td></tr>
         <%}%>
 </table>
-</form>
+<script language="javascript">
+
+    function aa(){
+        $("#ddd").jqprint();
+    }
+</script>
 </body>
 </html>

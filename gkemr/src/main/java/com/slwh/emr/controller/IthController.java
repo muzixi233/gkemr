@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-
+/**
+ * @author slwh 谌伟 刘清平 王祖玲 何蓉芳
+ * 住院控制页
+ */
 @Controller
 @RequestMapping("ith")
 public class IthController {
@@ -65,7 +68,7 @@ public class IthController {
         ith.setIthNurse(nurse.getnId());
         //医生信息
         User user=UserService.selectByName(ith.getIthUser());
-
+        System.out.println(user.getuId()+"dsdasdasdasdssdasdasd");
        if(ithService.insert(ith)==1)//住院信息
        {
            System.out.println("%%%%%%%%%%%%%%"+ith.getIthPatient());

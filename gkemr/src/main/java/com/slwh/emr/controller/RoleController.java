@@ -5,7 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
-
+/**
+ * @author slwh 谌伟 刘清平 王祖玲 何蓉芳
+ * 角色控制页
+ */
 @Controller
 @RequestMapping("role")
 public class RoleController {

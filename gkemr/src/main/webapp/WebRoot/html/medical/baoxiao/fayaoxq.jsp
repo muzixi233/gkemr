@@ -12,6 +12,14 @@
     <script language="JavaScript" src="../../js/jquery2.js"></script>
     <script src="../../js/cloud.js" type="text/javascript"></script>
     <script language="javascript" src="../../js/js.js"></script>
+    <link rel="stylesheet" href="../../css/bootstrap-3.3.2.min.css" type="text/css">
+        <link rel="stylesheet" href="../../css/bootstrap-example.min.css" type="text/css">
+        <link rel="stylesheet" href="../../css/prettify.min.css" type="text/css">
+        <script type="text/javascript" src="../../js/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="../../js/bootstrap-3.3.2.min.js"></script>
+        <script type="text/javascript" src="../../js/prettify.min.js"></script>
+        <link rel="stylesheet" href="../../css/bootstrap-multiselect.css" type="text/css">
+        <script type="text/javascript" src="../../js/bootstrap-multiselect.js"></script>
     <SCRIPT language=JavaScript type=text/JavaScript>
         function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
         {
@@ -39,9 +47,10 @@
 <%
     Pation pation= (Pation)request.getAttribute("p");
     Mr mr = (Mr) request.getAttribute("mr");
+    List<Drug> drug =(List<Drug>) request.getAttribute("drug");
     if(pation!=null) {
 %>
-<form name="form1" method="post" action="/patient/treatp?pId=<%=pation.getpId() %>">
+<form name="form1" method="post" action="/drug/kaiyao?pId=<%=pation.getpId() %>">
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 
    <tr>
@@ -94,12 +103,12 @@
     </tr>
     <tr>
         <td height="24" class="td_form01">开具药品</td>
-        <td class="td_form02" name="drug"><select name="status1" multiple="multiple">
-            <option value="1">是</option>
-            <option value="2">否</option>
-            <option value="3">否</option>
-            <option value="4">否</option>
-        </select></td>
+        <td class="td_form02" name="drug"> <select id="Id" multiple="multiple" name="DrId">
+                  <%if(drug!=null)
+            for(Drug drug1:drug){  %>
+            <option value="<%=drug1.getDrId()%>"><%=drug1.getDrName() %></option>
+            <% }%>
+                </select></td>
     </tr>
     <tr>
     <td align="center">
@@ -108,16 +117,23 @@
         <%}%>
 </table>
 </form>
-<script type="text/javascript">
+</body>
 
-    $('#checkedLevel').multipleSelect({
-        addTitle: true, //鼠标点悬停在下拉框时是否显示被选中的值
-        name: "质控级别",
-        selectAllText: "选择全部", //选择全部的复选框的text值
-        allSelected: "全部", //全部选中后显示的值
-        //delimiter: ', ', //多个值直接的间隔符，默认是逗号
-        placeholder: "质控级别" //不选择时下拉框显示的内容
+<script type="text/javascript">
+    $(document).ready(function () {
+        window.prettyPrint() && prettyPrint();
+    });
+    // 插件实例
+    $(document).ready(function () {
+        $("#Id").multiselect();
+        // 点击事件获取所有选中option的value值
+        $("#btn").click(function () {
+            var selectValueStr = [];
+            $("#Id option:selected").each(function () {
+                selectValueStr.push($(this).val());
+            })
+            console.log(selectValueStr)
+        })
     });
 </script>
-</body>
 </html>
