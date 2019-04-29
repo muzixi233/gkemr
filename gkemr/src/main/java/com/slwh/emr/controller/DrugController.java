@@ -99,14 +99,6 @@ public class DrugController {
             prescription.setuId(mr.getBlUser());
             prescriptionService.insert(prescription);
         }
-
-//        Pation p = pationService.selectById(pId);
-//        Mr m = mrService.selectByPId(pId);
-//        List<Drug>  drug = drugService.selectAll();
-//        System.out.println(drug.get(1).getDrName());
-//        request.setAttribute("mr",m);
-//        request.setAttribute("p",p);
-//        request.setAttribute("drug",drug);
         return "medical/baoxiao/fayao";
     }
 
