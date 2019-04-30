@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.slwh.emr.mapper.PrescriptionMapper" >
+  <resultMap id="BaseResultMap" type="com.slwh.emr.model.Prescription" >
+    <id column="patient_id" property="patientId" jdbcType="INTEGER" />
+    <id column="d_id" property="dId" jdbcType="INTEGER" />
+    <id column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="shenhe" property="shenhe" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    patient_id, d_id, u_id, status, shenhe
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="com.slwh.emr.model.PrescriptionKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from emr_prescription
+    where patient_id = #{patientId,jdbcType=INTEGER}
+      and d_id = #{dId,jdbcType=INTEGER}
+      and u_id = #{uId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="com.slwh.emr.model.PrescriptionKey" >
+    delete from emr_prescription
+    where patient_id = #{patientId,jdbcType=INTEGER}
+      and d_id = #{dId,jdbcType=INTEGER}
+      and u_id = #{uId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.slwh.emr.model.Prescription" >
+    insert into emr_prescription (patient_id, d_id, u_id, 
+      status, shenhe)
+    values (#{patientId,jdbcType=INTEGER}, #{dId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, 
+      #{status,jdbcType=VARCHAR}, #{shenhe,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.slwh.emr.model.Prescription" >
+    insert into emr_prescription
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="patientId != null" >
+        patient_id,
+      </if>
+      <if test="dId != null" >
+        d_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="shenhe != null" >
+        shenhe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="patientId != null" >
+        #{patientId,jdbcType=INTEGER},
+      </if>
+      <if test="dId != null" >
+        #{dId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="shenhe != null" >
+        #{shenhe,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByIdSelective" parameterType="com.slwh.emr.model.Prescription" >
+    update emr_prescription
+    <set >
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="shenhe != null" >
+        shenhe = #{shenhe,jdbcType=INTEGER},
+      </if>
+    </set>
+    where patient_id = #{patientId,jdbcType=INTEGER}
+      and d_id = #{dId,jdbcType=INTEGER}
+      and u_id = #{uId,jdbcType=INTEGER}
+  </update>
+  <update id="updateById" parameterType="com.slwh.emr.model.Prescription" >
+    update emr_prescription
+    set status = #{status,jdbcType=VARCHAR},
+      shenhe = #{shenhe,jdbcType=INTEGER}
+    where patient_id = #{patientId,jdbcType=INTEGER}
+      and d_id = #{dId,jdbcType=INTEGER}
+      and u_id = #{uId,jdbcType=INTEGER}
+  </update>
+</mapper>
