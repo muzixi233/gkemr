@@ -25,7 +25,7 @@
 </div>
 <div class="loginbody"> <span class="systemlogo"></span>
   <div class="loginbox">
-    <form action="" >
+    <form action="" method="post" >
       <ul>
         <li>
           <input id="username" name="username" type="text" class="loginuser" />
@@ -37,7 +37,7 @@
           <input name="loginy" type="text" class="loginy" placeholder="输入验证码"/><label><img src="../images/images.jpg" /></label>
         </li>
         <li>
-          <input name="button" type="button" class="loginbtn" value="登录" id="btn" />
+          <input name="button" type="submit" class="loginbtn" value="登录"/>
         </li>
       </ul>
     </form>

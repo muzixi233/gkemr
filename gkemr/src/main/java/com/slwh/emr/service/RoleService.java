@@ -2,6 +2,7 @@ package com.slwh.emr.service;
 
 import com.slwh.emr.model.Bed;
 import com.slwh.emr.model.Role;
+import com.slwh.emr.model.User;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface RoleService {
     int update(Role role);
 
     int delete(Integer rId);
+
+    List<Role> getRolesByUserId(Integer userid);
 }

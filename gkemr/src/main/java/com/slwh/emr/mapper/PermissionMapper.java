@@ -21,4 +21,6 @@ public interface PermissionMapper {
     int updateById(Permission record);
 
     List<Permission> selectAll();
+
+    List<Permission> getPermissionsByUserId(Integer id);
 }

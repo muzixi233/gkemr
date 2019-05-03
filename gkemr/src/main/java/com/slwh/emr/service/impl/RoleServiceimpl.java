@@ -36,4 +36,9 @@ public class RoleServiceimpl implements RoleService {
     public int delete(Integer rId) {
         return roleMapper.deleteById(rId);
     }
+
+    @Override
+    public List<Role> getRolesByUserId(Integer userid) {
+        return roleMapper.getRolesByUserId(userid);
+    }
 }

@@ -15,4 +15,6 @@ public interface MenuService {
     int update(Menu menu);
 
     int delete(Integer mId);
+
+    List<Menu> getMenusByUserId(int Id);
 }

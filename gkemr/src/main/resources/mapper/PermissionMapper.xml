@@ -62,4 +62,16 @@
     <include refid="Base_Column_List" />
     from emr_permission
   </select>
+
+  <!--根据用户id查询所有权限信息  -->
+  <select id="getPermissionsByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    emr_permission.pe_id,emr_permission.pe_name
+    from emr_permission,emr_role_permission,emr_role,emr_user,emr_role_user
+    where emr_permission.pe_id=emr_role_permission.pe_id
+    and emr_role_permission.r_id=emr_role.r_id
+    and emr_role.r_id=emr_role_user.r_id
+    and emr_role_user.u_id=#{id,jdbcType=INTEGER}
+  </select>
+
 </mapper>

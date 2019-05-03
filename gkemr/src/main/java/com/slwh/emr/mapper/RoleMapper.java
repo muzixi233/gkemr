@@ -21,4 +21,6 @@ public interface RoleMapper {
     int updateById(Role record);
 
     List<Role> selectAll();
+
+    List<Role> getRolesByUserId(Integer userid);
 }

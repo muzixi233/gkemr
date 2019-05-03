@@ -62,4 +62,16 @@
     <include refid="Base_Column_List" />
     from emr_menu
   </select>
+
+  <!--根据user查询所有菜单信息  -->
+  <select id="getMenusByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_menu,emr_menu_permission,emr_permission,emr_role_permission,emr_role_user
+    where emr_menu.m_id=emr_menu_permission.m_id
+    and emr_menu_permission.pe_id=emr_permission.pe_id
+    and emr_permission.pe_id=emr_role_permission.pe_id
+    and emr_role_permission.r_id=emr_role_user.r_id
+    and emr_role_user.u_id=#{#id,jdbcType=INTEGER}
+  </select>
 </mapper>

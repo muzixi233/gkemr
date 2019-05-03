@@ -15,4 +15,6 @@ public interface PermissionService {
     int update(Permission permission);
 
     int delete(Integer peId);
+
+    List<Permission> getPermissionsByUserId(int id);
 }

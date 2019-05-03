@@ -20,4 +20,6 @@ public interface MenuMapper {
     int updateById(Menu record);
 
     List<Menu> selectAll();
+
+    List<Menu> getMenusByUserId(int id);
 }

@@ -37,4 +37,9 @@ public class MenuServiceimpl implements MenuService {
     public int delete(Integer mId) {
         return menuMapper.deleteById(mId);
     }
+
+    @Override
+    public List<Menu> getMenusByUserId(int Id) {
+        return menuMapper.getMenusByUserId(Id);
+    }
 }

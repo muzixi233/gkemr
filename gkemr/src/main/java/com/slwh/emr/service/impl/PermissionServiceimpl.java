@@ -36,4 +36,9 @@ public class PermissionServiceimpl implements PermissionService {
     public int delete(Integer peId) {
         return permissionMapper.deleteById(peId);
     }
+
+    @Override
+    public List<Permission> getPermissionsByUserId(int id) {
+        return permissionMapper. getPermissionsByUserId(id);
+    }
 }
