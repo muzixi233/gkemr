@@ -4,6 +4,8 @@ import com.slwh.emr.cogfiger.Result;
 import com.slwh.emr.model.User;
 import com.slwh.emr.service.UserService;
 import org.apache.ibatis.annotations.Param;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,16 +29,38 @@ public class UserController {
 
 
     @RequestMapping("/hello")
-    public String index(){
+    public String login(HttpServletRequest request, Map<String, Object> map)throws Exception{
+        System.out.println("登录测试");
+        // 登录失败从request中获取shiro处理的异常信息。
+        // shiroLoginFailure:就是shiro异常类的全类名.
+        String exception = (String) request.getAttribute("shiroLoginFailure");
+        System.out.println("exception=" + exception);
+        String msg = "";
+        if (exception != null) {
+            if (UnknownAccountException.class.getName().equals(exception)) {
+                System.out.println("UnknownAccountException -- > 账号不存在：");
+                msg = "UnknownAccountException -- > 账号不存在：";
+            } else if (IncorrectCredentialsException.class.getName().equals(exception)) {
+                System.out.println("IncorrectCredentialsException -- > 密码不正确：");
+                msg = "IncorrectCredentialsException -- > 密码不正确：";
+            }
+             else {
+                msg = "else >> "+exception;
+                System.out.println("else -- >" + exception);
+            }
+        }
+        map.put("msg", msg);
+        System.out.println(msg);
         return "login";
     }
     @RequestMapping("/test")
     public String test(){
         return "test";
     }
-    @RequestMapping("/index")
-    public String StringhelloJsp(){
-        return "index";
+
+    @RequestMapping({"/","/index"})
+    public String index(){
+        return"/index";
     }
 /*
 门诊医师

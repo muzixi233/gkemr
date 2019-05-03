@@ -4,11 +4,15 @@ import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.util.WebUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -54,7 +58,7 @@ public class ShiroConfig {
     public HashedCredentialsMatcher hashedCredentialsMatcher(){
         HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
         hashedCredentialsMatcher.setHashAlgorithmName("md5");//散列算法:这里使用MD5算法;
-        hashedCredentialsMatcher.setHashIterations(2);//散列的次数，比如散列两次，相当于 md5(md5(""));
+        //hashedCredentialsMatcher.setHashIterations(2);//散列的次数，比如散列两次，相当于 md5(md5(""));
         return hashedCredentialsMatcher;
     }
 
@@ -98,5 +102,16 @@ public class ShiroConfig {
         r.setExceptionAttribute("ex");     // Default is "exception"
         //r.setWarnLogCategory("example.MvcLogger");     // No default
         return r;
+    }
+
+    public class MyFormAuthenticationFilter extends FormAuthenticationFilter {
+
+        // 制定session跳转url
+        private final String successUrl = "/user/index";
+
+        @Override
+        protected void issueSuccessRedirect(ServletRequest request, ServletResponse response) throws Exception {
+            WebUtils.issueRedirect(request, response, successUrl, null, true);
+        }
     }
 }

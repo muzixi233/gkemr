@@ -30,6 +30,7 @@ public class MyShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         System.out.println("权限配置-->MyShiroRealm.doGetAuthorizationInfo()");
+        System.out.println("进入用户验证");
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         User user  = (User) principals.getPrimaryPrincipal();
         List<Role> roles=roleService.getRolesByUserId(user.getuId());
@@ -48,6 +49,7 @@ public class MyShiroRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
             throws AuthenticationException {
         System.out.println("MyShiroRealm.doGetAuthenticationInfo()");
+        System.out.println("开始验证");
         //获取用户的输入的账号.
         String username = (String)token.getPrincipal();
         System.out.println(token.getCredentials());

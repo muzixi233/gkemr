@@ -37,7 +37,7 @@
           <input name="loginy" type="text" class="loginy" placeholder="输入验证码"/><label><img src="../images/images.jpg" /></label>
         </li>
         <li>
-          <input name="button" type="submit" class="loginbtn" value="登录"/>
+          <input name="button" type="submit" class="loginbtn" value="登录" />
         </li>
       </ul>
     </form>
