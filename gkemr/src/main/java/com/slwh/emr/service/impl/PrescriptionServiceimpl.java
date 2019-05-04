@@ -7,6 +7,7 @@ import com.slwh.emr.service.PrescriptionService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class PrescriptionServiceimpl implements PrescriptionService {
@@ -41,5 +42,15 @@ public class PrescriptionServiceimpl implements PrescriptionService {
     @Override
     public int updateById(Prescription record) {
         return prescriptionMapper.updateById(record);
+    }
+
+    @Override
+    public List<Prescription> selectshenhe() {
+        return prescriptionMapper.selectshenhe();
+    }
+
+    @Override
+    public Prescription selectBypId(int id) {
+        return prescriptionMapper.selectBypId(id);
     }
 }

@@ -29,6 +29,8 @@ public class DrugController {
     private PrescriptionService prescriptionService;
     @Resource
    private IthService ithService;
+    @Resource
+    private  UserService userService;
 
     @RequestMapping("/selectAll")
     @ResponseBody
@@ -93,13 +95,57 @@ public class DrugController {
         Mr mr = mrService.selectByPId(pId);
         System.out.println(pation.getpName());
         for(int i = 0; i<DrId.length; i++){
+            Drug drug = drugService.selectById(DrId[i]);
             prescription.setPatientId(pId);
             prescription.setdId(DrId[i]);
-            prescription.setStatus("1");
+            if (drug.getDrLevel()==1){
+                prescription.setStatus("0");
+            }
+            else {
+                prescription.setStatus("1");
+            }
             prescription.setuId(mr.getBlUser());
             prescriptionService.insert(prescription);
         }
         return "medical/baoxiao/fayao";
+    }
+
+    @RequestMapping("/shenhe")//药品审核跳转页
+    public String shenhe(HttpServletRequest request){
+
+        return "shenhe/drugshlist";
+    }
+
+    @RequestMapping("/shenhe1")//药品审核详情页
+    public String shenhe1(HttpServletRequest request,int pId,int drId,int uId){
+      User user = userService.selectById(uId);
+      Pation pation =pationService.selectById(pId);
+      Drug drug = drugService.selectById(drId);
+      Mr mr= mrService.selectByPId(pId);
+      request.setAttribute("mr",mr);
+      request.setAttribute("user",user);
+      request.setAttribute("patient",pation);
+      request.setAttribute("drug",drug);
+        return "shenhe/shxq";
+    }
+    @RequestMapping("/shenhe2")//药品审核详情页
+    public String shenhe2(HttpServletRequest request,int shenhe,int pId,int uId){
+        Prescription   prescription = prescriptionService.selectBypId(pId);
+        if (shenhe==1){
+            prescription.setStatus("1");
+
+        }else {
+            prescription.setStatus("0");
+        }
+        prescription.setShenhe(uId);
+        prescriptionService.updateById(prescription);
+        return "shenhe/drugshlist";
+    }
+    @RequestMapping("/selectAllDrug")//待审核药品
+    @ResponseBody
+    public Result selectAllDrug(HttpServletRequest request){//审核详情页
+
+        return Result.success(prescriptionService.selectshenhe());
     }
 
     @RequestMapping("/deletedrug")//移除药品跳转

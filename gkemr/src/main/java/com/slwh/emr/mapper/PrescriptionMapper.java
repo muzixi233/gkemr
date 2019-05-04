@@ -4,6 +4,8 @@ import com.slwh.emr.model.Prescription;
 import com.slwh.emr.model.PrescriptionKey;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface PrescriptionMapper {
     int deleteById(PrescriptionKey key);
@@ -17,4 +19,8 @@ public interface PrescriptionMapper {
     int updateByIdSelective(Prescription record);
 
     int updateById(Prescription record);
+
+    List<Prescription> selectshenhe();
+
+    Prescription selectBypId(int id);
 }

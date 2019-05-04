@@ -16,4 +16,6 @@ public interface DrugService {
     int delete(Integer drId);
 
     List<Drug> selectBypId(int id);
+
+    List selectshenhe();
 }

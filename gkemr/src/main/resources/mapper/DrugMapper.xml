@@ -136,4 +136,14 @@ where
 and emr_drug.dr_id = emr_prescription.d_id
 AND emr_patient.p_id=#{id,jdbcType=INTEGER}
   </select>
+  <!--查询所有待审核药品信息  -->
+  <select id="selectshenhe" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+from
+    emr_prescription
+where
+   emr_prescription.status=0
+  </select>
+
 </mapper>

@@ -157,6 +157,6 @@ public class IthController {
     public String fayao(HttpServletRequest request){
 
 
-        return "medical/baoxiao/fayao";
+        return "/medical/baoxiao/fayao";
     }
 }

@@ -7,7 +7,68 @@
     <id column="u_id" property="uId" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="shenhe" property="shenhe" jdbcType="INTEGER" />
+    <association property="pation" select="getPatient" column="patient_id"/>
+    <association property="user" select="getUser" column="u_id"/>
+    <association property="drug" select="getDrug" column="d_id"/>
   </resultMap>
+  <resultMap id="user" type="com.slwh.emr.model.User" >
+    <id column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="u_name" property="uName" jdbcType="VARCHAR" />
+    <result column="u_password" property="uPassword" jdbcType="VARCHAR" />
+    <result column="u_age" property="uAge" jdbcType="INTEGER" />
+    <result column="u_sex" property="uSex" jdbcType="VARCHAR" />
+    <result column="u_tel" property="uTel" jdbcType="BIGINT" />
+    <result column="u_email" property="uEmail" jdbcType="VARCHAR" />
+    <result column="u_num" property="uNum" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="patient" type="com.slwh.emr.model.Pation" >
+    <id column="p_id" property="pId" jdbcType="INTEGER" />
+    <result column="p_name" property="pName" jdbcType="VARCHAR" />
+    <result column="p_sex" property="pSex" jdbcType="VARCHAR" />
+    <result column="p_age" property="pAge" jdbcType="INTEGER" />
+    <result column="p_tel" property="pTel" jdbcType="INTEGER" />
+    <result column="mr_num" property="mrNum" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="mz_num" property="mzNum" jdbcType="INTEGER" />
+    <result column="gh_time" property="date" jdbcType="DATE" />
+    <result column="p_doctor" property="doctor" jdbcType="VARCHAR" />
+    <result column="ith_status" property="ithStatus" jdbcType="INTEGER" />
+    <result column="ith_banli" property="ithBanLi" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="drug" type="com.slwh.emr.model.Drug">
+    <id column="dr_id" jdbcType="INTEGER" property="drId" />
+    <result column="dr_num" jdbcType="VARCHAR" property="drNum" />
+    <result column="dr_name" jdbcType="VARCHAR" property="drName" />
+    <result column="dr_level" jdbcType="INTEGER" property="drLevel" />
+    <result column="dr_price" jdbcType="VARCHAR" property="drPrice" />
+    <result column="dr_account" jdbcType="VARCHAR" property="drAccount" />
+    <result column="dr_date" jdbcType="DATE" property="drDate" />
+    <result column="dr_status" jdbcType="INTEGER" property="drStatus" />
+  </resultMap>
+  <!--获取病人 -->
+  <select id="getPatient" resultMap="patient">
+    select
+    p_id,p_name,p_sex,p_tel,p_age,mr_num,status,mz_num,gh_time,p_doctor,ith_status,ith_banli
+    from emr_patient
+    where p_id=#{patient_id,jdbcType=INTEGER}
+  </select>
+
+  <!--获取医生 -->
+  <select id="getUser" resultMap="user">
+    select
+   u_id, u_name, u_password, u_age, u_sex, u_tel, u_email, u_num, status
+    from emr_user
+    where u_id=#{u_id,jdbcType=INTEGER}
+  </select>
+
+  <!--获取药品 -->
+  <select id="getDrug" resultMap="drug">
+    select
+    dr_id, dr_num, dr_name, dr_level, dr_price, dr_account, dr_date,dr_status
+    from emr_drug
+    where dr_id=#{d_id,jdbcType=INTEGER}
+  </select>
   <sql id="Base_Column_List" >
     patient_id, d_id, u_id, status, shenhe
   </sql>
@@ -90,4 +151,25 @@
       and d_id = #{dId,jdbcType=INTEGER}
       and u_id = #{uId,jdbcType=INTEGER}
   </update>
+
+  <!--查询所有待审核药品信息  -->
+  <select id="selectshenhe" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    emr_prescription
+    where
+    emr_prescription.status=0
+  </select>
+
+  <!--根据病人查询待审核药品信息  -->
+  <select id="selectBypId"  parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    emr_prescription
+    where
+    emr_prescription.status=0
+    and emr_prescription.patient_id=#{id,jdbcType=INTEGER}
+  </select>
 </mapper>

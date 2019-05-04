@@ -21,4 +21,6 @@ public interface DrugMapper {
     List<Drug> selectAll();
 
     List<Drug> selectBypId(int id);
+
+    List selectshenhe();
 }

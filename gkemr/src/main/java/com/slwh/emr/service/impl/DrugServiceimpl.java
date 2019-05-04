@@ -40,4 +40,10 @@ public class DrugServiceimpl implements DrugService {
     public List<Drug> selectBypId(int id) {
         return drugMapper.selectBypId(id);
     }
+
+    @Override
+    public List selectshenhe() {
+        return drugMapper.selectshenhe();
+    }
+
 }
