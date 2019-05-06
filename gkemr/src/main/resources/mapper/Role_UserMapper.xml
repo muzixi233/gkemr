@@ -33,4 +33,10 @@
       </if>
     </trim>
   </insert>
+  <select id="getRoleByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    r_id
+    from emr_role_user
+    where u_id = #{getuId,jdbcType=INTEGER}
+  </select>
 </mapper>

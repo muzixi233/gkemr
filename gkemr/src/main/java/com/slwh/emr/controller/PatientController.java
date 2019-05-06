@@ -6,8 +6,12 @@ import com.slwh.emr.model.*;
 import javax.servlet.http.*;
 
 import com.slwh.emr.service.*;
+
+import java.io.*;
 import java.util.*;
 import java.lang.Integer.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,6 +33,10 @@ public class PatientController {
     private MrService mrService;
     @Resource
     private IthService ithService;
+    @Resource
+    private TreatService treatService;
+    @Autowired
+    private RoleService roleService;
 
     @RequestMapping("/media/lists")
     public String media(){
@@ -100,18 +108,23 @@ public class PatientController {
         //int mzNum=Integer.parseInt(Num);
         Pation p=pationService.selectById(id);
         request.setAttribute("pation", p);
+        //治疗等级信息
+        List<Treat> treats=treatService.selectAll();
+        request.setAttribute("treats",treats);
         return "/media/treat";
     }
     @RequestMapping("/treatp")//诊断
-    public String treatp(int pId,HttpServletRequest request,String bl_style,String status1,String pName,String mr_num,String pDoctor)
+    public String treatp(int pId,HttpServletRequest request,String bl_style,String status1,String mr_num,String pDoctor)
     {
         Pation p=pationService.selectById(pId);
         User user=UserService.selectByName(pDoctor);
-        System.out.println(user.getuId()+"sdasdasdasdasdasd");
-        if (status1!=null){
-            p.setStatus(1);//已看诊
-            pationService.update(p);//更改病人状态
+        //根据医生查询角色，判断是否是实习医生
 
+
+        System.out.println(user.getuId()+"sdasdasdasdasdasd");
+        p.setStatus(1);//已看诊
+        pationService.update(p);//更改病人状态
+        if (status1!=null){
             if(status1.equals("1")){ //判断住院
                 p.setIthStatus(1);
                 pationService.update(p);
@@ -121,20 +134,61 @@ public class PatientController {
                 ithService.insert(ith);// 住院*/
 
             }
-
-            Mr m = new Mr();  //新增病历
-            m.setBlPatient(p.getpId());
-            m.setBlNum(mr_num);
-            m.setBlStyle(bl_style);
-            m.setBlUser(user.getuId());
-            mrService.insert(m);
-
+        }
+        List<Role_UserKey> role_userKeys=roleService.getRoleByUserId(user.getuId());
+        for(Role_UserKey role_userKey:role_userKeys){
+            Role role=roleService.selectById(role_userKey.getrId());
+            if(role.getrName().equals("实习医生")){
+                Mr m = new Mr();  //新增病历
+                m.setBlPatient(p.getpId());
+                m.setBlNum(mr_num);
+                m.setBlStyle(bl_style);
+                System.out.println("********************"+role.getrName());
+                m.setBlUser(user.getuId());
+                m.setStatus(0);//0：待审核
+                mrService.insert(m);
+            }else{
+                Mr m = new Mr();  //新增病历
+                m.setBlPatient(p.getpId());
+                m.setBlNum(mr_num);
+                m.setBlStyle(bl_style);
+                m.setBlUser(user.getuId());
+                m.setStatus(1);//1：无需审核
+                mrService.insert(m);
+            }
         }
 
 //        List<Pation> lists = pationService.selectAll()  ;
 //        System.out.println("********************"+lists.get(0).getpName());
 //        request.setAttribute("lists", lists);
         return "medical/baoxiao/fayao";
+    }
+
+    @RequestMapping("/shenhe")
+    public String shenHe(HttpServletRequest request){
+        List<Mr> mrs=mrService.selectAll();
+        System.out.println("******************"+mrs.get(0).getBlPatient());
+        System.out.println("((((((((((((((("+mrs.get(0).getPation().getpName());
+        request.setAttribute("mrs",mrs );
+        return "/media/sxShenH";
+    }
+    @RequestMapping("/YShenHe")
+    public String YShenHe(HttpServletRequest request,int id, HttpServletResponse response) throws IOException {
+        //病历状态修改
+        /*request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = response.getWriter();*/
+        Mr mr=mrService.selectByPId(id);
+        System.out.println("+++++++++++++++"+mr.getStatus());
+        if(mr.getStatus()==0)
+        {
+            mr.setStatus(1);
+            mrService.update(mr);
+          //  out.println("<script>alert('审核成功!');history.back();</script>");
+            return "redirect:/ith/fayao";
+        }
+        return  null;
+
     }
 
     //查询所有当日门诊,住院病人信息

@@ -25,6 +25,8 @@ public class Mr {
 
     private String blBed;
 
+    private Pation pation;
+
     public Integer getBlId() {
         return blId;
     }
@@ -119,5 +121,13 @@ public class Mr {
 
     public void setBlBed(String blBed) {
         this.blBed = blBed;
+    }
+
+    public Pation getPation() {
+        return pation;
+    }
+
+    public void setPation(Pation pation) {
+        this.pation = pation;
     }
 }

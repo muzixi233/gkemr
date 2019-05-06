@@ -88,8 +88,15 @@
         </select></td>
     </tr>
     <tr>
-        <td height="24" class="td_form01">病历编号</td>
-        <td class="td_form02"><input type="text" name="mr_num" class="input" /></td>
+        <td height="24" class="td_form01">治疗等级</td>
+        <td class="td_form02" name="status1"><select name="zlDept">
+            <%
+                List<Treat> treats=( List<Treat>)request.getAttribute("treats");
+                if(treats!=null)
+                    for(Treat treat:treats){  %>
+            <option><%=treat.gettLevel() %></option>
+            <% }%>
+        </select></td>
     </tr>
     <tr>
     <td align="center">

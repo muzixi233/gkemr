@@ -79,7 +79,57 @@
                                       </table>
 				  </div>
 
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="19"><img id="top_7" onClick="menu('menu_7','top_7');" src="../images/tree_11.gif" width="19" height="20"></td>
+                            <td width="19"><img src="../images/tree_27.gif" width="19" height="20"></td>
+                            <td nowrap>医生管理</td>
+                        </tr>
+                    </table>
 
+                    <div id="menu_7" style="DISPLAY: none">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
+                                <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
+                                <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
+                                <td nowrap><a href="../html/results/createresult1.htm" target="mainFrame" class="a03">医生查询</a></td>
+                            </tr>
+                        </table>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
+                                <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
+                                <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
+                                <td nowrap><a href="../html/results/myresult.html" target="mainFrame" class="a03">医生诊断</a></td>
+                            </tr>
+                        </table>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
+                                <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
+                                <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
+                                <td nowrap><a href="/patient/shenhe" target="mainFrame" class="a03">实习医生审核</a></td>
+                            </tr>
+                        </table>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
+                                <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>
+                                <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
+                                <td nowrap><a href="../html/results/staresults1.html" target="mainFrame" class="a03">医生开药</a></td>
+                            </tr>
+                        </table>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>
+                                <td width="19"><img src="../images/tree_23.gif" width="19" height="20"></td>
+                                <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>
+                                <td nowrap><a href="../html/results/loadresults.htm" target="mainFrame" class="a03">更换医生</a></td>
+                            </tr>
+                        </table>
+
+                    </div>
 
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
                        <tr>
