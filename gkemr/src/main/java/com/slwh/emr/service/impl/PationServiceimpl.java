@@ -67,4 +67,9 @@ public class PationServiceimpl implements PationService {
     public List<Pation> selectkaiyao() {
         return pationMapper.selectkaiyao();
     }
+
+    @Override
+    public Pation selectByNameAndmrNum(String pName, String mrNum) {
+        return pationMapper.selectByNameAndmrNum(pName,mrNum);
+    }
 }

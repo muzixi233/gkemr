@@ -29,8 +29,8 @@ import javax.servlet.http.*;
 public class UserController {
     @Resource
     private UserService UserService;
-@Resource
-private RoleService roleService;
+    @Resource
+    private RoleService roleService;
 
     @RequestMapping("/hello")
     public String login(HttpServletRequest request, HttpServletResponse response,Map<String, Object> map)throws Exception{
@@ -48,7 +48,7 @@ private RoleService roleService;
                 System.out.println("IncorrectCredentialsException -- > 密码不正确：");
                 msg = "IncorrectCredentialsException -- > 密码不正确：";
             }
-             else {
+            else {
                 msg = "else >> "+exception;
                 System.out.println("else -- >" + exception);
             }
@@ -75,16 +75,16 @@ private RoleService roleService;
     public String index(){
         return"/index";
     }
-/*
-门诊医师
- */
+    /*
+    门诊医师
+     */
     @RequestMapping("/results/chooseresult")
     public String chooseresult(){
         return "/results/chooseresult";
     }
-/*
-医生详情
- */
+    /*
+    医生详情
+     */
     @RequestMapping("/results/moreleavelist_1")
     public String moreleavelist_1(HttpServletRequest request, HttpServletResponse response,String uId) throws IOException {
         request.setAttribute("uId",uId);
@@ -113,7 +113,7 @@ private RoleService roleService;
     public Result selectAll(){
         return Result.success(UserService.selectAll());
     }
-//根据名称查询
+    //根据名称查询
     @RequestMapping("/selectByName")
     @ResponseBody
     public Result selectByName(String username){

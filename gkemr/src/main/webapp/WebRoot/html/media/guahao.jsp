@@ -48,7 +48,7 @@
    
     <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="90" class="td_form01">证件号</td><%--//作病历编号--%>
+        <td width="90" class="td_form01">身份证号</td><%--//作病历编号--%>
         <td class="td_form02"><input name="mrNum" type="text" class="input" id="pcard"></td>
       </tr>
       <tr>

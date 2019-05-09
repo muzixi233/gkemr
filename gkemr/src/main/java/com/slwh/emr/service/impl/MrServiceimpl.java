@@ -40,4 +40,15 @@ public class MrServiceimpl implements MrService {
     public Mr selectByPId(Integer pId) {
         return mrMapper.selectByPId(pId);
     }
+
+    @Override
+    public List<Mr> selectByPIdAndMrNum(int id, String mrNum) {
+        return mrMapper.selectByPIdAndMrNum(id,mrNum);
+    }
+
+    @Override
+    public Mr selectByPIdAndHistory(Integer getpId) {
+        return mrMapper.selectByPIdAndHistory(getpId);
+    }
+
 }

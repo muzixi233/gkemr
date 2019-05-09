@@ -14,9 +14,10 @@
     <result column="p_doctor" property="doctor" jdbcType="VARCHAR" />
     <result column="ith_status" property="ithStatus" jdbcType="INTEGER" />
     <result column="ith_banli" property="ithBanLi" jdbcType="INTEGER" />
+    <result column="guahao_num" property="guahaoNum" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    p_id, p_name, p_sex, p_age, p_tel, mr_num, status, mz_num, gh_time, p_doctor, ith_status, ith_banli
+    p_id, p_name, p_sex, p_age, p_tel, mr_num, status, mz_num, gh_time, p_doctor, ith_status, ith_banli, guahao_num
   </sql>
   <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -31,10 +32,10 @@
   <insert id="insert" parameterType="com.slwh.emr.model.Pation" >
     insert into emr_patient (p_id, p_name, p_sex, 
       p_age, p_tel, mr_num, 
-      status, mz_num, gh_time, p_doctor, ith_status, ith_banli)
+      status, mz_num, gh_time, p_doctor, ith_status, ith_banli,guahao_num)
     values (#{pId,jdbcType=INTEGER}, #{pName,jdbcType=VARCHAR}, #{pSex,jdbcType=VARCHAR}, 
       #{pAge,jdbcType=INTEGER}, #{pTel,jdbcType=INTEGER}, #{mrNum,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{mzNum,jdbcType=INTEGER}, #{date,jdbcType=DATE}, #{doctor,jdbcType=VARCHAR}, #{ithStatus,jdbcType=INTEGER}, #{ithBanLi,jdbcType=INTEGER})
+      #{status,jdbcType=INTEGER}, #{mzNum,jdbcType=INTEGER}, #{date,jdbcType=DATE}, #{doctor,jdbcType=VARCHAR}, #{ithStatus,jdbcType=INTEGER}, #{ithBanLi,jdbcType=INTEGER}, #{guahaoNum,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.slwh.emr.model.Pation" >
     insert into emr_patient
@@ -75,6 +76,9 @@
       <if test="ithBanLi != null" >
         ith_banli,
       </if>
+      <if test="guahaoNum != null" >
+        guahao_num,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="pId != null" >
@@ -113,6 +117,9 @@
       <if test="ithBanLi != null" >
         #{ithBanLi,jdbcType=INTEGER},
       </if>
+      <if test="guahaoNum != null" >
+        #{guahaoNum,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <update id="updateByIdSelective" parameterType="com.slwh.emr.model.Pation" >
@@ -142,6 +149,9 @@
       <if test="ithBanLi != null" >
         status = #{ithBanLi,jdbcType=INTEGER},
       </if>
+      <if test="guahaoNum != null" >
+        status = #{guahaoNum,jdbcType=INTEGER},
+      </if>
     </set>
     where p_id = #{pId,jdbcType=INTEGER}
   </update>
@@ -154,7 +164,8 @@
       mr_num = #{mrNum,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       ith_status = #{ithStatus,jdbcType=INTEGER},
-      ith_banli = #{ithBanLi,jdbcType=INTEGER}
+      ith_banli = #{ithBanLi,jdbcType=INTEGER},
+       guahao_num = #{guahaoNum,jdbcType=INTEGER}
     where p_id = #{pId,jdbcType=INTEGER}
   </update>
 
@@ -170,6 +181,13 @@
     <include refid="Base_Column_List" />
     from emr_patient
     where (p_name like CONCAT('%',#{pName},'%') and mz_num like CONCAT('%',#{mzNum},'%'))
+  </select>
+  <!--根据病人姓名、病历编号查询  -->
+  <select id="selectByNameAndmrNum" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_patient
+    where (p_name like CONCAT('%',#{pName},'%') and mr_num like CONCAT('%',#{mrNum},'%'))
   </select>
   <!--根据病人状态查询 -->
   <select id="selectByStatic" resultMap="BaseResultMap">

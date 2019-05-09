@@ -14,7 +14,9 @@
     <result column="bl_zldj" property="blZldj" jdbcType="INTEGER" />
     <result column="bl_huli" property="blHuli" jdbcType="INTEGER" />
     <result column="bi_bed" property="blBed" jdbcType="VARCHAR" />
+    <result column="bl_time" property="date" jdbcType="DATE" />
     <association property="pation" select="getPatient" column="bl_patient"/>
+    <association property="user" select="getUser" column="bl_user"/>
   </resultMap>
   <resultMap id="patient" type="com.slwh.emr.model.Pation" >
     <id column="p_id" property="pId" jdbcType="INTEGER" />
@@ -30,9 +32,20 @@
     <result column="ith_status" property="ithStatus" jdbcType="INTEGER" />
     <result column="ith_banli" property="ithBanLi" jdbcType="INTEGER" />
   </resultMap>
+  <resultMap id="user" type="com.slwh.emr.model.User" >
+    <id column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="u_name" property="uName" jdbcType="VARCHAR" />
+    <result column="u_password" property="uPassword" jdbcType="VARCHAR" />
+    <result column="u_age" property="uAge" jdbcType="INTEGER" />
+    <result column="u_sex" property="uSex" jdbcType="VARCHAR" />
+    <result column="u_tel" property="uTel" jdbcType="BIGINT" />
+    <result column="u_email" property="uEmail" jdbcType="VARCHAR" />
+    <result column="u_num" property="uNum" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
   <sql id="Base_Column_List" >
     bl_id, bl_num, bl_style, bl_msg, status, bl_history, bl_patient, bl_user, bl_drug, 
-    bl_zldj, bl_huli, bi_bed
+    bl_zldj, bl_huli, bi_bed, bl_time
   </sql>
   <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -55,11 +68,11 @@
     insert into emr_mr (bl_id, bl_num, bl_style, 
       bl_msg, status, bl_history, 
       bl_patient, bl_user, bl_drug, 
-      bl_zldj, bl_huli, bi_bed)
+      bl_zldj, bl_huli, bi_bed, bl_time)
     values (#{blId,jdbcType=INTEGER}, #{blNum,jdbcType=VARCHAR}, #{blStyle,jdbcType=VARCHAR}, 
       #{blMsg,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{blHistory,jdbcType=VARCHAR}, 
       #{blPatient,jdbcType=INTEGER}, #{blUser,jdbcType=INTEGER}, #{blDrug,jdbcType=INTEGER}, 
-      #{blZldj,jdbcType=INTEGER}, #{blHuli,jdbcType=INTEGER}, #{blBed,jdbcType=VARCHAR})
+      #{blZldj,jdbcType=INTEGER}, #{blHuli,jdbcType=INTEGER}, #{blBed,jdbcType=VARCHAR}, #{date,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="com.slwh.emr.model.Mr" >
     insert into emr_mr
@@ -100,6 +113,9 @@
       <if test="blBed != null" >
         bi_bed,
       </if>
+      <if test="date != null" >
+        bl_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="blId != null" >
@@ -138,6 +154,9 @@
       <if test="blBed != null" >
         #{blBed,jdbcType=VARCHAR},
       </if>
+      <if test="date != null" >
+        #{date,jdbcType=DATE},
+      </if>
     </trim>
   </insert>
   <update id="updateByIdSelective" parameterType="com.slwh.emr.model.Mr" >
@@ -174,7 +193,10 @@
         bl_huli = #{blHuli,jdbcType=INTEGER},
       </if>
       <if test="blBed != null" >
-        bi_bed = #{blBed,jdbcType=VARCHAR},
+      bi_bed = #{blBed,jdbcType=VARCHAR},
+    </if>
+      <if test="date != null" >
+        bl_time = #{date,jdbcType=DATE},
       </if>
     </set>
     where bl_id = #{blId,jdbcType=INTEGER}
@@ -191,7 +213,8 @@
       bl_drug = #{blDrug,jdbcType=INTEGER},
       bl_zldj = #{blZldj,jdbcType=INTEGER},
       bl_huli = #{blHuli,jdbcType=INTEGER},
-      bi_bed = #{blBed,jdbcType=VARCHAR}
+      bi_bed = #{blBed,jdbcType=VARCHAR},
+        bl_time = #{date,jdbcType=DATE}
     where bl_id = #{blId,jdbcType=INTEGER}
   </update>
 
@@ -207,5 +230,26 @@
     p_id,p_name,p_sex,p_tel,p_age,mr_num,status,mz_num,gh_time,p_doctor,ith_status,ith_banli
     from emr_patient
     where p_id=#{blPatient,jdbcType=INTEGER}
+  </select>
+  <!--获取医生 -->
+  <select id="getUser" resultMap="user">
+    select
+   u_id, u_name, u_password, u_age, u_sex, u_tel, u_email, u_num, status
+    from emr_user
+    where u_id=#{blUser,jdbcType=INTEGER}
+  </select>
+  <!--根据病人姓名、病历编号查询  -->
+  <select id="selectByPIdAndMrNum" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_mr
+    where (bl_patient like CONCAT('%',#{id},'%') and bl_num like CONCAT('%',#{mrNum},'%'))
+  </select>
+  <!--根据病人姓名、病历编号查询  -->
+  <select id="selectByPIdAndHistory" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_mr
+    where (bl_patient=#{getpId} and bl_history ="0")
   </select>
 </mapper>

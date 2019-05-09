@@ -20,6 +20,8 @@ public class Pation {
 
     private int mzNum;
 
+    private  int guahaoNum;
+
     private String doctor;
     private int ithStatus;//是否住院
     private int ithBanLi;//是否办理入住
@@ -119,5 +121,13 @@ public class Pation {
 
     public void setIthBanLi(int ithBanLi) {
         this.ithBanLi = ithBanLi;
+    }
+
+    public int getGuahaoNum() {
+        return guahaoNum;
+    }
+
+    public void setGuahaoNum(int guahaoNum) {
+        this.guahaoNum = guahaoNum;
     }
 }

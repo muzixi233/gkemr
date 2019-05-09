@@ -32,13 +32,13 @@ public class EmrController {
 
     @RequestMapping("/outpatientList")
     public String outpatientList(HttpServletRequest request){
-        List<Pation> p = pationService.selectAll();
-        request.setAttribute("p",p);
+        List<Mr> mrs = mrService.selectAll();//查询所有病历信息
+        request.setAttribute("mrs",mrs);
         return "emr/subject/emrlist";
     }
     @RequestMapping("/xiangqing")
     public String xiangqing(HttpServletRequest request,int pId,String Doctor){
-        Pation p = pationService.selectById(pId);
+        Pation p = pationService.selectById(pId);//没修改
         Mr mr=mrService.selectByPId(pId);
         Ith ith = ithService.selectByPId(pId);
         User user = userService.selectByName(Doctor);

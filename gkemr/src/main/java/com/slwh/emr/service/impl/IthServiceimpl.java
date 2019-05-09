@@ -42,4 +42,9 @@ public class IthServiceimpl implements IthService {
     public Ith selectByPId(Integer pid) {
         return ithMapper.selectByPId(pid);
     }
+
+    @Override
+    public Ith selectByPIdAndStatus(int id) {
+        return ithMapper.selectByPIdAndStatus(id);
+    }
 }

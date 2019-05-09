@@ -22,4 +22,9 @@ public interface MrMapper {
 
     List<Mr> selectAll();
     Mr selectByPId(Integer blPatient);
+
+
+    List<Mr> selectByPIdAndMrNum(int id, String mrNum);
+
+    Mr selectByPIdAndHistory(Integer getpId);
 }

@@ -17,4 +17,10 @@ public interface MrService {
     int delete(Integer mId);
 
     Mr selectByPId(Integer pId);
+
+
+
+    List<Mr> selectByPIdAndMrNum(int id, String mrNum);
+
+    Mr selectByPIdAndHistory(Integer getpId);
 }

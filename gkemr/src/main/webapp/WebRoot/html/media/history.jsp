@@ -30,22 +30,12 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td height="25" align="center" valign="bottom" class="td06"><table width="98%" border="0" cellspacing="3" cellpadding="0">
       <tr>
         <td width="15"><img src="../../images/index_32.gif" width="9" height="9"></td>
-        <td valign="bottom" class="title">病历信息</td>
+        <td valign="bottom" class="title">历史病历查询</td>
       </tr>
     </table></td>
   </tr>
 </table>
 <br>
-<form name="form1" method="post" action="/patient/patientSelect">
-<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" >
-  <tr>
-    <td class="td_page">输入编号：
-    <input type="text" class="input"  name="Num" id="pbirthday"/><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW')"> -->
-   病人姓名：<input name="pName" size="10" type="text" class="input" ><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW2')"> -->
-    <input name="Submit" type="submit" class="buttonface" value=" 查询 "></td>
-  </tr>
-</table>
-</form>
 <br>
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
   <tr>
@@ -65,33 +55,14 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   <tr>
     <td class="td07"><%=mr.getPation().getpName()%></td>
     <td class="td07"><%=mr.getPation().getMzNum()%></td>
-    <td class="td07"><%=mr.getPation().getDoctor()%></td>
-    <td class="td07"><%=mr.getPation().getDate()%></td>
+    <td class="td07"><%=mr.getUser().getuName()%></td>
+    <td class="td07"><%=mr.getDate()%></td>
     <td class="td07">骨科</td>
-    <td class="td07"><a href="/emr/xiangqing?pId=<%=mr.getPation().getpId() %>&Doctor=<%=mr.getPation().getDoctor()%>"  target="mainFrame">&nbsp;&nbsp;详情</a></td>
+    <td class="td07"><a href="/patient/historyInfo?id=<%=mr.getBlId() %>"  target="mainFrame">&nbsp;&nbsp;详情</a></td>
   </tr>
   <%}}%>
 
-  <%
-  Pation pation= (Pation)request.getAttribute("list");
-  if(pation!=null&&pation.getpId()!=null) {
-%>
-  <tr>
-    <td class="td07"><%=pation.getpName()%></td>
-    <td class="td07"><%=pation.getMzNum()%></td>
-    <td class="td07"><%=pation.getDoctor()%></td>
-    <td class="td07"><%=pation.getDate()%></td>
-    <td class="td07">骨科</td>
-    <td class="td07"><a href="/patient?xiangqing&id=<%=pation.getpId() %>" target="_blank">&nbsp;&nbsp;详情</a></td>
-  </tr>
-  <%}%>
 
-</table>
-<table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
-  <tr>
-    <td height="30" align="right"><img src="../../images/1.gif" width="4" height="5" align="absmiddle"> 首页　 <img src="../../images/2.gif" width="3" height="5" align="absmiddle"> 上一页　 <img src="../../images/2-2.gif" width="3" height="5" align="absmiddle"> 下一页　 <img src="../../images/3.gif" width="4" height="5" align="absmiddle"> 末页　　共 1 页 1 条记录</td>
-  </tr>
-</table>
 </body>
 </html>
 

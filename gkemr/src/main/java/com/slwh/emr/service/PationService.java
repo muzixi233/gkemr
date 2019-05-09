@@ -28,4 +28,6 @@ public interface PationService {
     List<Pation> selectByIthStatus(int ith);
 
     List<Pation> selectkaiyao();
+
+    Pation selectByNameAndmrNum(String pName, String mrNum);
 }

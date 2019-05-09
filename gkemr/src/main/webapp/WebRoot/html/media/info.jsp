@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <title>查询结果</title>
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
-<script language="javascript" src="../../js/check.js"></script>
+  <script language="javascript" src="../../js/check.js"></script>
 <script language="javascript" src="../../js/checkAll.js"></script>
 <script language="javascript" src="../../js/clientSideApp.js"></script>
 <SCRIPT language=JavaScript type=text/JavaScript>
@@ -61,6 +61,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     List<Pation> pations= (List<Pation>)request.getAttribute("lists");
     if(pations!=null) {
       for(Pation p:pations){
+        if(p.getGuahaoNum()==1)
   %>
   <tr>
     <td class="td07"><%=p.getpName()%></td>
@@ -68,7 +69,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td07"><%=p.getDoctor()%></td>
     <td class="td07"><%=p.getDate()%></td>
     <td class="td07">骨科</td>
-    <td class="td07"><a href="/patient?xiangqing&id=<%=p.getpId() %>" target="_blank" target="mainFrame">&nbsp;&nbsp;详情</a></td>
+    <td class="td07"><a href="/patient?xiangqing&id=<%=p.getpId() %>" target="mainFrame">&nbsp;&nbsp;详情</a><a href="/patient/history?id=<%=p.getpId() %>"  target="mainFrame">&nbsp;&nbsp;历史病历</a></td>
   </tr>
   <%}}%>
 
@@ -82,16 +83,12 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td07"><%=pation.getDoctor()%></td>
     <td class="td07"><%=pation.getDate()%></td>
     <td class="td07">骨科</td>
-    <td class="td07"><a href="/patient?xiangqing&id=<%=pation.getpId() %>" target="_blank">&nbsp;&nbsp;详情</a></td>
+    <td class="td07"><a href="/patient?xiangqing&id=<%=pation.getpId() %>" target="mainFrame">&nbsp;&nbsp;详情</a><a href="/patient/history?id=<%=pation.getpId() %>" target="mainFrame">&nbsp;&nbsp;历史病历</a></td>
   </tr>
   <%}%>
 
 </table>
-<table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
-  <tr>
-    <td height="30" align="right"><img src="../../images/1.gif" width="4" height="5" align="absmiddle"> 首页　 <img src="../../images/2.gif" width="3" height="5" align="absmiddle"> 上一页　 <img src="../../images/2-2.gif" width="3" height="5" align="absmiddle"> 下一页　 <img src="../../images/3.gif" width="4" height="5" align="absmiddle"> 末页　　共 1 页 1 条记录</td>
-  </tr>
-</table>
+
 </body>
 </html>
 

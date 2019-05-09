@@ -29,7 +29,7 @@
         <td height="25" align="center" valign="bottom" class="td06"><table width="98%" border="0" cellspacing="3" cellpadding="0">
             <tr>
                 <td width="15"><img src="../../../images/index_32.gif" width="9" height="9"></td>
-                <td valign="bottom" class="title">出院申请</td>
+                <td valign="bottom" class="title">已出院病人</td>
             </tr>
         </table></td>
     </tr>

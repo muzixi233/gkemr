@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 /**
  * @author slwh 谌伟 刘清平 王祖玲 何蓉芳
@@ -76,10 +77,11 @@ public class IthController {
            p.setIthBanLi(1);
            pationService.update(p);//已办理成功
            //修改病历信息
-           Mr m = mrService.selectByPId(p.getpId());
+           Mr m = mrService.selectByPIdAndHistory(p.getpId());//查询非历史病历对应的病人
            m.setBlNum(blNum);
            m.setBlMsg(ith.getIthMsg());
            m.setBlHuli(ith.getIthNurse());
+           m.setDate(new Date());
            //m.setBlHuli(nurse.getnId());
            m.setBlUser(user.getuId());//医生
            m.setBlBed(ith.getIthBed());//床
@@ -125,7 +127,7 @@ public class IthController {
     @RequestMapping("/cyxq")//出院详情
     public String chuYXQ(int id,HttpServletRequest request){
        Pation pation=pationService.selectById(id);//病人信息
-        Mr mr=mrService.selectByPId(id);//病历信息
+        Mr mr=mrService.selectByPIdAndHistory(id);//病历信息
         request.setAttribute("pation",pation);
         request.setAttribute("mr",mr);
         return "/medical/loan/chuYXQ";
@@ -133,7 +135,7 @@ public class IthController {
     @RequestMapping("/cyDeal")//出院办理
     public String cyDeal(int id,HttpServletRequest request){
         //住院信息
-        Ith ith=ithService.selectByPId(id);
+        Ith ith=ithService.selectByPIdAndStatus(id);
         ith.setIthStatus("已出院");
         ithService.update(ith );
         //病床信息
@@ -143,10 +145,10 @@ public class IthController {
         Pation pation=pationService.selectById(id);//病人信息
         pation.setIthBanLi(2);//病人出院
         pationService.update(pation);
-      //病历信息修改没写
-       /* request.setAttribute("pation",pation);
-        Mr mr=mrService.selectByPId(id);
-        request.setAttribute("mr",mr);*/
+      //病历信息修改
+        Mr mr=mrService.selectByPIdAndHistory(id);
+        mr.setBlHistory("1");
+        mrService.update(mr);
         List<Pation> lists = pationService.selectAll() ;
         System.out.println("********************"+lists.get(0).getpName());
         request.setAttribute("lists", lists);

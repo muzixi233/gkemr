@@ -1,5 +1,7 @@
 package com.slwh.emr.model;
 
+import java.util.Date;
+
 public class Mr {
     private Integer blId;
 
@@ -26,6 +28,9 @@ public class Mr {
     private String blBed;
 
     private Pation pation;
+
+    private Date date;
+    private User user;
 
     public Integer getBlId() {
         return blId;
@@ -129,5 +134,20 @@ public class Mr {
 
     public void setPation(Pation pation) {
         this.pation = pation;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

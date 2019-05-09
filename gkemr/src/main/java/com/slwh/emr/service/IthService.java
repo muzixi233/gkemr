@@ -17,4 +17,5 @@ public interface IthService {
     int delete(Integer ithId);
     Ith selectByPId(Integer pid);
 
+    Ith selectByPIdAndStatus(int id);
 }

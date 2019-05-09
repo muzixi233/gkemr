@@ -19,12 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 
 /**
- * @author slwh 谌伟 刘清平 王祖玲 何蓉芳
+ * @author slwh 谌伟 刘清平 王祖玲 何蓉芳1
  * 病人控制页
  */
 @Controller
 @RequestMapping("patient")
 public class PatientController {
+
     @Resource
     private PationService pationService;
     @Resource
@@ -56,14 +57,51 @@ public class PatientController {
     @RequestMapping("/addPatient")
     public String addPatient(Pation pation,HttpServletRequest request)
     {
+        System.out.println("***************"+pation.getpName()+pation.getMrNum());
+        Pation pation1=pationService.selectByNameAndmrNum(pation.getpName(),pation.getMrNum());
+        if(pation1!=null)
+        {
+            Date d=new Date();
+            pation1.setDate(d);
+            pation1.setStatus(0);
+
+            pation1.setGuahaoNum(pation1.getGuahaoNum()+1);
+            //int tel=Integer.parseInt();
+            pationService.update(pation1);//存在病历更新病人挂号信息
+
+        }else {
         Date d=new Date();
         pation.setDate(d);
         pation.setStatus(0);
+        pation.setGuahaoNum(1);
         //int tel=Integer.parseInt();
-        pationService.insert(pation);
+        pationService.insert(pation);//初诊 不存在病历 添加病人挂号信息
+        }
         List<Pation> lists = pationService.selectAll()  ;
         request.setAttribute("lists", lists);
         return "/media/info";
+    }
+
+
+    @RequestMapping("/history")//历史病历
+    public String history(int id,HttpServletRequest request){
+          Pation pation=pationService.selectById(id);
+          if(pation.getGuahaoNum()>1){//存在历史病历
+              //通过病历编号和姓名来查询病历
+              List<Mr> mrs=mrService.selectByPIdAndMrNum(id,pation.getMrNum());
+              request.setAttribute("mrs",mrs);
+              return "/media/history";
+          }else{
+              System.out.println("暂无历史病历");
+          }
+          return null;
+    }
+    @RequestMapping("/historyInfo")//历史病历详情
+    public String historyInfo(int id,HttpServletRequest request){
+        Mr mr =mrService.selectById(id);
+        System.out.println("@@@@@@@@@@@@@"+mr.getPation().getpName());
+        request.setAttribute("mr",mr);
+        return "/media/historyInfo";
     }
     @RequestMapping("/patientSelect")//根据病人姓名、门诊编号查询
     public String patientSelect(String pName,String Num,HttpServletRequest request)
@@ -116,6 +154,9 @@ public class PatientController {
     @RequestMapping("/treatp")//诊断
     public String treatp(int pId,HttpServletRequest request,String bl_style,String status1,String mr_num,String pDoctor)
     {
+        /*//新增开药
+        //病人是否住院，是否办理住院等情况需要修改
+        //新增住院*/
         Pation p=pationService.selectById(pId);
         User user=UserService.selectByName(pDoctor);
         //根据医生查询角色，判断是否是实习医生
@@ -127,6 +168,7 @@ public class PatientController {
         if (status1!=null){
             if(status1.equals("1")){ //判断住院
                 p.setIthStatus(1);
+                p.setIthBanLi(0);
                 pationService.update(p);
              /*   Ith ith = new Ith();
                 ith.setIthNo(ith_no);
@@ -146,7 +188,10 @@ public class PatientController {
                 System.out.println("********************"+role.getrName());
                 m.setBlUser(user.getuId());
                 m.setStatus(0);//0：待审核
+                m.setBlHistory("0");
                 mrService.insert(m);
+                //跳到审核页面
+                return "redirect:/patient/shenhe";
             }else{
                 Mr m = new Mr();  //新增病历
                 m.setBlPatient(p.getpId());
@@ -154,40 +199,68 @@ public class PatientController {
                 m.setBlStyle(bl_style);
                 m.setBlUser(user.getuId());
                 m.setStatus(1);//1：无需审核
+                m.setBlHistory("0");
                 mrService.insert(m);
+                return "medical/baoxiao/fayao";
             }
         }
 
 //        List<Pation> lists = pationService.selectAll()  ;
 //        System.out.println("********************"+lists.get(0).getpName());
 //        request.setAttribute("lists", lists);
-        return "medical/baoxiao/fayao";
+       return null;
     }
-
+//实习医生审核
     @RequestMapping("/shenhe")
     public String shenHe(HttpServletRequest request){
         List<Mr> mrs=mrService.selectAll();
-        System.out.println("******************"+mrs.get(0).getBlPatient());
-        System.out.println("((((((((((((((("+mrs.get(0).getPation().getpName());
+       // System.out.println("******************"+mrs.get(0).getBlPatient());
+       //System.out.println("((((((((((((((("+mrs.get(0).getPation().getpName());
         request.setAttribute("mrs",mrs );
         return "/media/sxShenH";
     }
-    @RequestMapping("/YShenHe")
-    public String YShenHe(HttpServletRequest request,int id, HttpServletResponse response) throws IOException {
-        //病历状态修改
-        /*request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=utf-8");
-        PrintWriter out = response.getWriter();*/
-        Mr mr=mrService.selectByPId(id);
-        System.out.println("+++++++++++++++"+mr.getStatus());
+    @RequestMapping("/shenheY")
+    public String shenheY(HttpServletRequest request,int id)  {
+        Mr mr=mrService.selectById(id);
+        System.out.println("审核成功");
         if(mr.getStatus()==0)
         {
             mr.setStatus(1);
             mrService.update(mr);
+            List<Mr> mrs=mrService.selectAll();
+            request.setAttribute("mrs",mrs );
           //  out.println("<script>alert('审核成功!');history.back();</script>");
-            return "redirect:/ith/fayao";
+          return "redirect:/ith/fayao";
+
+            //return "/media/shenheInfo";
         }
         return  null;
+
+    }
+    @RequestMapping("/shenheN")
+    public String shenheN(HttpServletRequest request,int id)  {
+       // Mr mr=mrService.selectByPId(id);
+       System.out.println("审核失败");//继续诊断
+        Pation p=pationService.selectById(id);
+        request.setAttribute("pation", p);
+        //治疗等级信息
+        List<Treat> treats=treatService.selectAll();
+        request.setAttribute("treats",treats);
+        return "/media/treat";
+
+      //  return  "redirect:/patient/treat?id=mr.getPation().getpId()";
+
+    }
+    @RequestMapping("/YShenHe")
+    public String YShenHe(HttpServletRequest request,int id)  {
+
+        /*request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = response.getWriter();*/
+        Mr mr=mrService.selectById(id);
+        request.setAttribute("mr",mr );
+            return "/media/shenheInfo";
+
 
     }
 

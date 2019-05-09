@@ -19,6 +19,7 @@ public class User {
 
     private Integer status;
 
+
     public Integer getuId() {
         return uId;
     }
@@ -90,4 +91,6 @@ public class User {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+
 }
