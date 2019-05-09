@@ -40,7 +40,7 @@
     Pation pation= (Pation)request.getAttribute("pation");
     if(pation!=null) {
 %>
-<form name="form1" method="post" action="/patient/treatp?pId=<%=pation.getpId() %>&pDoctor=<%=pation.getDoctor()%>">
+<form name="form1" method="post" action="/patient/treatp?pId=<%=pation.getpId() %>&pDoctor=<%=pation.getDoctor()%>" onsubmit="return confirm('确诊?');">
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 
    <tr>

@@ -37,15 +37,15 @@ public class EmrController {
         return "emr/subject/emrlist";
     }
     @RequestMapping("/xiangqing")
-    public String xiangqing(HttpServletRequest request,int pId,String Doctor){
-        Pation p = pationService.selectById(pId);//没修改
-        Mr mr=mrService.selectByPId(pId);
-        Ith ith = ithService.selectByPId(pId);
+    public String xiangqing(HttpServletRequest request,int BlId,String Doctor){
+        Mr mr=mrService.selectById(BlId);
+        Pation p = pationService.selectById(mr.getBlPatient());//没修改
+        //Ith ith = ithService.selectByPId(p.getpId());
         User user = userService.selectByName(Doctor);
-        List<Drug> drug =drugService.selectBypId(pId);
+        List<Drug> drug =drugService.selectBypId(p.getpId());
         request.setAttribute("drug",drug);
         request.setAttribute("mr",mr);
-        request.setAttribute("ith",ith);
+      //  request.setAttribute("ith",ith);
         request.setAttribute("p",p);
         request.setAttribute("user",user);
         return "emr/subject/xiangqing";

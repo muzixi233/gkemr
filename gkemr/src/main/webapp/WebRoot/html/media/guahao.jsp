@@ -26,7 +26,7 @@
       </table></td>
     </tr>
   </table>
-  <form name="form1" method="post" action="/patient/addPatient">
+  <form name="form1" method="post" action="/patient/addPatient" onsubmit="return confirm('确认提交挂号?');">
     <table width="95%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="90" height="24" class="td_form01">姓名</td>

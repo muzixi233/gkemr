@@ -41,7 +41,7 @@
     Mr mr = (Mr) request.getAttribute("mr");
     if(ith!=null) {
 %>
-<form name="form1" method="post" action="/nurse/updatenurse?ithId=<%=ith.getIthId()%>">
+<form name="form1" method="post" action="/nurse/updatenurse?ithId=<%=ith.getIthId()%>" onsubmit="return confirm('确认修改?');">
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 
    <tr>

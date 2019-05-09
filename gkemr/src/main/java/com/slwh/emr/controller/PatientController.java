@@ -88,6 +88,7 @@ public class PatientController {
           Pation pation=pationService.selectById(id);
           if(pation.getGuahaoNum()>1){//存在历史病历
               //通过病历编号和姓名来查询病历
+              System.out.println(pation.getMrNum()+"DSDSFSFSFSZFAS");
               List<Mr> mrs=mrService.selectByPIdAndMrNum(id,pation.getMrNum());
               request.setAttribute("mrs",mrs);
               return "/media/history";
@@ -191,6 +192,7 @@ public class PatientController {
                 m.setBlHistory("0");
                 mrService.insert(m);
                 //跳到审核页面
+                
                 return "redirect:/patient/shenhe";
             }else{
                 Mr m = new Mr();  //新增病历
@@ -329,7 +331,7 @@ public class PatientController {
     @RequestMapping("/hpatient")
     public String hpatient(HttpServletRequest request ,String statu,int i)
     {
-        if ("m".equals(statu)) {
+        if ("m".equals(statu)) {//门诊病人
             Date d = new Date();
             List<Pation> lists = pationService.selectByNotTime(d,i);
             System.out.println("********************" + lists.get(0).getpName());

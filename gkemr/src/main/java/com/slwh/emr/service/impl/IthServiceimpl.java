@@ -47,4 +47,9 @@ public class IthServiceimpl implements IthService {
     public Ith selectByPIdAndStatus(int id) {
         return ithMapper.selectByPIdAndStatus(id);
     }
+
+    @Override
+    public List<Ith> selectByStatus() {
+        return ithMapper.selectByStatus();
+    }
 }

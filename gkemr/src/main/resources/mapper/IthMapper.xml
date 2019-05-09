@@ -182,4 +182,11 @@
     from emr_ith
     where (ith_patient=#{id} and ith_status="已入院")
   </select>
+  <!--根据病人号和状态查询住院信息  -->
+  <select id="selectByStatus" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_ith
+    where ith_status!="已出院"
+  </select>
 </mapper>

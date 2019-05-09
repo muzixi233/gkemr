@@ -66,7 +66,7 @@ document.getElementById("droplist3").style.display="none";
       </table></td>
     </tr>
   </table>
-  <form name="form1" method="post" action="/ith/addIth">
+  <form name="form1" method="post" action="/ith/addIth" onsubmit="return confirm('确认办理住院?');">
     <%
       Pation pation= (Pation)request.getAttribute("pation");
       if(pation!=null) {

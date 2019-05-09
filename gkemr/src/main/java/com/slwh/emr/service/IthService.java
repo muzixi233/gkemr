@@ -18,4 +18,6 @@ public interface IthService {
     Ith selectByPId(Integer pid);
 
     Ith selectByPIdAndStatus(int id);
+
+    List<Ith> selectByStatus();
 }

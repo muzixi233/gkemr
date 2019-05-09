@@ -2,7 +2,10 @@
     pageEncoding="utf-8"%>
 <%@ page import="com.slwh.emr.model.*"
          import="java.util.*"%>
-
+<%@ page import="org.apache.shiro.session.Session" %>
+<%@ page import="org.apache.shiro.SecurityUtils" %>
+<%   Session session1= SecurityUtils.getSubject().getSession();
+  User user=(User)session1.getAttribute("user");%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -40,7 +43,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
 </table>
 <br>
-<form name="form1" method="post" action="/patient/patientSelect">
+<form name="form1" method="post" action="/patient/patientSelect" onsubmit="return confirm('确定提交?');">
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" >
   <tr>
     <td class="td_page">输入病历编号：
@@ -51,6 +54,9 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 </table>
 </form>
 <br>
+<% if(user!=null&&!user.getuName().equals("李四"))
+{
+%>
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
   <tr>
     <td class="td_top">病人姓名</td>
@@ -80,20 +86,9 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
   <%}}}%>
 
-  <%
-  Pation pation= (Pation)request.getAttribute("pation");
-  if(pation!=null&&pation.getpId()!=null) {
-%>
-  <tr>
-    <td class="td07"><%=pation.getpName()%></td>
-    <td class="td07"><%=pation.getMzNum()%></td>
-    <td class="td07"><%=pation.getDoctor()%></td>
-    <td class="td07"><%=pation.getDate()%></td>
-    <td class="td07">骨科</td>
-    <td class="td07"><a href="/patient/treat?id=<%=pation.getpId() %>" target="mainFrame" >&nbsp;&nbsp;看诊</a></td>
-  </tr>
+  <%}else{%>
+  <tr>病历待审核</tr>
   <%}%>
-
 </table>
 <table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
   <tr>

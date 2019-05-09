@@ -23,4 +23,6 @@ public interface IthMapper {
     Ith selectByPId(Integer pid);
 
     Ith selectByPIdAndStatus(int id);
+
+    List<Ith> selectByStatus();
 }

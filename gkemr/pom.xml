@@ -126,6 +126,11 @@
         <artifactId>spring-boot-devtools</artifactId>
         <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.0</version>
+        </dependency>
     </dependencies>
 
 

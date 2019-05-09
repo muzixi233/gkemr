@@ -71,7 +71,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td07"><%=p.getDoctor()%></td>
     <td class="td07">待审核</td>
     <td class="td07"><a href="#" onClick="javascript:openwindow('/ith/cyxq?id=<%=p.getpId()%>','',500,500)">详情</a></td>
-    <td class="td07"><a href="/ith/cyDeal?id=<%=p.getpId() %>" target="mainFrame" >&nbsp;&nbsp;出院申请</a></td>
+    <td class="td07"><a href="/ith/cyDeal?id=<%=p.getpId() %>" target="mainFrame"  onsubmit="return confirm('确定出院?');">&nbsp;&nbsp;出院申请</a></td>
   </tr>
  <%}}%>
 </table>

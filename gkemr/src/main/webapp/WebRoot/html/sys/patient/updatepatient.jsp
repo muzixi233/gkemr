@@ -41,7 +41,7 @@
     Mr mr = (Mr) request.getAttribute("mr");
     if(pation!=null) {
 %>
-<form name="form1" method="post" action="/patient/updatetreat?pId=<%=pation.getpId() %>">
+<form name="form1" method="post" action="/patient/updatetreat?pId=<%=pation.getpId() %>" onsubmit="return confirm('确定修改?');">
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 
    <tr>

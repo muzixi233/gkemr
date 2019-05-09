@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="com.slwh.emr.model.*"
+         import="java.util.*"
+         import ="org.apache.shiro.session.Session"%>
+<%@ page import="org.apache.shiro.SecurityUtils" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,6 +15,8 @@
 </head>
 
 <body>
+<% Session session1= SecurityUtils.getSubject().getSession();
+  User user=(User)session1.getAttribute("user");%>
 <table width="100%" border="0" cellpadding="0" cellspacing="0" background="../images/index_02.gif">
   <tr>
     <td width="40"><img src="../images/index_01.jpg" width="260" height="40"></td>
@@ -18,7 +25,7 @@
         <td width="50" valign="bottom"><img src="${pageContext.request.contextPath}/images/index_05.gif" width="20" height="16" align="absbottom"><a href="#" class="a02">后退</a></td>
         <td width="50" valign="bottom"><img src="../images/index_07.gif" width="20" height="16" align="absbottom"><a href="#" class="a02">前进</a></td>
         <td width="50" valign="bottom"><img src="../images/index_09.gif" width="20" height="16" align="absbottom"><a href="main" target="mainFrame" class="a02">首页</a></td>
-        <td width="50" valign="bottom"><img src="../images/index_11.gif" width="20" height="16" align="absbottom"><a href="/logout" target="_parent" class="a02">退出</a></td>
+        <td width="50" valign="bottom"><img src="../images/index_11.gif" width="20" height="16" align="absbottom"><a href="/logout" target="_parent" class="a02" onsubmit="return confirm('确定退出?');">退出</a></td>
 
         </tr>
     </table></td>
@@ -33,7 +40,7 @@
 <form name="form1" method="post" action="">
   <tr>
     <td width="20" height="30">&nbsp;</td>
-    <td class="F02"><img src="../images/index_23.gif" width="26" height="30" align="absmiddle">骨科一室 刘清平医生，您好！ </td>
+    <td class="F02"><img src="../images/index_23.gif" width="26" height="30" align="absmiddle">骨科一室 <%=user.getuName()%>医生，您好！ </td>
     <td align="right" class="F02"><a href="online/online" target="mainFrame" class="a01">当前在线</a> ｜ <a href="schedule/index" target="mainFrame" class="a01">日程安排</a> ｜ <a href="grdingzhi/index1" target="mainFrame" class="a01">个人定制</a> ｜ <a href="../html/collection/PersonalCollection" target="mainFrame" class="a01">个人收藏夹</a>｜ <a href="../html/message/message" target="mainFrame" class="a01">站内消息[2]</a>｜ <a href="../html/bbs/bbs" target="mainFrame" class="a01">论坛</a></td>
     <td width="14" class="F02"></td>
   </tr>

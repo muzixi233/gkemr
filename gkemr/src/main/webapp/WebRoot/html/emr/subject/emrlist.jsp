@@ -68,7 +68,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td07"><%=mr.getPation().getDoctor()%></td>
     <td class="td07"><%=mr.getPation().getDate()%></td>
     <td class="td07">骨科</td>
-    <td class="td07"><a href="/emr/xiangqing?pId=<%=mr.getPation().getpId() %>&Doctor=<%=mr.getPation().getDoctor()%>"  target="mainFrame">&nbsp;&nbsp;详情</a></td>
+    <td class="td07"><a href="/emr/xiangqing?BlId=<%=mr.getBlId() %>&Doctor=<%=mr.getPation().getDoctor()%>"  target="mainFrame">&nbsp;&nbsp;详情</a></td>
   </tr>
   <%}}%>
 

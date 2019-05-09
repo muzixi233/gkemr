@@ -59,32 +59,34 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
       <td class="td_01">2005-05-06</td>
       <td class="td_01"><a href="roleuserlist.jsp">查看用户</a></td>
     </tr>
-	<tr>
-      <td align="center" class="td_02"><input type="checkbox" name="checkbox" value="checkbox"></td>
-      <td class="td_02"><a href="roleinfo.jsp">计调处管理员</a></td>
-      <td class="td_02">2005-05-06</td>
-      <td class="td_02"><a href="roleuserlist.jsp">查看用户</a></td>
-	</tr>
-	<tr>
-      <td align="center" class="td_01"><input type="checkbox" name="checkbox" value="checkbox"></td>
-      <td class="td_01"><a href="roleinfo.jsp">档案管理员</a></td>
-      <td class="td_01">2005-05-06</td>
-      <td class="td_01"><a href="roleuserlist.jsp">查看用户</a></td>
-	</tr>
-	<tr>
-      <td align="center" class="td_02"><input type="checkbox" name="checkbox" value="checkbox"></td>
-      <td class="td_02"><a href="roleinfo.jsp">普通人员</a></td>
-      <td class="td_02">2005-05-06</td>
-      <td class="td_02"><a href="roleuserlist.jsp">查看用户</a></td>
-	</tr>
-	<tr>
-      <td align="center" class="td_01"><input type="checkbox" name="checkbox" value="checkbox"></td>
-      <td class="td_01"><a href="roleinfo.jsp">出回国业务办理员</a></td>
-      <td class="td_01">2005-05-06</td>
-      <td class="td_01"><a href="roleuserlist.jsp">查看用户</a></td>
-	</tr>
   </table>
   </form>
 </center>
+<script type="text/javascript">
+  window.onload=function GetRole() {
+    $.ajax({
+      type: "get",
+      url: "/role/selectRole",
+      data: {},
+      async: true,
+      dataType: 'json',
+      success: function (data) {
+        var json = data.data;
+        if (data.data!=null) {
+          $('#tb tr:gt(0)').remove();//删除之前的数据
+          var s = '';
+          for (var i = 0; i < json.length; i++) s += '<tr><td class="td07">' + json[i].drNum+ '</td><td class="td07">' + json[i].drName + '</td><td class="td07">' + json[i].drDate + '</td>'
+                  + '<td class="td07">' + json[i].drPrice+ '</td><td class="td07"><a href="/nurse/update?ithId='+json[i].ithId+'" target="mainFrame" >'+json[i].drAccount+'</a></td></tr>';
+          $('#tb').append(s);
+        }
+        else {
+          alert("没有数据")
+        }
+
+      }
+    });
+  }
+
+</script>
 </body>
 </html>

@@ -47,7 +47,7 @@
         Mr mr = (Mr) request.getAttribute("mr");
         if(pation!=null) {
     %>
-<form  method="post" action="/drug/shenhe2?pId=<%=pation.getpId()%>&uId=<%=user.getuId()%>">
+<form  method="post" action="/drug/shenhe2?pId=<%=pation.getpId()%>&uId=<%=user.getuId()%>" onsubmit="return confirm('确定审核?');">
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 
    <tr>

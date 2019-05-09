@@ -50,7 +50,7 @@
     List<Drug> drug =(List<Drug>) request.getAttribute("drug");
     if(pation!=null) {
 %>
-<form name="form1" method="post" action="/drug/kaiyao?pId=<%=pation.getpId() %>">
+<form name="form1" method="post" action="/drug/kaiyao?pId=<%=pation.getpId() %>" onsubmit="return confirm('开药确认?');">
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 
    <tr>

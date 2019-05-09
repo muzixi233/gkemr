@@ -40,16 +40,16 @@ public class NurseController {
     @ResponseBody
     public Result select(HttpServletRequest request){
 
-        List<Ith> iths=ithService.selectAll();//住院信息
+        List<Ith> iths=ithService.selectByStatus();//所有住院信息
         return  Result.success(iths);
     }
 
-    @RequestMapping("/update")
+    @RequestMapping("/update")//住院维护
     public String update(HttpServletRequest request,int ithId){
         Ith ith = ithService.selectById(ithId);//住院信息
 
         System.out.println("shdasdhjasfs"+ith.getPation().getpId());
-        Mr mr = mrService.selectByPId(ith.getPation().getpId());//病历信息
+        Mr mr = mrService.selectByPIdAndHistory(ith.getPation().getpId());//病历信息
         List<Nurse> nurses=nurseService.selectAll();//护理信息
         request.setAttribute("nurses", nurses);
 
