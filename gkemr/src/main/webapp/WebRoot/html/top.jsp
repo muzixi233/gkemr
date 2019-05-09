@@ -18,7 +18,7 @@
         <td width="50" valign="bottom"><img src="${pageContext.request.contextPath}/images/index_05.gif" width="20" height="16" align="absbottom"><a href="#" class="a02">后退</a></td>
         <td width="50" valign="bottom"><img src="../images/index_07.gif" width="20" height="16" align="absbottom"><a href="#" class="a02">前进</a></td>
         <td width="50" valign="bottom"><img src="../images/index_09.gif" width="20" height="16" align="absbottom"><a href="main" target="mainFrame" class="a02">首页</a></td>
-        <td width="50" valign="bottom"><img src="../images/index_11.gif" width="20" height="16" align="absbottom"><a href="login" target="_parent" class="a02">退出</a></td>
+        <td width="50" valign="bottom"><img src="../images/index_11.gif" width="20" height="16" align="absbottom"><a href="/logout" target="_parent" class="a02">退出</a></td>
 
         </tr>
     </table></td>

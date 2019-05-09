@@ -66,7 +66,7 @@
   <!--根据user查询所有角色信息  -->
   <select id="getRolesByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List" />
+   emr_role.r_id, emr_role.r_name
     from emr_role,emr_role_user
     where emr_role.r_id=emr_role_user.r_id
     and emr_role_user.u_id=#{userid,jdbcType=INTEGER}

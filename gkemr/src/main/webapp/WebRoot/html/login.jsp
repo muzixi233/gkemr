@@ -31,7 +31,7 @@
           <input id="username" name="username" type="text" class="loginuser" />
         </li>
         <li>
-          <input id="password" name="password" type="text" class="loginpwd" />
+          <input id="password" name="password" type="password" class="loginpwd" />
         </li>
         <li>
           <input name="loginy" type="text" class="loginy" placeholder="输入验证码"/><label><img src="../images/images.jpg" /></label>

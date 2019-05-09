@@ -2,10 +2,13 @@ package com.slwh.emr.controller;
 
 import com.slwh.emr.cogfiger.Result;
 import com.slwh.emr.model.User;
+import com.slwh.emr.service.RoleService;
 import com.slwh.emr.service.UserService;
 import org.apache.ibatis.annotations.Param;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.session.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,10 +29,11 @@ import javax.servlet.http.*;
 public class UserController {
     @Resource
     private UserService UserService;
-
+@Resource
+private RoleService roleService;
 
     @RequestMapping("/hello")
-    public String login(HttpServletRequest request, Map<String, Object> map)throws Exception{
+    public String login(HttpServletRequest request, HttpServletResponse response,Map<String, Object> map)throws Exception{
         System.out.println("登录测试");
         // 登录失败从request中获取shiro处理的异常信息。
         // shiroLoginFailure:就是shiro异常类的全类名.
@@ -53,9 +57,18 @@ public class UserController {
         System.out.println(msg);
         return "login";
     }
-    @RequestMapping("/test")
-    public String test(){
-        return "test";
+    @RequestMapping("/logout")
+    public String logout(){
+        return "logout";
+    }
+
+    @RequestMapping("/getMenu")
+    @ResponseBody
+    public Result getMenu(){
+        Session session= SecurityUtils.getSubject().getSession();
+        User user=(User)session.getAttribute("user");
+
+        return Result.success(roleService.getRolesByUserId(user.getuId()));
     }
 
     @RequestMapping({"/","/index"})

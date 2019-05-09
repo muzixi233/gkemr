@@ -6,6 +6,7 @@ import com.slwh.emr.model.User;
 import com.slwh.emr.service.PermissionService;
 import com.slwh.emr.service.RoleService;
 import com.slwh.emr.service.UserService;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -13,6 +14,7 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
@@ -63,9 +65,11 @@ public class MyShiroRealm extends AuthorizingRealm {
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
                 userInfo, //用户名
                 userInfo.getuPassword(), //密码
-//                ByteSource.Util.bytes(userInfo.getStatus()),//salt=username+salt
+           //     ByteSource.Util.bytes(userInfo.getuName()),//salt=username
                 getName()  //realm name
         );
+        Session session= SecurityUtils.getSubject().getSession();
+        session.setAttribute("user",userInfo);
         return authenticationInfo;
     }
 
