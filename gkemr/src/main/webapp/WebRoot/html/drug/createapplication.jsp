@@ -40,12 +40,6 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   <tr> 
     <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="/drug/adddrug" target="mainFrame" class="a14">新增药品</a></td>
   </tr>
-    <tr> 
-    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="/drug/deleteacount" target="mainFrame" class="a14">药品清除统计</a></td>
-  </tr>
-    <tr> 
-    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="/drug/addacount" target="mainFrame" class="a14">新增药品统计</a></td>
-  </tr>
 </table>
 <br>
 </body>

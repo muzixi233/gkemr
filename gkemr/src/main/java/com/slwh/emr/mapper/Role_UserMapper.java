@@ -14,4 +14,6 @@ public interface Role_UserMapper {
     int insertSelective(Role_UserKey record);
 
     List<Role_UserKey> getRoleByUserId(Integer getuId);
+
+    List<Role_UserKey> selectAll();
 }

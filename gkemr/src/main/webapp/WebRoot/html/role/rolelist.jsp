@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <title>角色管理</title>
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
+  <script language="JavaScript" src="../../js/jquery2.js"></script>
+  <script language="javascript" src="../../js/js.js"></script>
 <script language="JavaScript" type="text/javascript" src="../../js/win_center.js"></script>
 <script language="javascript">
 function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left) 
@@ -41,16 +43,11 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     </tr>
   </table>
   <form name="form1" method="post" action="">
-    <table width="95%"  border="0" cellspacing="2" cellpadding="0">
-      <tr>
-        <td class="td_title"> 当前用户所建角色列表 </td>
-      </tr>
-    </table>
-    <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
+    <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01" id="tb">
     <tr>
       <td  align="center" class="td_top"><input type="checkbox" name="checkbox" value="checkbox"></td>
-      <td  class="td_top">角色名称</td>
-      <td  class="td_top">创建时间 </td>
+      <td  class="td_top">角色编号</td>
+      <td  class="td_top">角色名称 </td>
       <td  class="td_top">操作</td>
     </tr>
     <tr>
@@ -75,8 +72,8 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
         if (data.data!=null) {
           $('#tb tr:gt(0)').remove();//删除之前的数据
           var s = '';
-          for (var i = 0; i < json.length; i++) s += '<tr><td class="td07">' + json[i].drNum+ '</td><td class="td07">' + json[i].drName + '</td><td class="td07">' + json[i].drDate + '</td>'
-                  + '<td class="td07">' + json[i].drPrice+ '</td><td class="td07"><a href="/nurse/update?ithId='+json[i].ithId+'" target="mainFrame" >'+json[i].drAccount+'</a></td></tr>';
+          for (var i = 0; i < json.length; i++) s += ' <tr><td height="19" align="center" class="td_01"><input type="checkbox" name="checkbox" value="checkbox"></td>'+
+                  '<td class="td_01">' + json[i].rId+ '</td><td class="td_01">' + json[i].rName + '</td><td class="td_01"><a href="/role/userlist?rId='+json[i].rId+'" target="mainFrame" >查看用户</a></td></tr>';
           $('#tb').append(s);
         }
         else {

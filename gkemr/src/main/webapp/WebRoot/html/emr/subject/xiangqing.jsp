@@ -85,12 +85,13 @@
 </tr>
     <tr>
         <td height="24" class="td_form01">开药信息</td>
+        <td class="td_form02"  >
         <%
             if(drugs!=null)
                 for(Drug drus:drugs){  %>
-        <td class="td_form02"><%=drus.getDrName()%></td>
+        <span><%=drus.getDrName()%>
         <% }%>
-
+        </td>
     </tr>
 </table>
 </div>

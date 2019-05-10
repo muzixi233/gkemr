@@ -62,6 +62,13 @@
     <include refid="Base_Column_List" />
     from emr_role
   </select>
+  <!--查询所有角色信息  -->
+  <select id="selectByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from emr_role
+    where r_name=#{name,jdbcType=VARCHAR}
+  </select>
 
   <!--根据user查询所有角色信息  -->
   <select id="getRolesByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">

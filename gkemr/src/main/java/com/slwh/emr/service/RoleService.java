@@ -21,4 +21,8 @@ public interface RoleService {
     List<Role> getRolesByUserId(Integer userid);
 
     List<Role_UserKey> getRoleByUserId(Integer getuId);
+
+    Role selectByName(String role);
+
+    int insertRoleUser(Role_UserKey role_userKey);
 }

@@ -1,5 +1,6 @@
 package com.slwh.emr.service;
 
+import com.slwh.emr.model.Role_UserKey;
 import com.slwh.emr.model.User;
 
 import java.util.List;
@@ -21,4 +22,7 @@ public interface UserService {
 
     User selectByName(String username);
 
+    List<User> selectByrId(int id);
+
+    List<Role_UserKey> selectAllUserRole();
 }

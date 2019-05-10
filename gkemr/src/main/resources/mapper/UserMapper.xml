@@ -167,4 +167,12 @@
     from emr_user
     where u_num like CONCAT('%',#{uNum},'%')
   </select>
+  <!--  根据角色id查询-->
+  <select id="selectByrId" resultMap="BaseResultMap">
+    select
+    emr_user.u_id, u_name, u_password, u_age, u_sex, u_tel, u_email, u_num, status
+    from emr_user,emr_role_user
+    where emr_user.u_id=emr_role_user.u_id
+    and emr_role_user.r_id=#{id,jdbcType=INTEGER}
+  </select>
 </mapper>

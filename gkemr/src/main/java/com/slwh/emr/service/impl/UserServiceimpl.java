@@ -1,7 +1,9 @@
 package com.slwh.emr.service.impl;
 
 import com.slwh.emr.mapper.BedMapper;
+import com.slwh.emr.mapper.Role_UserMapper;
 import com.slwh.emr.mapper.UserMapper;
+import com.slwh.emr.model.Role_UserKey;
 import com.slwh.emr.model.User;
 import com.slwh.emr.service.UserService;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ import java.util.List;
 public class UserServiceimpl implements UserService {
     @Resource
     private UserMapper userMapper;
+    @Resource
+    private Role_UserMapper role_userMapper;
 
     @Override
     public User selectById(Integer uId) {
@@ -51,5 +55,15 @@ public class UserServiceimpl implements UserService {
     @Override
     public User selectByName(String username) {
         return userMapper.selectByName(username);
+    }
+
+    @Override
+    public List<User> selectByrId(int id) {
+        return userMapper.selectByrId(id);
+    }
+
+    @Override
+    public List<Role_UserKey> selectAllUserRole() {
+        return role_userMapper.selectAll();
     }
 }

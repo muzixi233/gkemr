@@ -1,5 +1,8 @@
+<%@ page import="com.slwh.emr.model.User" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.slwh.emr.model.Role_UserKey" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+         pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -66,87 +69,43 @@ function selectAllByChk(chk,checkbox) {
         <br>
       <table width="95%"  border="0" cellspacing="2" cellpadding="0">
         <tr>
-          <td align="right"><input name="Submit" type="button" class="buttonface" onClick="windowOpen('rolelist2.jsp','','','340','270','no','50','50')" value="分配角色">
-            <input name="Submit" type="button" class="buttonface"  value="分配系统管理员">
-            <input name="Submit" type="button" class="buttonface" onClick="javascript:window.location.href='userpms.jsp'" value="查看用户权限">
+          <td align="right"><input name="Submit" type="button" class="buttonface" onClick="windowOpen('/user/query','','','340','270','no','50','50')" value="分配角色">
+            <input name="Submit" type="button" class="buttonface" onClick="javascript:window.location.href='/user/addUser'" value="新增用户">
             </td>
           </tr>
         </table>
         <table width="95%" border="0" cellpadding="2" cellspacing="0" class="table01">
           <tr>
             <td class="td_top"><input name="chk" type="checkbox" id="chk" onClick="selectAllByChk(chk,checkbox)" value="checkbox0"></td>
+            <td class="td_top">用户编号</td>
             <td class="td_top">姓名</td>
-            <td class="td_top">部门</td>
+            <td class="td_top">年龄</td>
             <td class="td_top">性别</td>
-            <td class="td_top">出生日期</td>
-            <td class="td_top">职务级别</td>
+            <td class="td_top">联系电话</td>
+            <td class="td_top">电子邮箱</td>
+            <td class="td_top">角色名称</td>
+
             </tr>
+          <% List<Role_UserKey> userKeys=(List<Role_UserKey>)request.getAttribute("userKeys");
+          if(userKeys!=null){
+          for(Role_UserKey role_userKey:userKeys)
+          {
+          %>
           <tr>
             <td class="td_01"><span class="td01">
               <input name="checkbox" type="checkbox" id="checkbox" value="checkbox01">
               </span></td>
-            <td class="td_01"><a href="modifyinfo.jsp">李董</a></td>
-            <td class="td_01">人事部</td>
-            <td class="td_01">男</td>
-            <td class="td_01">1972-10-20</td>
-            <td class="td_01">主任科员</td>
+            <td class="td_01"><%=role_userKey.getUser().getuNum()%></td>
+            <td class="td_01"><a href="modifyinfo.jsp"><%=role_userKey.getUser().getuName()%></a></td>
+            <td class="td_01"><%=role_userKey.getUser().getuAge()%></td>
+            <td class="td_01"><%=role_userKey.getUser().getuSex()%></td>
+            <td class="td_01"><%=role_userKey.getUser().getuTel()%></td>
+            <td class="td_01"><%=role_userKey.getUser().getuEmail()%></td>
+
+            <td class="td_01"><%=role_userKey.getRole().getrName()%></td>
+
             </tr>
-          <tr>
-            <td class="td_02"><input type="checkbox" name="checkbox" value="checkbox"></td>
-            <td class="td_02"><a href="modifyinfo.jsp">王峰</a></td>
-            <td class="td_02">管理信息部</td>
-            <td class="td_02">男</td>
-            <td class="td_02">1972-11-14</td>
-            <td class="td_02">主任科员</td>
-            </tr>
-          <tr>
-            <td class="td_01"><input type="checkbox" name="checkbox" value="checkbox"></td>
-            <td class="td_01"><a href="modifyinfo.jsp">江碧</a></td>
-            <td class="td_01">法律部</td>
-            <td class="td_01">男</td>
-            <td class="td_01">1960-05-06</td>
-            <td class="td_01">处长</td>
-            </tr>
-          <tr>
-            <td class="td_02"><input type="checkbox" name="checkbox" value="checkbox"></td>
-            <td class="td_02"><a href="modifyinfo.jsp">张鹏</a></td>
-            <td class="td_01">人事部</td>
-            <td class="td_02">男</td>
-            <td class="td_02">1969-07-01</td>
-            <td class="td_02">处长</td>
-            </tr>
-          <tr>
-            <td class="td_01"><input type="checkbox" name="checkbox" value="checkbox"></td>
-            <td class="td_01"><a href="modifyinfo.jsp">李丽</a></td>
-            <td class="td_02">管理信息部</td>
-            <td class="td_01">女</td>
-            <td class="td_01">1974-10-14</td>
-            <td class="td_01">科员</td>
-            </tr>
-          <tr>
-            <td class="td_02"><input type="checkbox" name="checkbox" value="checkbox"></td>
-            <td class="td_02"><a href="modifyinfo.jsp">欧阳小强</a></td>
-            <td class="td_01">法律部</td>
-            <td class="td_02">男</td>
-            <td class="td_02">1977-09-08</td>
-            <td class="td_02">科员</td>
-            </tr>
-          <tr>
-            <td class="td_01"><input type="checkbox" name="checkbox" value="checkbox"></td>
-            <td class="td_01"><a href="modifyinfo.jsp">刘宇</a></td>
-            <td class="td_01">法律部</td>
-            <td class="td_01">男</td>
-            <td class="td_01">1977-09-18</td>
-            <td class="td_01">科员</td>
-            </tr>
-          <tr>
-            <td class="td_02"><input type="checkbox" name="checkbox" value="checkbox"></td>
-            <td class="td_02"><a href="modifyinfo.jsp">吴华</a></td>
-            <td class="td_02">管理信息部</td>
-            <td class="td_02">女</td>
-            <td class="td_02">1979-09-08</td>
-            <td class="td_02">办事员</td>
-            </tr>
+          <%}}%>
           </table>
         </td></tr>
   </form>

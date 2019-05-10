@@ -50,4 +50,14 @@ public class RoleServiceimpl implements RoleService {
     public List<Role_UserKey> getRoleByUserId(Integer getuId) {
         return role_userMapper.getRoleByUserId(getuId);
     }
+
+    @Override
+    public Role selectByName(String role) {
+        return roleMapper.selectByName(role);
+    }
+
+    @Override
+    public int insertRoleUser(Role_UserKey role_userKey) {
+         return  role_userMapper.insert(role_userKey);
+    }
 }

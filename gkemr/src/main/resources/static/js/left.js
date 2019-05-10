@@ -61,36 +61,12 @@ window.onload=function GetRole() {
 					'</table>' +
 
 					'<div id="menu_7" style="DISPLAY: none">' +
-					' <table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					' <tr>' +
-					'<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
-					' <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
-					'<td nowrap><a href="../html/results/createresult1.htm" target="mainFrame" class="a03">医生查询</a></td>' +
-					'</tr>' +
-					'</table>' +
-					'<table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					'<tr>' +
-					'<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
-					' <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
-					'<td nowrap><a href="../html/results/myresult.html" target="mainFrame" class="a03">医生诊断</a></td>' +
-					'</tr>' +
-					'</table>' +
 					'<table width="100%" border="0" cellspacing="0" cellpadding="0">' +
 					'<tr>' +
 					'<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
 					'<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
 					' <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
 					' <td nowrap><a href="/patient/shenhe" target="mainFrame" class="a03">实习医生审核</a></td>' +
-					'</tr>' +
-					'</table>' +
-					'<table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					' <tr>' +
-					'<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
-					' <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
-					' <td nowrap><a href="../html/results/staresults1.html" target="mainFrame" class="a03">医生开药</a></td>' +
 					'</tr>' +
 					'</table>' +
 					'</div>' +
@@ -118,22 +94,6 @@ window.onload=function GetRole() {
 					' <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
 					' <td nowrap><a href="/ith/chufang" target="mainFrame" class="a03">住院处方管理</a></td>' +
 					'</tr>' +
-					'</table>' +
-					'<table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					' <tr>' +
-					' <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
-					' <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
-					' <td nowrap><a href="/ith/fayao" target="mainFrame" class="a03">住院发药</a></td>' +
-					' </tr>' +
-					' </table>' +
-					' <table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					'  <tr>' +
-					'<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
-					'<td nowrap><a href="../html/medical/baoxiao/applist_1-2" target="mainFrame" class="a03">床位管理</a></td>' +
-					' </tr>' +
 					'</table>' +
 					'<table width="100%" border="0" cellspacing="0" cellpadding="0">' +
 					'<tr>' +
@@ -251,14 +211,6 @@ window.onload=function GetRole() {
 					'			<td nowrap><a href="/drug/applicationlist_1" target="mainFrame" class="a03">查询药品</a></td>'+
 					'	  </tr>'+
 					'	</table>'+
-					'	<table width="100%" border="0" cellspacing="0" cellpadding="0">'+
-					'		  <tr>'+
-					'			<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>'+
-					'			<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>'+
-					'			<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>'+
-					'			<td nowrap><a href="/drug/applicationlist_2" target="mainFrame" class="a03">进药审批</a></td>'+
-					'	  </tr>'+
-					'	</table>'+
 					' </div>'+
 					'    <table width="100%" border="0" cellspacing="0" cellpadding="0">'+
 					'       <tr>'+
@@ -357,40 +309,6 @@ window.onload=function GetRole() {
 					'</tr>' +
 					'</table>' +
 					'</div>'+
-					' <table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					'<tr>' +
-					' <td width="19"><img id="top_7" onClick="menu(\'menu_7\',\'top_7\');" src="../images/tree_11.gif" width="19" height="20"></td>' +
-					' <td width="19"><img src="../images/tree_27.gif" width="19" height="20"></td>' +
-					' <td nowrap>医生管理</td>' +
-					'</tr>' +
-					'</table>' +
-
-					'<div id="menu_7" style="DISPLAY: none">' +
-					' <table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					' <tr>' +
-					'<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
-					' <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
-					'<td nowrap><a href="../html/results/createresult1.htm" target="mainFrame" class="a03">医生查询</a></td>' +
-					'</tr>' +
-					'</table>' +
-					'<table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					'<tr>' +
-					'<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
-					' <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
-					'<td nowrap><a href="../html/results/myresult.html" target="mainFrame" class="a03">医生诊断</a></td>' +
-					'</tr>' +
-					'</table>' +
-					'<table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					' <tr>' +
-					'<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
-					' <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
-					' <td nowrap><a href="../html/results/staresults1.html" target="mainFrame" class="a03">医生开药</a></td>' +
-					'</tr>' +
-					'</table>' +
-					'</div>' +
 					'<table width="100%" border="0" cellspacing="0" cellpadding="0">' +
 					' <tr>' +
 					' <td width="19"><img id="top_9" onClick="menu(\'menu_9\',\'top_9\');" src="../images/tree_11.gif" width="19" height="20"></td>' +
@@ -407,30 +325,6 @@ window.onload=function GetRole() {
 					' <td nowrap><a href="/ith/medical" target="mainFrame" class="a03">入院办理</a></td>' +
 					'</tr>' +
 					' </table>' +
-					' <table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					'<tr>' +
-					'<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
-					' <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
-					' <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
-					' <td nowrap><a href="/ith/chufang" target="mainFrame" class="a03">住院处方管理</a></td>' +
-					'</tr>' +
-					'</table>' +
-					'<table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					' <tr>' +
-					' <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
-					' <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
-					' <td nowrap><a href="/ith/fayao" target="mainFrame" class="a03">住院发药</a></td>' +
-					' </tr>' +
-					' </table>' +
-					' <table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					'  <tr>' +
-					'<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
-					'<td nowrap><a href="../html/medical/baoxiao/applist_1-2" target="mainFrame" class="a03">床位管理</a></td>' +
-					' </tr>' +
-					'</table>' +
 					'<table width="100%" border="0" cellspacing="0" cellpadding="0">' +
 					'<tr>' +
 					' <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
@@ -618,36 +512,12 @@ window.onload=function GetRole() {
 					'</tr>' +
 					'</table>' +
 					'<div id="menu_7" style="DISPLAY: none">' +
-					' <table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					' <tr>' +
-					'<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
-					' <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
-					'<td nowrap><a href="../html/results/createresult1.htm" target="mainFrame" class="a03">医生查询</a></td>' +
-					'</tr>' +
-					'</table>' +
-					'<table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					'<tr>' +
-					'<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
-					' <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
-					'<td nowrap><a href="../html/results/myresult.html" target="mainFrame" class="a03">医生诊断</a></td>' +
-					'</tr>' +
-					'</table>' +
 					'<table width="100%" border="0" cellspacing="0" cellpadding="0">' +
 					'<tr>' +
 					'<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
 					'<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
 					' <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
 					' <td nowrap><a href="/patient/shenhe" target="mainFrame" class="a03">实习医生审核</a></td>' +
-					'</tr>' +
-					'</table>' +
-					'<table width="100%" border="0" cellspacing="0" cellpadding="0">' +
-					' <tr>' +
-					'<td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>' +
-					'<td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>' +
-					' <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>' +
-					' <td nowrap><a href="../html/results/staresults1.html" target="mainFrame" class="a03">医生开药</a></td>' +
 					'</tr>' +
 					'</table>' +
 					'</div>' +
@@ -683,7 +553,24 @@ window.onload=function GetRole() {
 					'			<td nowrap><a href="/drug/applicationlist_2" target="mainFrame" class="a03">进药审批</a></td>'+
 					'	  </tr>'+
 					'	</table>'+
-					' </div>';
+					' </div>'+
+					'    <table width="100%" border="0" cellspacing="0" cellpadding="0">'+
+					'       <tr>'+
+					'         <td width="19"><img id="top_11" onClick="menu(\'menu_11\',\'top_11\');" src="../images/tree_11.gif" width="19" height="20"></td>'+
+					'         <td width="19"><img src="../images/tree_27.gif" width="19" height="20"></td>'+
+					'         <td nowrap>主任审核</td>'+
+					'   </tr>'+
+					' </table>'+
+					' <div id="menu_11" style="DISPLAY: none">'+
+					'       <table width="100%" border="0" cellspacing="0" cellpadding="0">'+
+					'         <tr>'+
+					'           <td width="19"><img src="../images/tree_06.gif" width="19" height="20"></td>'+
+					'           <td width="19"><img src="../images/tree_07.gif" width="19" height="20"></td>'+
+					'           <td width="19"><img src="../images/tree_08.gif" width="19" height="20"></td>'+
+					'           <td nowrap><a href="/drug/shenhe" target="mainFrame" class="a03">开药审核</a></td>'+
+					'     </tr>'+
+					'   </table>'+
+					'  </div>';
 				$('#tb').append(s);
 			}
 			else {

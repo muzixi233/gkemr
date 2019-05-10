@@ -165,4 +165,29 @@ public class UserController {
     public Result selectAllDoctor(){
         return Result.success(UserService.selectAll());
     }
+
+    @RequestMapping("/addUser")
+    public String addUser(){
+
+        return "/user/addUser";
+    }
+    @RequestMapping("/userAdd")
+    public String userAdd(User user,HttpServletRequest request){
+        user.setStatus(0);//未分配角色
+        UserService.insert(user);
+        ;
+            System.out.println("*********"+user.getuSex());
+            List<User> users=UserService.selectAll();
+            request.setAttribute("users",users);
+            return "/user/query";
+
+    }
+    @RequestMapping("/query")
+    public String query(HttpServletRequest request){
+
+            List<User> users=UserService.selectAll();
+            request.setAttribute("users",users);
+            return "/user/query";
+
+    }
 }

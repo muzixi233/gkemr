@@ -136,7 +136,6 @@ public class PatientController {
     public String zhenduanSelect(HttpServletRequest request)
     {
         List<Pation> lists = pationService.selectAll() ;
-        System.out.println("********************"+lists.get(0).getpName());
         request.setAttribute("lists", lists);
         return "/media/zhenduan";
     }

@@ -28,4 +28,6 @@ public interface UserMapper {
     User selectByName(@Param("username") String username);
 
     User selectByuNum(@Param("uNum") String uNum);
+
+    List<User> selectByrId(int id);
 }
