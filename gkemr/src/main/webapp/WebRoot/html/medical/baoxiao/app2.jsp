@@ -75,35 +75,35 @@ document.getElementById("droplist3").style.display="none";
     <table width=95% border=0 align=center cellpadding=0 cellspacing=0>
       <tr align="left" nowrap>
         <td width="78" height="24" align="center"  class=td_form01>病历号：</td>
-        <td colspan="3" align="left"  class=td_form02><%=pation.getMrNum()%></td>
+        <td width="268" align="left"  class=td_form02><%=pation.getMrNum()%></td>
       </tr>
       <tr>
         <td width="146" align="center"  class=td_form01>姓名：</td>
         <td width="268" align="left"  class=td_form02><%=pation.getpName()%></td></tr>
       <tr align="left" nowrap>
         <td height="24" align="center"  class=td_form01>性别：</td>
-        <td width="79" height="24" align="center"  class=td_form01><span class="td_form02">
+        <td width="79" height="24" align="left"  class=td_form02>
           <%=pation.getpSex()%>
-        </span></td>
+       </td>
       </tr>
       <tr><td width="72" align="center"  class=td_form01>年龄：</td>
-        <td width="95" align="center"  class=td_form01><span class="td_form02">
+        <td width="95" align="left"  class=td_form02>
             <%=pation.getpAge()%>
-        </span></td></tr>
+        </td></tr>
       <tr align="left" nowrap>
         <td height="24" align="center"  class=td_form01>身份证号：</td>
-        <td height="24" colspan="3" align="center"  class=td_form01><span class="td_form02">
+        <td width="95" align="left"  class=td_form02>
           <%=pation.getMrNum()%>
-        </span></td>
+        </td>
 
       </tr>
       <tr> <td height="24" align="center"  class=td_form01>联系电话：</td>
-        <td height="24" align="center"  class=td_form01><span class="td_form02">
+        <td height="24" align="left"  class=td_form02>
            <%=pation.getpTel()%>
-        </span></td></tr>
+        </td></tr>
       <tr align="left" nowrap>
         <td height="24" align="center"  class=td_form01>主治医师：</td>
-        <td height="24" colspan="3" align="left" valign="middle"  class=td_form01><select name="ithUser" id="select">
+        <td width="95" align="left"  class=td_form02><select name="ithUser" id="select">
          <%
            List<User> users= (List<User>)request.getAttribute("users");
           if(users!=null){
@@ -116,7 +116,7 @@ document.getElementById("droplist3").style.display="none";
       </tr>
       <tr>
         <td height="24" align="center"  class=td_form01>护理：</td>
-        <td height="24" align="center"  class=td_form01><select name="level" id="select2">
+        <td height="24" align="left"  class=td_form02><select name="level" id="select2">
           <%
             List<Nurse> nurses= (List<Nurse>)request.getAttribute("nurses");
             if(nurses!=null){
@@ -128,7 +128,7 @@ document.getElementById("droplist3").style.display="none";
       </tr>
       <tr align="left" nowrap>
         <td height="24" align="center"  class=td_form01>床位分配：</td>
-        <td height="24" colspan="3" align="left" valign="middle"  class=td_form01><select name="ithBed" id="select3">
+        <td width="95" align="left"  class=td_form02><select name="ithBed" id="select3">
           <%
             List<Bed> beds= (List<Bed>)request.getAttribute("beds");
             if(beds!=null){
@@ -149,7 +149,7 @@ document.getElementById("droplist3").style.display="none";
         </span></td>--%>
       <tr align="left" nowrap>
         <td height="24" align="center"  class=td_form01>病人病况：</td>
-        <td height="24" colspan="5" align="left" valign="middle"  class=td_form01><label>
+        <td width="95" align="left"  class=td_form02><label>
           <textarea name="ithMsg" id="textarea" cols="100" rows="5"></textarea>
         </label></td>
     </table>

@@ -96,6 +96,11 @@
         <td height="24" class="td_form01">患病类型</td>
         <td class="td_form02"><%=mr.getBlStyle()%></td>
     </tr>
+<tr>
+    <td></td>
+    <td align="center">
+        <input name=cancel  type=button class=buttonface value= '  返回  '  onClick="history.back(-1)"></td>
+    </tr>
     <%}%>
 </table>
 </body>

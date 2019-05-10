@@ -44,7 +44,6 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td_top">姓名</td>
     <td class="td_top">医生</td>
     <td class="td_top">发布时间</td>
-    <td class="td_top">操作</td>
   </tr>
 
   <%
@@ -59,7 +58,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td07"><%=p.getpName()%></td>
     <td class="td07"><%=p.getDoctor()%></td>
     <td class="td07"><%=new Date()%></td>
-    <td class="td07"><a href="#" onClick="javascript:openwindow('/ith/cfxq','',500,500)">详情</a></td>
+
   </tr>
   <%}}}%>
 </table>

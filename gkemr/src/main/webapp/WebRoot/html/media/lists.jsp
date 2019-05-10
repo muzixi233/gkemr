@@ -37,14 +37,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 
     <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="/patient/guahao" target="mainFrame" class="a14">门诊挂号</a></td>
   </tr>
-  <tr> 
 
-    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="createresulta.jsp" target="mainFrame" class="a14">挂号修改</a></td>
-  </tr>
-  <tr> 
-  
-   <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="tuihao1.jsp" target="mainFrame" class="a14">门诊退号</a></td>
-  </tr>
   <tr> 
   
    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="/patient/info" target="mainFrame" class="a14">挂号信息查询</a></td>
