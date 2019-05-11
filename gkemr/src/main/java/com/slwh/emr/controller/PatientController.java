@@ -79,7 +79,7 @@ public class PatientController {
         }
         List<Pation> lists = pationService.selectAll()  ;
         request.setAttribute("lists", lists);
-        return "/media/info";
+        return "/media/zhenduan";
     }
 
 
@@ -317,6 +317,8 @@ public class PatientController {
             else {
                 i=0;
                 Mr m = mrService.selectByPId(pId); //修改病历
+                p.setIthStatus(i);
+                pationService.update(p);
                 m.setBlStyle(bl_style);
                 mrService.update(m);
                 List<Pation> lists = pationService.selectByTime(d,i) ;

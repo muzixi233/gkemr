@@ -23,7 +23,7 @@
     <li><a href="index.jsp">返回首页</a></li>
   </ul>
 </div>
-<div class="loginbody"> <span class="systemlogo"></span>
+<div class="loginbody">
   <div class="loginbox">
     <form action="" method="post" >
       <ul>
@@ -32,9 +32,6 @@
         </li>
         <li>
           <input id="password" name="password" type="password" class="loginpwd" />
-        </li>
-        <li>
-          <input name="loginy" type="text" class="loginy" placeholder="输入验证码"/><label><img src="../images/images.jpg" /></label>
         </li>
         <li>
           <input name="button" type="submit" class="loginbtn" value="登录" />
